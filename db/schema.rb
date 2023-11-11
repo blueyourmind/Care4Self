@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_11_062004) do
+ActiveRecord::Schema[7.1].define(version: 2023_11_11_122232) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -34,7 +34,6 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_11_062004) do
     t.bigint "frequency_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "has_taken?"
     t.datetime "start_time", precision: nil
     t.index ["frequency_id"], name: "index_medication_frequencies_on_frequency_id"
     t.index ["medication_id"], name: "index_medication_frequencies_on_medication_id"
@@ -64,6 +63,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_11_062004) do
     t.datetime "pre_alarm_time", precision: nil
     t.datetime "alarm_time", precision: nil
     t.integer "alarm_duration"
+    t.boolean "has_taken", default: false
     t.index ["medication_frequency_id"], name: "index_reminders_on_medication_frequency_id"
   end
 
