@@ -1,0 +1,20 @@
+<h1>Medications</h1>
+<table>
+ <tr>
+   <th>Name</th>
+   <th>Instructions</th>
+   <th>Interval</th>
+   <th>User</th>
+   <th></th>
+ </tr>
+ <% @medications.each do |medication| %>
+   <tr>
+     <td><%= medication.name %></td>
+     <td><%= medication.instructions %></td>
+     <td><%= medication.interval.name %></td>
+     <td><%= medication.user.name %></td>
+     <td><%= link_to 'Show', medication_path(medication) %></td>
+   </tr>
+ <% end %>
+</table>
+<p><%= link_to 'New Medication', new_medication_path %></p>
