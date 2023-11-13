@@ -6,24 +6,37 @@ class MedicationsController < ApplicationController
   end
 
   def show
-    @medication = Medication.find(params[:id])
+    @medication = current_user.medications.find(params[:id])
   end
 
   def new
     @medication = Medication.new
+    @medication.medication_frequencies.build
+    @medication.build_interval
+
   end
 
   def create
-    @medication = current_user.medications.build(medication_params)
+    @medication = Medication.new(medication_params)
+    # @medication.medication_frequencies.build
+    # @medication.build_interval
+    @medication.user = current_user
+
     if @medication.save
-      redirect_to @medication
+      # if params[:medication][:redirect_to_set_duration] == "true"
+        redirect_to set_duration_medication_path(@medication)
+      # else
+      #   redirect_to @medication, notice: 'Medication was successfully created.'
+      # end
     else
-      render 'new'
+      Rails.logger.debug @medication.errors.inspect
+      render :new
     end
   end
 
+
   def edit
-    @medication = Medication.find(params[:id])
+    @medication = current_user.medications.find(params[:id])
   end
 
   def update
@@ -41,9 +54,24 @@ class MedicationsController < ApplicationController
     redirect_to medications_path
   end
 
+  def set_duration
+    @medication = Medication.find(params[:id])
+    redirect_to congrats_medication_path(@medication)
+  end
+
+  def congrats
+    @medication = Medication.find(params[:id])
+  end
+
   private
 
   def medication_params
-    params.require(:medication).permit(:name, :instruction, :duration, :quantity, :type, :interval_id, :start_date, :end_date, :user_id)
+    params.require(:medication).permit(:name, :instruction, :quantity, :med_type,
+      :start_date, :end_date, :interval_id, medication_frequencies_attributes: [:id, :frequency_id, :start_time],
+      interval_attributes: [:id, :name, :value])
   end
+
+
+
+
 end

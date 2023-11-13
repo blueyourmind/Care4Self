@@ -1,15 +1,19 @@
+
+<!-- app/views/medications/show.html.erb -->
 <h1><%= @medication.name %></h1>
-<p>
- <strong>Instructions:</strong>
- <%= @medication.instructions %>
-</p>
-<p>
- <strong>Interval:</strong>
- <%= @medication.interval.name %>
-</p>
-<p>
- <strong>User:</strong>
- <%= @medication.user.name %>
-</p>
-<%= link_to 'Edit', edit_medication_path(@medication) %> |
-<%= link_to 'Back', medications_path %>
+
+<%= simple_form_for @medication do |f| %>
+  <%= f.input :instruction, as: :text %>
+  <%= f.input :quantity %>
+  <%= f.input :med_type %>
+  <%= f.input :start_date %>
+  <%= f.input :end_date %>
+
+  <!-- Add additional details as needed -->
+
+  <%= f.button :submit, 'Update Medication' %>
+<% end %>
+
+<%= link_to 'Edit', edit_medication_path(@medication) %>
+<%= link_to 'Delete', medication_path(@medication),  data: { turbo_method: :delete, confirm: 'Are you sure?' }, class: 'btn btn-danger btn-delete' %>
+<%= link_to 'Back to Medications', medications_path %>

@@ -1,0 +1,9 @@
+<!-- app/views/medications/edit.html.erb -->
+<!-- edit.html.erb -->
+<h1>Edit Medication</h1>
+<%= simple_form_for @medication, url: medication_path(@medication), method: :patch do |f| %>
+  <%= f.input :name %>
+  <%#= f.input :start_time %>
+  <%= f.button :submit, "Update" %>
+  <%= button_to "Back", medications_path(@user), title: "Back", class: "btn btn-primary", method: :get %> <!-- This will create a primary back button -->
+<% end %>
