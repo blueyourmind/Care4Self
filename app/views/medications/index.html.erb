@@ -1,20 +1,15 @@
-<h1>Medications</h1>
-<table>
- <tr>
-   <th>Name</th>
-   <th>Instructions</th>
-   <th>Interval</th>
-   <th>User</th>
-   <th></th>
- </tr>
- <% @medications.each do |medication| %>
-   <tr>
-     <td><%= medication.name %></td>
-     <td><%= medication.instructions %></td>
-     <td><%= medication.interval.name %></td>
-     <td><%= medication.user.name %></td>
-     <td><%= link_to 'Show', medication_path(medication) %></td>
-   </tr>
- <% end %>
-</table>
-<p><%= link_to 'New Medication', new_medication_path %></p>
+
+<!-- app/views/medications/index.html.erb -->
+<h1>My Medications</h1>
+<ul>
+  <% @medications.each do |medication| %>
+    <li>
+      <%= link_to medication.name, medication_path(medication) %>
+
+      <%= link_to 'Edit', edit_medication_path(medication), :title => 'Edit' %>
+      <%= link_to 'Delete', medication_path(medication), method: :delete, data: { confirm: 'Are you sure?' }, :title => 'Delete' %> <!-- This will create a link to delete the medication -->
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to 'Add Medication', new_medication_path, class: 'btn btn-primary', :title => 'Add Medication' %>

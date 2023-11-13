@@ -1,0 +1,22 @@
+<!-- app/views/medications/new.html.erb -->
+<!-- app/views/medications/new.html.erb -->
+
+<%= simple_form_for @medication do |f| %>
+  <%= f.input :name, label: 'Medication Name' %>
+  <%= f.input :med_type, label: 'Medication Type' %>
+  <%= f.input :quantity, label: 'Quantity', input_html: { min: 1, max: 100, value: '' } %>
+  <%= f.input :instruction, label: 'Instruction', collection: ['', 'Before meal', 'After meal'] %>
+
+  <%= f.simple_fields_for :medication_frequencies do |mf| %>
+    <%= mf.association :frequency, label: 'Frequency', collection: Frequency.all, prompt: 'Select Frequency' %>
+  <% end %>
+
+  <%= f.association :interval, label: 'Interval', collection: Interval.all, prompt: 'Select Interval', input_html: { class: 'form-control' } %>
+
+  <% if params[:show_date_fields] == 'true' %>
+  <%= render partial: 'set_duration', locals: { f: f } %>
+<% end %>
+
+  <%= f.button :submit, 'Continue', class: 'btn btn-primary' %>
+  <%= link_to 'Back', medications_path, class: 'btn btn-secondary' %>
+<% end %>
