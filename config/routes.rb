@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   # devise_for :users, controllers: { registrations: 'profiles' }
+  root to: "pages#home"
   devise_for :users
   resources :medications do
     member do
@@ -20,7 +21,7 @@ Rails.application.routes.draw do
   resources :medication_frequencies, only: [:index, :show, :create, :update, :destroy]
   resources :reminders, only: [:index, :show, :create, :update, :destroy]
 
-  root to: "pages#home"
+
   resources :dashboards, only: [:index, :show]
 
   # get 'profile', to: 'profiles#show'
