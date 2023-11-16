@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  # devise_for :users, controllers: { registrations: 'profiles' }
   devise_for :users
 
   resources :medications do
@@ -15,6 +16,9 @@ Rails.application.routes.draw do
 
   root to: "pages#home"
   resources :dashboards, only: [:index, :show]
+
+  # get 'profile', to: 'profiles#show'
+  resource :profile, only: [:show]
 
 
 end
