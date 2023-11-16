@@ -14,32 +14,6 @@
 
   <body><%= render "shared/navbar" %>
 <%= render "shared/flashes" %>
-    <%= yield %>
 
-    <footer class="footer navbar fixed-bottom navbar-light bg-light">
-      <div class="container">
-        <div class="row justify-content-around">
-          <div class="col-4 text-center">
-            <%= link_to medications_path do %>
-              <i class="fas fa-home"></i>
-            <% end %>
-          </div>
-          <div class="col-4 text-center">
-            <%= link_to new_medication_path do %>
-              <i class="fas fa-plus"></i>
-            <% end %>
-          </div>
-          <div class="col-4 text-center">
-            <% if user_signed_in? %>
-            <%= link_to '', profile_path, class: "fas fa-user" %>
-          <% else %>
-            <%= link_to '', new_user_session_path, class: "fas fa-user" %>
-          <% end %>
-
-          </div>
-        </div>
-      </div>
-    </footer>
-
-  </body>
-</html>
+<%= yield %>
+<%= render "shared/footer" %>
