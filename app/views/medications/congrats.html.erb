@@ -1,3 +1,6 @@
-<h1>Congratulations!</h1>
-<p>You have successfully added a new medication.</p>
-<%= link_to 'Back to Medication', medications_path(@medication), class: 'btn btn-primary' %>
+<div class="d-flex flex-column align-items-center justify-content-center text-center">
+  <h1 class="mb-3">Congratulations!</h1>
+  <p class="mb-4">You have successfully added a new medication.</p>
+
+  <%= link_to 'Back to medications', medications_path, class: 'btn btn-primary btn-lg mr-3' %>
+</div>

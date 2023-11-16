@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   devise_for :users
-
   resources :medications do
     member do
       get 'set_duration'
@@ -8,6 +7,13 @@ Rails.application.routes.draw do
       get 'congrats'
     end
   end
+
+  # resources :medications do
+  #   member do
+  #     get 'set_duration'
+  #   end
+  # end
+
   resources :frequencies, only: [:index, :show, :create, :update, :destroy]
   resources :intervals, only: [:index, :show, :create, :update, :destroy]
   resources :medication_frequencies, only: [:index, :show, :create, :update, :destroy]

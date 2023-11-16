@@ -1,22 +1,40 @@
-<!-- app/views/medications/new.html.erb -->
-<!-- app/views/medications/new.html.erb -->
+<%= simple_form_for @medication, html: { class: 'medication-form' } do |f| %>
+  <h2 class="form-title">Add Medication</h2>
 
-<%= simple_form_for @medication do |f| %>
-  <%= f.input :name, label: 'Medication Name' %>
-  <%= f.input :med_type, label: 'Medication Type' %>
-  <%= f.input :quantity, label: 'Quantity', input_html: { min: 1, max: 100, value: '' } %>
-  <%= f.input :instruction, label: 'Instruction', collection: ['', 'Before meal', 'After meal'] %>
+  <div class="form-group">
+    <%= f.input :name, label: 'Medication Name', input_html: { class: 'form-control' } %>
+  </div>
+
+  <div class="form-group">
+    <%= f.input :med_type, label: 'Medication Type', collection: ['Antibiotics', 'Analgesics', 'Antipyretics', 'Anti-inflammatory Drugs', 'Antidepressants', 'Antipsychotics', 'Anticoagulants', 'Antihypertensives', 'Antidiabetic Drugs', 'Antacids', 'Antihistamines', 'Bronchodilators', 'Diuretics', 'Antifungals', 'Antivirals', 'Antimalarials', 'Antiseptics', 'Antispasmodics', 'Antinausea Drugs', 'Laxatives', 'Immunosuppressants', 'Antiepileptic Drugs', 'Hormone Replacement Therapy (HRT)', 'Antithyroid Drugs', 'Anticoagulants'], prompt: 'Select Medication Type', input_html: { class: 'form-control' } %>
+  </div>
+
+  <div class="form-group">
+    <%= f.input :quantity, label: 'Quantity', input_html: { min: 1, max: 100, value: '', class: 'form-control' } %>
+  </div>
+
+  <div class="form-group">
+    <%= f.input :instruction, label: 'Instruction', collection: ['Before meal', 'After meal'], input_html: { class: 'form-control' } %>
+  </div>
 
   <%= f.simple_fields_for :medication_frequencies do |mf| %>
-    <%= mf.association :frequency, label: 'Frequency', collection: Frequency.all, prompt: 'Select Frequency' %>
+    <div class="form-group">
+      <%= mf.association :frequency, label: 'Frequency', collection: Frequency.all, prompt: 'Select Frequency', input_html: { class: 'form-control' } %>
+    </div>
   <% end %>
 
-  <%= f.association :interval, label: 'Interval', collection: Interval.all, prompt: 'Select Interval', input_html: { class: 'form-control' } %>
+  <div class="form-group">
+    <%= f.association :interval, label: 'Interval', collection: Interval.all, prompt: 'Select Interval', input_html: { class: 'form-control' } %>
+  </div>
 
-  <% if params[:show_date_fields] == 'true' %>
-  <%= render partial: 'set_duration', locals: { f: f } %>
-<% end %>
+<%# <%= link_to 'Set Medication Duration', set_duration_medication_path(@medication), method: :get %>
 
-  <%= f.button :submit, 'Continue', class: 'btn btn-primary' %>
-  <%= link_to 'Back', medications_path, class: 'btn btn-secondary' %>
+ <div class="form-field">
+          <%= f.label :start_date %>
+          <%= f.date_field :start_date %>
+          <%= f.label :end_date %>
+          <%= f.date_field :end_date %>
+  <div class="form-actions">
+    <%= f.button :submit, 'Continue', class: 'btn btn-primary' %>
+    <%= link_to 'Back', medications_path, class: 'btn btn-secondary' %>
 <% end %>

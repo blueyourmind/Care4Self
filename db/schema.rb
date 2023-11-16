@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_11_122232) do
+ActiveRecord::Schema[7.1].define(version: 2023_11_15_184706) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -53,6 +53,18 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_11_122232) do
     t.datetime "end_date", precision: nil
     t.index ["interval_id"], name: "index_medications_on_interval_id"
     t.index ["user_id"], name: "index_medications_on_user_id"
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.string "recipient_type", null: false
+    t.bigint "recipient_id", null: false
+    t.string "type", null: false
+    t.jsonb "params"
+    t.datetime "read_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["read_at"], name: "index_notifications_on_read_at"
+    t.index ["recipient_type", "recipient_id"], name: "index_notifications_on_recipient"
   end
 
   create_table "reminders", force: :cascade do |t|
