@@ -29,3 +29,6 @@
 
 en:
   hello: "Hello world"
+  notifications:
+  new_comment:
+  message: "You have a new comment"
