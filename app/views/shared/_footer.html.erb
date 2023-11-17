@@ -1,14 +1,24 @@
-<div class="sc-bottom-bar">
-    <a class="sc-menu-item">
-      <i class="fas fa-home"></i>
-
-    </a>
-  <a class="sc-menu-item sc-current">
-    <i class="fas fa-plus"></i>
-  </a>
-    <a class="sc-nav-indicator">
-    </a>
-    <a class="sc-menu-item">
-      <i class="fas fa-user-alt"></i>
-    </a>
-  </div>
+<div class="wrapper">
+  <nav class="nav nav--icons">
+    <ul>
+      <li>
+        <%= link_to medications_path, class: "icon-link" do %>
+          <i class="fas fa-home"></i>
+          <span>Home</span>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to new_medication_path, class: "icon-link" do %>
+          <i class="fas fa-plus"></i>
+          <span>Add</span>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to profile_path, class: "icon-link" do %>
+          <i class="fas fa-user"></i>
+          <span>User</span>
+        <% end %>
+      </li>
+    </ul>
+  </nav>
+</div>
