@@ -1,13 +1,17 @@
 class MedicationsController < ApplicationController
   before_action :set_medication, only: [:show, :edit, :update, :destroy, :set_duration, :congrats]
   def index
-    @medications = current_user.medications
+    @user = current_user
+    @medications = @user.medications
+
   end
   def show
     # @medication is already set by before_action
   end
   def new
     @medication = Medication.new
+    @medication.medication_frequencies.new
+    @medication.interval = Interval.new(name: 'Weekly')
   end
   def create
     @medication = Medication.new(medication_params)
@@ -23,12 +27,16 @@ class MedicationsController < ApplicationController
   end
   def update
     if @medication.update(medication_params)
-      redirect_to @medication
+      flash[:notice] = "Medication successfully updated!"
+      redirect_to medications_path
     else
       render 'edit'
     end
   end
-
+  def destroy
+    @medication.destroy
+    redirect_to medications_path, notice: 'Medication was successfully deleted.'
+  end
   def set_duration
     redirect_to congrats_medication_path(@medication)
   end
@@ -42,7 +50,7 @@ class MedicationsController < ApplicationController
   def medication_params
     params.require(:medication).permit(
       :name, :instruction, :quantity, :med_type,
-      :start_date, :end_date, :interval_id,
+      :start_date, :end_date, :interval_id, days: [],
       medication_frequencies_attributes: [:id, :frequency_id, :start_time],
       interval_attributes: [:id, :name, :value]
     )
