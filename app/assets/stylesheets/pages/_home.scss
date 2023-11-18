@@ -37,7 +37,7 @@
 
 
 .h2-container {
-  margin: -64px;
+  margin: -85px;
   text-align: center;
   color: #010C80;
   font-size: 10px;
@@ -56,7 +56,7 @@
   border-radius: 18px;
 
 }
-@keyframes flip-with-scale {
+/* @keyframes flip-with-scale {
   0% {
       transform: perspective(400px) scaleX(1);
   }
@@ -64,7 +64,7 @@
   100% {
       transform: perspective(400px) scaleX(-1);
   }
-}
+} */
 
 body {
   background-color: #F1F3FE;
@@ -79,4 +79,12 @@ body {
 .logo2 {
   max-width: 180px;
   border-radius: 18px;
+}
+
+p {
+  font-size: smaller;
+}
+
+.no-scroll {
+  overflow: hidden;
 }
