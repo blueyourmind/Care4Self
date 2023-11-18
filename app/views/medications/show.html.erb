@@ -1,19 +1,13 @@
-
 <!-- app/views/medications/show.html.erb -->
-<h1><%= @medication.name %></h1>
+<div class="container">
+  <h1><%= @medication.name %></h1>
 
-<%= simple_form_for @medication do |f| %>
-  <%= f.input :instruction, as: :text %>
-  <%= f.input :quantity %>
-  <%= f.input :med_type %>
-  <%= f.input :start_date %>
-  <%= f.input :end_date %>
+  <% if @medication.frequency %>
+    <p><strong>Frequency:</strong> <%= @medication.frequency.name %></p>
+  <% else %>
+    <p><strong>Frequency:</strong> Not specified</p>
+  <% end %>
 
-  <!-- Add additional details as needed -->
-
-  <%= f.button :submit, 'Update Medication' %>
-<% end %>
-
-<%= link_to 'Edit', edit_medication_path(@medication) %>
-<%= link_to 'Delete', medication_path(@medication),  data: { turbo_method: :delete, confirm: 'Are you sure?' }, class: 'btn btn-danger btn-delete' %>
-<%= link_to 'Back to Medications', medications_path %>
+  <%= link_to 'Edit', edit_medication_path(@medication), class: 'btn btn-primary' %>
+  <%= link_to 'Delete', @medication, data: { turbo_method: :delete, confirm: 'Are you sure?' }, class: 'btn btn-danger btn-delete' %>
+</div>

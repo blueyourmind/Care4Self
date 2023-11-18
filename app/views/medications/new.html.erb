@@ -16,12 +16,10 @@
   <div class="form-group">
     <%= f.input :instruction, label: 'Instruction', collection: ['Before meal', 'After meal'], input_html: { class: 'form-control' } %>
   </div>
+ <div class="form-group">
 
-  <%= f.simple_fields_for :medication_frequencies do |mf| %>
-    <div class="form-group">
-      <%= mf.association :frequency, label: 'Frequency', collection: Frequency.all, prompt: 'Select Frequency', input_html: { class: 'form-control' } %>
-    </div>
-  <% end %>
+<%= f.input :frequency_id, collection: @frequencies, label_method: :name, value_method: :id, prompt: 'Select a Frequency', input_html: { class: 'form-control' } %>
+
 
   <div class="form-group">
     <%= f.association :interval, label: 'Interval', collection: Interval.all, prompt: 'Select Interval', input_html: { class: 'form-control' } %>
