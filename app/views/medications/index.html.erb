@@ -2,7 +2,7 @@
   <h1 class="mt-4">Hello<%= @user.name %></h1>
   <h3>Here is a list of your today’s medications and status. Click on the date below for the upcoming medications.</h3>
   <ul class="list-group mt-4">
-    <% @medications.each do |medication| %>
+    <% @medications.reverse_each do |medication| %>
       <li class="list-group-item">
        <h2><%= link_to medication.name, medication_path(medication) %></h2>
         <p><strong>Instruction:</strong> <%= medication.instruction %></p>

@@ -10,17 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_17_134910) do
+ActiveRecord::Schema[7.1].define(version: 2023_11_18_125639) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "frequencies", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.text "name"
-    t.string "description"
-    t.integer "value"
-  end
 
   create_table "intervals", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -31,20 +23,11 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_17_134910) do
 
   create_table "medication_frequencies", force: :cascade do |t|
     t.bigint "medication_id", null: false
-    t.bigint "frequency_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.datetime "start_time", precision: nil
-    t.index ["frequency_id"], name: "index_medication_frequencies_on_frequency_id"
+    t.bigint "reminder_id"
     t.index ["medication_id"], name: "index_medication_frequencies_on_medication_id"
-  end
-
-  create_table "medication_modifications", force: :cascade do |t|
-    t.bigint "medication_frequency_id", null: false
-    t.date "modification_date"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["medication_frequency_id"], name: "index_medication_modifications_on_medication_frequency_id"
+    t.index ["reminder_id"], name: "index_medication_frequencies_on_reminder_id"
   end
 
   create_table "medications", force: :cascade do |t|
@@ -59,8 +42,8 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_17_134910) do
     t.string "med_type"
     t.datetime "start_date", precision: nil
     t.datetime "end_date", precision: nil
-    t.bigint "frequency_id"
-    t.index ["frequency_id"], name: "index_medications_on_frequency_id"
+    t.string "frequency"
+    t.time "start_time"
     t.index ["interval_id"], name: "index_medications_on_interval_id"
     t.index ["user_id"], name: "index_medications_on_user_id"
   end
@@ -88,14 +71,13 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_17_134910) do
     t.text "name"
     t.integer "phone_number"
     t.integer "family_phone_number"
+    t.string "photo"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "medication_frequencies", "frequencies"
   add_foreign_key "medication_frequencies", "medications"
-  add_foreign_key "medication_modifications", "medication_frequencies"
-  add_foreign_key "medications", "frequencies"
+  add_foreign_key "medication_frequencies", "reminders"
   add_foreign_key "medications", "intervals"
   add_foreign_key "medications", "users"
   add_foreign_key "reminders", "medication_frequencies"
