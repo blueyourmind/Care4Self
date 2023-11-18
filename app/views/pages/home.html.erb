@@ -1,23 +1,22 @@
-<div class="d-flex align-items-center justify-content-center">
+<div class="d-flex align-items-center justify-content-center" class="no-scroll">
   <div class="logo-container text-center">
-  <img src="https://i.ibb.co/YP2cQCX/oie-jpg.png" alt="oie-jpg" class="logo">
-    <h1>Welcome to Care4Self</h1>
-   <img src="https://assets-us-01.kc-usercontent.com/ffacfe7d-10b6-0083-2632-604077fd4eca/6a11abb1-4c0e-4553-88cc-94d203d8bbaf/What-Medications-Increase-Risks-of-Falling-Older-Adults-2022-06-Facebook-1200x630.jpg" alt="pills" class= "photo">
+     <h1>Welcome to</h1>
+   <img src="https://i.ibb.co/ZfmhmLt/logo-no-background.png" alt="pills" class= "logo">
   </div>
 </div>
-
-<div class="front_page_text text-center">
   <div class="h2-container">
-    <h2>Sending you reminders to take your medications so you can stay healthy!</h2>
+    <h4>Stay healthy</h4>
+    <h4>with medication reminders!</h4>
+        <img src="https://i.ibb.co/DYLthyH/pill1-removebg-preview.png" alt="pill1-removebg-preview" class= "logo2">
   </div>
-</div>
 
 <% unless user_signed_in? %>
   <div class="text-center mac">
-    <%= link_to "Sign In", new_user_session_path, class: "btn btn-primary" %>
+    <%= link_to "Sign In", new_user_session_path, class: "btn btn-primary signin-button" %>
 
  <%= link_to new_user_registration_path do %>
-    <p>New to Care4Self ? Create an account</p>
+    <p>New to Care4Self? Create an account</p>
   <% end %>
   </div>
 <% end %>
+  </div>
