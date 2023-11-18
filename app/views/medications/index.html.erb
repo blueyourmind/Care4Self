@@ -1,23 +1,36 @@
+<!-- app/views/medications/index.html.erb -->
 <div class="container">
-  <h1 class="mt-4">Hello<%= @user.name %></h1>
+  <h1 class="mt-4">Hello, <%= @user.name %></h1>
   <h3>Here is a list of your today’s medications and status. Click on the date below for the upcoming medications.</h3>
-  <ul class="list-group mt-4">
-    <% @medications.each do |medication| %>
-      <li class="list-group-item">
-       <h2><%= link_to medication.name, medication_path(medication) %></h2>
-        <p><strong>Instruction:</strong> <%= medication.instruction %></p>
-        <p><strong>Quantity:</strong> <%= medication.quantity %></p>
-        <p><strong>Med Type:</strong> <%= medication.med_type %></p>
-        <p><strong>Start Date:</strong> <%= medication.start_date %></p>
-        <p><strong>End Date:</strong> <%= medication.end_date %></p>
 
+ 
+  <div id="medicationCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <% @medications.each_with_index do |medication, index| %>
+        <div class="carousel-item <%= 'active' if index.zero? %>">
+          <div class="card">
+            <div class="card-body">
+              <h2><%= link_to medication.name, medication_path(medication) %></h2>
+              <p><strong>Instruction:</strong> <%= medication.instruction %></p>
+              <p><strong>Quantity:</strong> <%= medication.quantity %></p>
+              <p><strong>Med Type:</strong> <%= medication.med_type %></p>
+              <p><strong>Start Date:</strong> <%= medication.start_date %></p>
+              <p><strong>End Date:</strong> <%= medication.end_date %></p>
+              <%= link_to 'Edit', edit_medication_path(medication), class: 'btn btn-primary mr-2' %>
+              <%= link_to 'Delete', medication_path(medication), data: { turbo_method: :delete, confirm: 'Are you sure you want to delete this medication?' }, class: 'btn btn-danger' %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#medicationCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#medicationCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
 
-        <%= link_to 'Edit', edit_medication_path(medication), class: 'btn btn-primary mr-2' %>
-        <%= link_to 'Delete', medication_path(medication), data: { turbo_method: :delete, confirm: 'Are you sure you want to delete this medication?' }, class: 'btn btn-danger' %>
-
-      </li>
-    <% end %>
-  </ul>
-
-  <%#= link_to 'Add Medication', new_medication_path, class: 'btn btn-success mt-4' %
 </div>
