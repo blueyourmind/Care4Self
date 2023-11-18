@@ -1,13 +1,13 @@
 .front_page_text {
   margin-top: 20px;
-
+  font-family: 'Hammersmith One', sans-serif;
 }
 
 .logo-container {
   text-align: center;
-  margin: 50px 0;
-
+  margin: 150px 0;
 	width: 400px;
+  color: #010C80;
 }
 
 .logo {
@@ -37,8 +37,10 @@
 
 
 .h2-container {
-  margin: 90px 0;
+  margin: -64px;
   text-align: center;
+  color: #010C80;
+  font-size: 10px;
 }
 
 .mac {
@@ -62,4 +64,19 @@
   100% {
       transform: perspective(400px) scaleX(-1);
   }
+}
+
+body {
+  background-color: #F1F3FE;
+  font-family: 'Hammersmith One', sans-serif;
+}
+
+.signin-button {
+  border: none;
+  font-family: 'Hammersmith One', sans-serif;
+}
+
+.logo2 {
+  max-width: 180px;
+  border-radius: 18px;
 }
