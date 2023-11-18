@@ -28,10 +28,7 @@ class MedicationsController < ApplicationController
       render 'edit'
     end
   end
-  def destroy
-    @medication.destroy
-    redirect_to medications_path
-  end
+
   def set_duration
     redirect_to congrats_medication_path(@medication)
   end

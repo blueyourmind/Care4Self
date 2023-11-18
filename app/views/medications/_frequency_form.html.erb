@@ -1,0 +1,4 @@
+<%= simple_form_for medication, url: medication_path(medication), method: :patch do |f| %>
+  <%= f.input :frequency_id, collection: frequencies, label_method: :name, value_method: :id, prompt: 'Select a Frequency', input_html: { class: 'form-control' } %>
+  <%= f.button :submit, "Update Frequency", class: 'btn btn-primary' %>
+<% end %>

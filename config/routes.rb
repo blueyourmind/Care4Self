@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   # devise_for :users, controllers: { registrations: 'profiles' }
   root to: "pages#home"
   devise_for :users
+  resources :medications
   resources :medications do
     member do
       get 'set_duration'
@@ -10,11 +11,7 @@ Rails.application.routes.draw do
     end
   end
 
-  # resources :medications do
-  #   member do
-  #     get 'set_duration'
-  #   end
-  # end
+
 
   resources :frequencies, only: [:index, :show, :create, :update, :destroy]
   resources :intervals, only: [:index, :show, :create, :update, :destroy]
@@ -22,7 +19,7 @@ Rails.application.routes.draw do
   resources :reminders, only: [:index, :show, :create, :update, :destroy]
 
 
-  resources :dashboards, only: [:index, :show]
+  # resources :dashboards, only: [:index, :show]
 
   # get 'profile', to: 'profiles#show'
   resource :profile, only: [:show]
