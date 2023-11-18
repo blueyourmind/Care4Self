@@ -6,7 +6,7 @@
   </div>
 
   <div class="form-group">
-    <%= f.input :med_type, label: 'Medication Type', collection: ['Antibiotics', 'Analgesics', 'Antipyretics', 'Anti-inflammatory Drugs', 'Antidepressants', 'Antipsychotics', 'Anticoagulants', 'Antihypertensives', 'Antidiabetic Drugs', 'Antacids', 'Antihistamines', 'Bronchodilators', 'Diuretics', 'Antifungals', 'Antivirals', 'Antimalarials', 'Antiseptics', 'Antispasmodics', 'Antinausea Drugs', 'Laxatives', 'Immunosuppressants', 'Antiepileptic Drugs', 'Hormone Replacement Therapy (HRT)', 'Antithyroid Drugs', 'Anticoagulants'], prompt: 'Select Medication Type', input_html: { class: 'form-control' } %>
+    <%= f.input :med_type, label: 'Medication Type', collection: ['Tablets', 'Capsules','Drops','Inhalers','Injections','Liquid','Topical medecines','Suppositories'], prompt: 'Select Medication Type', input_html: { class: 'form-control' } %>
   </div>
 
   <div class="form-group">
@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Show or hide the days field when the interval select field changes
   intervalSelect.addEventListener('change', function() {
-    if (intervalSelect.options[intervalSelect.selectedIndex].text == 'Weekly' || intervalSelect.options[intervalSelect.selectedIndex].text == 'Daily') {
+    if (intervalSelect.options[intervalSelect.selectedIndex].text == 'Daily' || intervalSelect.options[intervalSelect.selectedIndex].text == 'Weekly') {
       daysField.style.display = 'block';
       // Clear the selection in the daysField
       var checkboxes = daysField.querySelectorAll('input[type=checkbox]');
