@@ -6,30 +6,29 @@
   </div>
 
   <div class="form-group">
-    <%= f.input :med_type, label: 'Medication Type', collection: ['Antibiotics', 'Analgesics', 'Antipyretics', 'Anti-inflammatory Drugs', 'Antidepressants', 'Antipsychotics', 'Anticoagulants', 'Antihypertensives', 'Antidiabetic Drugs', 'Antacids', 'Antihistamines', 'Bronchodilators', 'Diuretics', 'Antifungals', 'Antivirals', 'Antimalarials', 'Antiseptics', 'Antispasmodics', 'Antinausea Drugs', 'Laxatives', 'Immunosuppressants', 'Antiepileptic Drugs', 'Hormone Replacement Therapy (HRT)', 'Antithyroid Drugs', 'Anticoagulants'], prompt: 'Select Medication Type', input_html: { class: 'form-control' } %>
+    <%= f.input :med_type, label: 'Medication Type', collection: ['Tablets','Capsules','Drops','Inhalers','Topical Medecines','Injections','Liquid','Suppositories'], prompt: 'Select Medication Type', input_html: { class: 'form-control' } %>
   </div>
 
   <div class="form-group">
-    <%= f.input :quantity, label: 'Quantity', input_html: { min: 1, max: 100, value: '', class: 'form-control' } %>
+    <%= f.input :quantity, label: 'Quantity', input_html: {class: 'form-control' } %>
   </div>
 
   <div class="form-group">
     <%= f.input :instruction, label: 'Instruction', collection: ['Before meal', 'After meal'], input_html: { class: 'form-control' } %>
   </div>
 
-  <%= f.simple_fields_for :medication_frequencies do |mf| %>
-    <div class="form-group">
-      <%= mf.association :frequency, label: 'Frequency', collection: Frequency.all, prompt: 'Select Frequency', input_html: { class: 'form-control' } %>
-    </div>
-  <% end %>
+  <div class="form-group">
+    <%= f.input :frequency, label: 'Frequency', collection: ['Once per day', 'Twice per day', 'Thrice per day'], prompt: 'Select Frequency', input_html: { class: 'form-control' } %>
+</div>
+
 
   <div class="form-group">
     <%= f.association :interval, label: 'Interval', collection: Interval.all, prompt: 'Select Interval', input_html: { class: 'form-control',id: 'interval_select' } %>
   </div>
 
-  <div class="form-group" id="days_field" style="display: none;">
-    <%= f.collection_check_boxes :days, [['Monday', 'Monday'], ['Tuesday', 'Tuesday'], ['Wednesday', 'Wednesday'], ['Thursday', 'Thursday'], ['Friday', 'Friday'], ['Saturday', 'Saturday'], ['Sunday', 'Sunday']], :first, :last, { item_wrapper_class: 'inline' } %>
-  </div>
+  <!-- <div class="form-group" id="days_field" style="display: none;">
+    <%#= f.collection_check_boxes :days, [['Monday', 'Monday'], ['Tuesday', 'Tuesday'], ['Wednesday', 'Wednesday'], ['Thursday', 'Thursday'], ['Friday', 'Friday'], ['Saturday', 'Saturday'], ['Sunday', 'Sunday']], :first, :last, { item_wrapper_class: 'inline' } %>
+  </div> -->
 
 
 
@@ -47,7 +46,7 @@
   <%= button_to "Back", medications_path(@user), title: "Back", class: "btn btn-secondary", method: :get %> <!-- This will create a primary back button -->
 <% end %>
 
-<script>
+<!-- <script>
   document.addEventListener('DOMContentLoaded', function() {
   var intervalSelect = document.getElementById('interval_select');
   var daysField = document.getElementById('days_field');
@@ -68,4 +67,4 @@
   });
 
 
-  </script>
+  </script> -->

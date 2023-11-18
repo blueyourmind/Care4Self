@@ -18,16 +18,27 @@
   </div>
  <div class="form-group">
 
-<%= f.input :frequency_id, collection: @frequencies, label_method: :name, value_method: :id, prompt: 'Select a Frequency', input_html: { class: 'form-control' } %>
+<%#= f.input :frequency_id, collection: @frequencies, label_method: :name, value_method: :id, prompt: 'Select a Frequency', input_html: { class: 'form-control' } %>
+
+<div class="form-group">
+  <%= f.input :frequency, label: 'Frequency', collection: ['Once per day', 'Twice per day', 'Thrice per day'], prompt: 'Select Frequency', input_html: { class: 'form-control' } %>
+</div>
+
+<div class="form-group">
+  <%= f.label :start_time %>
+  <%= f.time_field :start_time, label: 'Start Time', input_html: { class: 'form-control' } %>
+</div>
+
+
 
 
   <div class="form-group">
     <%= f.association :interval, label: 'Interval', collection: Interval.all, prompt: 'Select Interval', input_html: { class: 'form-control',id: 'interval_select' } %>
   </div>
 
-  <div class="form-group" id="days_field" style="display: none;">
-    <%= f.collection_check_boxes :days, [['Monday', 'Monday'], ['Tuesday', 'Tuesday'], ['Wednesday', 'Wednesday'], ['Thursday', 'Thursday'], ['Friday', 'Friday'], ['Saturday', 'Saturday'], ['Sunday', 'Sunday']], :first, :last, { item_wrapper_class: 'inline' } %>
-  </div>
+  <!-- <div class="form-group" id="days_field" style="display: none;">
+    <%#= f.collection_check_boxes :days, [['Monday', 'Monday'], ['Tuesday', 'Tuesday'], ['Wednesday', 'Wednesday'], ['Thursday', 'Thursday'], ['Friday', 'Friday'], ['Saturday', 'Saturday'], ['Sunday', 'Sunday']], :first, :last, { item_wrapper_class: 'inline' } %>
+  </div> -->
 
 
 
@@ -43,7 +54,7 @@
     <%= link_to 'Back', medications_path, class: 'btn btn-secondary' %>
 <% end %>
 
-<script>
+<!-- <script>
 document.addEventListener('DOMContentLoaded', function() {
   var intervalSelect = document.getElementById('interval_select');
   var daysField = document.getElementById('days_field');
@@ -63,4 +74,4 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
-  </script>
+  </script> -->

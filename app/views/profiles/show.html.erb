@@ -1,7 +1,10 @@
 <h1>Hello <%= @user.name %></h1>
+<p><%= @user.photo %></p>
 <p>Email: <%= @user.email %></p>
 <p>Phone Number: <%= @user.phone_number %></p>
 <p>Family Phone Number: <%= @user.family_phone_number %></p>
+
+
 
 
 <%= link_to '', profile_path(current_user) %>

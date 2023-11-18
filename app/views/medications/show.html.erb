@@ -3,11 +3,15 @@
   <h1><%= @medication.name %></h1>
 
   <% if @medication.frequency %>
-    <p><strong>Frequency:</strong> <%= @medication.frequency.name %></p>
+   <p><strong>Name:</strong> <%= @medication.name %></p>
+   <p><strong>Duration:</strong> <%= @medication.duration %> days</p>
+   <p><strong>Quantity:</strong> <%= @medication.quantity %></p>
+    <p><strong>Frequency:</strong> <%= @medication.frequency %></p>
   <% else %>
     <p><strong>Frequency:</strong> Not specified</p>
   <% end %>
 
-  <%= link_to 'Edit', edit_medication_path(@medication), class: 'btn btn-primary' %>
-  <%= link_to 'Delete', @medication, data: { turbo_method: :delete, confirm: 'Are you sure?' }, class: 'btn btn-danger btn-delete' %>
+  <%= link_to 'Back', medications_path, class: 'btn btn-secondary' %>
+  <%#= link_to 'Edit', edit_medication_path(@medication), class: 'btn btn-primary' %>
+  <%#= link_to 'Delete', @medication, data: { turbo_method: :delete, confirm: 'Are you sure?' }, class: 'btn btn-danger btn-delete' %>
 </div>
