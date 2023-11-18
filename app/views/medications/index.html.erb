@@ -1,7 +1,7 @@
 
 <!-- app/views/dashboards/index.html.erb -->
 <div class="container">
-  <h1 class="mt-4">Hello User</h1>
+  <h1 class="mt-4">Hello<%= @user.name %></h1>
   <h3>Here is a list of your today’s medications and status. Click on the date below for the upcoming medications.</h3>
   <ul class="list-group mt-4">
     <% @medications.each do |medication| %>
@@ -14,10 +14,11 @@
         <p><strong>End Date:</strong> <%= medication.end_date %></p>
 
         <%= link_to 'Edit', edit_medication_path(medication), class: 'btn btn-primary mr-2' %>
-        <%= link_to 'Delete', medication_path(medication), method: :delete, data: { confirm: 'Are you sure you want to delete this medication?' }, class: 'btn btn-danger' %>
+        <%= link_to 'Delete', medication_path(medication), data: { turbo_method: :delete, confirm: 'Are you sure you want to delete this medication?' }, class: 'btn btn-danger' %>
+
       </li>
     <% end %>
   </ul>
 
-  <%= link_to 'Add Medication', new_medication_path, class: 'btn btn-success mt-4' %>
+  <%#= link_to 'Add Medication', new_medication_path, class: 'btn btn-success mt-4' %>
 </div>

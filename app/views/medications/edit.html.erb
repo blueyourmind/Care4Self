@@ -2,8 +2,71 @@
 <!-- edit.html.erb -->
 <h1>Edit Medication</h1>
 <%= simple_form_for @medication, url: medication_path(@medication), method: :patch do |f| %>
-  <%= f.input :name %>
-  <%#= f.input :start_time %>
-  <%= f.button :submit, "Update" %>
-  <%= button_to "Back", medications_path(@user), title: "Back", class: "btn btn-primary", method: :get %> <!-- This will create a primary back button -->
+  <div class="form-group">
+    <%= f.input :name, label: 'Medication Name', input_html: { class: 'form-control' } %>
+  </div>
+
+  <div class="form-group">
+    <%= f.input :med_type, label: 'Medication Type', collection: ['Antibiotics', 'Analgesics', 'Antipyretics', 'Anti-inflammatory Drugs', 'Antidepressants', 'Antipsychotics', 'Anticoagulants', 'Antihypertensives', 'Antidiabetic Drugs', 'Antacids', 'Antihistamines', 'Bronchodilators', 'Diuretics', 'Antifungals', 'Antivirals', 'Antimalarials', 'Antiseptics', 'Antispasmodics', 'Antinausea Drugs', 'Laxatives', 'Immunosuppressants', 'Antiepileptic Drugs', 'Hormone Replacement Therapy (HRT)', 'Antithyroid Drugs', 'Anticoagulants'], prompt: 'Select Medication Type', input_html: { class: 'form-control' } %>
+  </div>
+
+  <div class="form-group">
+    <%= f.input :quantity, label: 'Quantity', input_html: { min: 1, max: 100, value: '', class: 'form-control' } %>
+  </div>
+
+  <div class="form-group">
+    <%= f.input :instruction, label: 'Instruction', collection: ['Before meal', 'After meal'], input_html: { class: 'form-control' } %>
+  </div>
+
+  <%= f.simple_fields_for :medication_frequencies do |mf| %>
+    <div class="form-group">
+      <%= mf.association :frequency, label: 'Frequency', collection: Frequency.all, prompt: 'Select Frequency', input_html: { class: 'form-control' } %>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.association :interval, label: 'Interval', collection: Interval.all, prompt: 'Select Interval', input_html: { class: 'form-control',id: 'interval_select' } %>
+  </div>
+
+  <div class="form-group" id="days_field" style="display: none;">
+    <%= f.collection_check_boxes :days, [['Monday', 'Monday'], ['Tuesday', 'Tuesday'], ['Wednesday', 'Wednesday'], ['Thursday', 'Thursday'], ['Friday', 'Friday'], ['Saturday', 'Saturday'], ['Sunday', 'Sunday']], :first, :last, { item_wrapper_class: 'inline' } %>
+  </div>
+
+
+
+<%# <%= link_to 'Set Medication Duration', set_duration_medication_path(@medication), method: :get %>
+
+  <div class="form-field">
+          <%= f.label :start_date %>
+          <%= f.date_field :start_date %>
+          <%= f.label :end_date %>
+          <%= f.date_field :end_date %>
+  <div class="form-actions">
+
+
+  <%= f.button :submit, "Update", class: 'btn btn-primary'%>
+  <%= button_to "Back", medications_path(@user), title: "Back", class: "btn btn-secondary", method: :get %> <!-- This will create a primary back button -->
 <% end %>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+  var intervalSelect = document.getElementById('interval_select');
+  var daysField = document.getElementById('days_field');
+
+  // Show or hide the days field when the interval select field changes
+  intervalSelect.addEventListener('change', function() {
+    if (intervalSelect.options[intervalSelect.selectedIndex].text == 'Weekly' || intervalSelect.options[intervalSelect.selectedIndex].text == 'Daily') {
+      daysField.style.display = 'block';
+      // Clear the selection in the daysField
+      var checkboxes = daysField.querySelectorAll('input[type=checkbox]');
+      checkboxes.forEach(function(checkbox) {
+        checkbox.checked = false;
+      });
+    } else {
+      daysField.style.display = 'none';
+    }
+  });
+  });
+
+
+  </script>

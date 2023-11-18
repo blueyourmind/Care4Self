@@ -1,4 +1,5 @@
 class Medication < ApplicationRecord
+  attr_accessor :days
   belongs_to :user
   belongs_to :interval
   has_many :medication_frequencies, inverse_of: :medication, dependent: :destroy
