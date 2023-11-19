@@ -1,0 +1,97 @@
+/* app/assets/stylesheets/custom_styles.scss */
+
+/* Reset some default styles for the body */
+body {
+  margin: 18px;
+  padding:18px;
+  font-family: 'Hammersmith One', sans-serif;
+  background-color: #cfd4db; /* Light gray background */
+
+}
+
+/* Flexbox utility classes */
+.d-flex {
+  display: flex;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.justify-content-center {
+  justify-content: center;
+}
+
+/* Carousel and card styles */
+#carouselExampleControls {
+  width: 100%;
+}
+
+.carousel-inner {
+  border-bottom-left-radius: 15px; /* Rounded corners for the bottom of the carousel */
+  border-bottom-right-radius: 150px; /* Rounded corners for the bottom of the carousel */
+margin-top: 99px;
+}
+
+.card {
+  width: 18rem;
+  background-color: #127fc3;
+  color: #faf4f4;
+  border-radius: 15px;
+  overflow: hidden;
+  border-radius: 9px;
+}
+
+/* app/assets/stylesheets/custom_styles.scss */
+
+.flip-card {
+  perspective: 1000px;
+  height: 400px; /* Set your desired height */
+}
+
+
+.flip-card-inner {
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.6s;
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  backface-visibility: hidden;
+}
+
+.flip-card-back {
+  transform: rotateY(180deg);
+}
+
+/* Card body styles */
+.card-body {
+  padding: 20px;
+}
+
+/* Card button styles */
+.btn-primary {
+  background-color: #007bff; /* Bootstrap primary color */
+  border-color: #007bff; /* Bootstrap primary color */
+  border-radius: 5px;
+
+}
+
+.btn-danger {
+  background-color: rgba(240, 226, 228, 0.488); /* Bootstrap danger color */
+  border-color: #a17d814d; /* Bootstrap danger color */
+  box-shadow: #7b95b2;
+  border-radius: 5px;
+  color: #ffffff;
+}
+
+/* Adjust the styles as needed */

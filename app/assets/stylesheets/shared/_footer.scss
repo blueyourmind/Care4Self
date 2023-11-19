@@ -1,52 +1,153 @@
-.nav--icons {
+#tabbar {
+  --c-color: #465bb0;
+  --c-background: #FFFFFF;
+  --indicator-x: 34px;
+  --indicator-circle-o: 1;
+  --indicator-circle-y: 0px;
+  -webkit-tap-highlight-color: transparent;
+  border-radius: 31px;
+  overflow: hidden;
   position: absolute;
-  bottom: 0%;
-  left: 50%;
-  transform: translateX(-50%);
-  ul {
-    list-style-type: none;
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: space-between;
-    padding: 0;
-    margin: 0;
-    li {
-      a {
-        font-family: sans-serif;
-        font-size: 18px;
-        letter-spacing: 1px;
-        text-decoration: none;
-        color: black;
-        line-height: 1;
-        vertical-align: middle;
+  background: var(--c-background);
+  margin-top: 100px;
+  bottom: 5px;
 
-        display: flex;
-        align-items: center;
 
-        border-radius: 3em;
-        padding: .75em 1.25em;
-        transition: .6s ease-in-out;
 
-        span {
-          display: inline-block;
-          overflow: hidden;
-          max-width: 0;
-          opacity: 0;
-          padding-left: .5em;
-          transform: translate3d(-.5em, 0, 0);
-          transition: opacity .6s, max-width .6s, transform .6s;
-          transition-timing-function: ease-in-out;
-        }
-        &:hover, &.is-active {
-          color: white;
-          background-color: black;
-          span {
-            opacity: 1;
-            max-width: 40px;
-            transform: translate3d(0, 0, 0);
-          }
-        }
+
+  .indicator {
+      position: absolute;
+      z-index: 1;
+      left: 0;
+      bottom: 0;
+      display: block;
+      width: 68px;
+      height: 72px;
+      fill: var(--c-color);
+      transform: translateX(var(--indicator-x));
+      path {
+          transform: translateY(2px);
       }
-    }
+      circle {
+          opacity: var(--indicator-circle-o);
+          transform: translateY(var(--indicator-circle-y)) translateZ(0);
+      }
+  }
+  ul {
+      padding: 0px;
+      margin: 0px;
+      list-style: none;
+      width: 375px;
+      height: 100px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+
+      li {
+          --icon-y: 0px;
+          --icon-s: 1;
+          --icon-circle: 0px;
+          &:not(:first-child) {
+              margin-left: 26px;
+          }
+          &:not(:last-child) {
+              margin-right: 26px;
+          }
+          &.active {
+              --icon-circle: 28px;
+          }
+          button {
+              display: block;
+              width: 28px;
+              height: 28px;
+              padding: 0;
+              margin: 0;
+              cursor: pointer;
+              outline: none;
+              background: none;
+              border: none;
+              position: relative;
+              -webkit-appearance: none;
+              transform: translateY(var(--icon-y)) scale(var(--icon-s)) translateZ(0);
+              &:before {
+                  content: '';
+                  position: absolute;
+                  z-index: 1;
+                  left: 0;
+                  top: 0;
+                  right: 0;
+                  bottom: 0;
+                  border-radius: 50%;
+                  background: var(--c-background);
+                  clip-path: circle(var(--icon-circle) at 50% 100%);
+              }
+              svg {
+                  color: var(--c-color);
+                  display: block;
+                  overflow: visible;
+                  width: 28px;
+                  height: 28px;
+                  &:last-child {
+                      position: absolute;
+                      z-index: 2;
+                      top: 0;
+                      left: 0;
+                      clip-path: circle(var(--icon-circle) at 50% 100%);
+                  }
+              }
+          }
+      }
   }
 }
+
+html {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+}
+
+* {
+  box-sizing: inherit;
+  &:before,
+  &:after {
+      box-sizing: inherit;
+  }
+}
+
+// Center & dribbble
+body {
+  font-family: 'Poppins', Arial;
+  // min-height: 50vh;
+  // display: flex;
+  // justify-content: center;
+  align-items: center;
+  background: #d8d6da;
+  // height: 150px;
+  display: flex;
+  flex-direction: column;
+  // margin-bottom: auto;
+
+  }
+
+  .dribbble {
+      position: fixed;
+      display: block;
+      right: 20px;
+      bottom: 20px;
+      img {
+          display: block;
+          height: 28px;
+      }
+  }
+  .twitter {
+      position: fixed;
+      display: block;
+      right: 64px;
+      bottom: 14px;
+      svg {
+          width: 32px;
+          height: 32px;
+          fill: #1da1f2;
+      }
+  }
