@@ -1,0 +1,194 @@
+/* app/assets/stylesheets/custom_styles.scss */
+
+/* Reset some default styles for the body */
+body {
+  margin: 18px;
+  padding:18px;
+background-color: rgb(255, 255, 255);
+
+
+
+}
+
+/* Flexbox utility classes */
+.d-flex {
+  display: flex;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.justify-content-center {
+  justify-content: center;
+}
+
+/* Carousel and card styles */
+#carouselExampleControls {
+  width: 81%;
+}
+
+.carousel-inner {
+  border-bottom-left-radius: 90px;
+  border-bottom-right-radius: 15px;
+  border-top-right-radius: 15px;
+  border-top-left-radius:15px ;
+
+margin-top: 99px;
+box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.card {
+  width: 18rem;
+  background-color:#385399 ;
+  color: #faf4f4;
+  border-radius: 5px;
+  overflow: hidden;
+  font-size:medium;
+
+
+}
+
+
+.flip-card {
+  perspective: 1000px;
+  height: 360px;
+
+}
+
+
+.flip-card-inner {
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 3.2s;
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(200deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+  width: 131%;
+  height: 70%;
+  position:absolute;
+  backface-visibility: hidden;
+
+}
+
+.flip-card-back {
+  transform: rotateY(160deg);
+
+}
+
+
+.card-body {
+  padding: 20px;
+}
+
+
+.btn-primary {
+  background-color:#63d09d ;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  border-radius: 5px;
+
+}
+
+.btn-danger {
+  background-color: rgba(240, 226, 228, 0.488);
+  border-color: #a17d814d;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  border-radius: 5px;
+  color: #ffffff;
+}
+
+.pill-container {
+  position: relative;
+}
+
+.pill-left,
+.pill-right {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  display: inline-block;
+  padding: 20px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2); /* Adjust the values for your desired shadow effect */
+}
+
+.pill-left {
+  background: #63d09d;
+  border-radius: 100% 100% 0 0;
+  transform: rotate(-90deg);
+  top: -50px;
+  left: 20px;
+}
+
+.pill-right {
+  background: #d9dadb;
+  border-radius: 100% 100% 0 0;
+  transform: rotate(90deg);
+  top: -50px;
+  left: 73px;
+}
+
+
+.header-1 {
+
+font-family: 'Teko', sans-serif;
+font-size: 99px;
+font-style: italic;
+font-weight: lighter;
+letter-spacing: 2px;
+line-height: 100px;
+text-transform: none;
+text-align:left;
+margin-top: -36px;
+
+color: rgba(68, 62, 62, 0.847);
+}
+
+#clockContainer {
+  position: relative;
+  margin: auto;
+  height: 40vw;
+margin-left: 135px;
+  width: 40vw;
+  background: url("https://media.geeksforgeeks.org/wp-content/uploads/20210302161254/imgonlinecomuaCompressToSizeOmNATjUMFKw-300x300.jpg") no-repeat;
+
+  background-size: 100%;
+}
+
+#hour,
+#minute,
+#second {
+  position: absolute;
+  background: black;
+  border-radius: 10px;
+  transform-origin: bottom;
+}
+
+#hour {
+  width: 1.8%;
+  height: 25%;
+  top: 25%;
+  left: 48.85%;
+  opacity: 0.8;
+}
+
+#minute {
+  width: 1.6%;
+  height: 30%;
+  top: 19%;
+  left: 48.9%;
+  opacity: 0.8;
+}
+
+#second {
+  width: 1%;
+  height: 40%;
+  top: 9%;
+  left: 49.25%;
+  opacity: 0.8;
+}

@@ -59,8 +59,11 @@ class MedicationsController < ApplicationController
 
   def destroy
     @medication.destroy
-    redirect_to medications_path, notice: 'Medication was successfully deleted.'
+    flash[:notice] = "Medication successfully deleted!"
+    redirect_to medications_path
   end
+
+
 
   # def set_duration
   #   redirect_to congrats_medication_path(@medication)
