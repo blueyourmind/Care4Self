@@ -1,5 +1,7 @@
 <!-- Add this HTML to your view file (e.g., index.html.erb) -->
-
+  <div class = "header-1">
+            <h1>Hi User , Here is a list of your medications. Feel free to swipe !</h1>
+            </div>
 <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-inner">
     <% @medications.each_with_index do |medication, index| %>
@@ -7,7 +9,10 @@
         <div class="card mx-auto body-container flip-card" style="width: 24rem; border-radius: 15px; overflow: hidden;">
           <div class="card-body flip-card-inner">
             <div class="flip-card-front">
+
+
               <h2><%= medication.name %></h2>
+
               <p><strong>Instruction:</strong> <%= medication.instruction %></p>
               <p><strong>Quantity:</strong> <%= medication.quantity %></p>
               <p><strong>Med Type:</strong> <%= medication.med_type %></p>
@@ -33,4 +38,9 @@
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Next</span>
   </button>
+
+  <div class="pill-left">
+</div>
+<div class="pill-right">
+</div>
 </div>
