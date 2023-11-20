@@ -4,7 +4,8 @@
 body {
   margin: 18px;
   padding:18px;
-background-color: aliceblue;
+background-color: rgb(255, 255, 255);
+
 
 
 }
@@ -140,10 +141,54 @@ font-size: 99px;
 font-style: italic;
 font-weight: lighter;
 letter-spacing: 2px;
-line-height: 200px;
+line-height: 100px;
 text-transform: none;
-text-align:center;
+text-align:left;
 margin-top: -36px;
 
-color: rgba(68, 62, 62, 0.678);
+color: rgba(68, 62, 62, 0.847);
+}
+
+#clockContainer {
+  position: relative;
+  margin: auto;
+  height: 40vw;
+margin-left: 135px;
+  width: 40vw;
+  background: url("https://media.geeksforgeeks.org/wp-content/uploads/20210302161254/imgonlinecomuaCompressToSizeOmNATjUMFKw-300x300.jpg") no-repeat;
+
+  background-size: 100%;
+}
+
+#hour,
+#minute,
+#second {
+  position: absolute;
+  background: black;
+  border-radius: 10px;
+  transform-origin: bottom;
+}
+
+#hour {
+  width: 1.8%;
+  height: 25%;
+  top: 25%;
+  left: 48.85%;
+  opacity: 0.8;
+}
+
+#minute {
+  width: 1.6%;
+  height: 30%;
+  top: 19%;
+  left: 48.9%;
+  opacity: 0.8;
+}
+
+#second {
+  width: 1%;
+  height: 40%;
+  top: 9%;
+  left: 49.25%;
+  opacity: 0.8;
 }
