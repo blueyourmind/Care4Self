@@ -29,85 +29,95 @@
     <%= render "shared/footer" %>
     </div>
 <script>
+
+
+
   document.addEventListener("DOMContentLoaded", function () {
     const footer = document.getElementById("footer-position");
+    const footerButtons = document.querySelectorAll("#footer-position button");
 
-    // Initially hide the footer
-    footer.style.transform = "translateY(100%)";
-
-    // Toggle the footer visibility on touch
-    document.addEventListener("touchstart", function () {
+    // Toggle the footer visibility on click
+    document.addEventListener("click", function (event) {
+      const target = event.target;
       const isVisible = footer.style.transform === "translateY(0%)";
-      footer.style.transform = isVisible ? "translateY(100%)" : "translateY(0%)";
-    });
+      const isFooterButton = Array.from(footerButtons).some(button => button.contains(target));
 
-document.addEventListener("DOMContentLoaded", function () {
-  const homeTab = document.getElementById("home-tab");
-  const addTab = document.getElementById("add-tab");
-  const userTab = document.getElementById("user-tab");
-
-   homeTab.addEventListener("click", function () {
-    setTimeout(function () {
-      window.location.href = "<%= medications_path %>"; // Use Rails path helper
-    }, 900); // 300 milliseconds delay (adjust as needed)
-  });
-
-
-  addTab.addEventListener("click", function () {
-    setTimeout(function () {
-      window.location.href = "<%= new_medication_path %>"; // Use Rails path helper
-    }, 900);
-  });
-
-  userTab.addEventListener("click", function () {
-    setTimeout(function () {
-      window.location.href = "<%= profile_path %>"; // Use Rails path helper
-    }, 900);
-  });
-});
-
-  const uls = document.querySelectorAll("ul");
-
-uls.forEach((ul) => {
-  const resetClass = ul.parentNode.getAttribute("class");
-  const lis = ul.querySelectorAll("li");
-
-  lis.forEach((li) => {
-    li.addEventListener("click", (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-      const target = e.currentTarget;
-
-      if (
-        target.classList.contains("active") ||
-        target.classList.contains("follow")
-      ) {
+      if (isFooterButton) {
+        // If the clicked element is a button, don't hide the footer
         return;
       }
 
-      ul.parentNode.setAttribute(
-        "class",
-        `${resetClass} ${target.getAttribute("data-where")}-style`
-      );
-
-      lis.forEach((item) => clearClass(item, "active"));
-
-      setClass(target, "active");
+      if (isVisible) {
+        footer.style.transform = "translateY(100%)";
+      } else {
+        footer.style.transform = "translateY(0%)";
+      }
     });
-  });
-});
 
-function clearClass(node, className) {
-  node.classList.remove(className);
-}
+    // Rest of your existing JavaScript code...
+    const homeTab = document.getElementById("home-tab");
+    const addTab = document.getElementById("add-tab");
+    const userTab = document.getElementById("user-tab");
 
-function setClass(node, className) {
-  node.classList.add(className);
-}
+    homeTab.addEventListener("click", function () {
+      setTimeout(function () {
+        window.location.href = "<%= medications_path %>";
+      }, 900);
+    });
 
+    addTab.addEventListener("click", function () {
+      setTimeout(function () {
+        window.location.href = "<%= new_medication_path %>";
+      }, 900);
+    });
 
+    userTab.addEventListener("click", function () {
+      setTimeout(function () {
+        window.location.href = "<%= profile_path %>";
+      }, 900);
+    });
+
+    const uls = document.querySelectorAll("ul");
+
+    uls.forEach((ul) => {
+      const resetClass = ul.parentNode.getAttribute("class");
+      const lis = ul.querySelectorAll("li");
+
+      lis.forEach((li) => {
+        li.addEventListener("click", (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          const target = e.currentTarget;
+
+          if (
+            target.classList.contains("active") ||
+            target.classList.contains("follow")
+          ) {
+            return;
+          }
+
+          ul.parentNode.setAttribute(
+            "class",
+            `${resetClass} ${target.getAttribute("data-where")}-style`
+          );
+
+          lis.forEach((item) => clearClass(item, "active"));
+
+          setClass(target, "active");
+        });
+      });
+    });
+
+    function clearClass(node, className) {
+      node.classList.remove(className);
+    }
+
+    function setClass(node, className) {
+      node.classList.add(className);
+    }
   });
 </script>
+
 
 
 
