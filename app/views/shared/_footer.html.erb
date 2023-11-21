@@ -1,18 +1,22 @@
-
-    <title>Animated Bottom Navigation Bar</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-  </head>
-  <body>
-    <div class="container">
-      <div class="tabbar tab-style5">
-        <ul class="flex-center">
-         <li id="home-tab" class="home active" data-where="home"><span class="material-icons-outlined">medication</span></li>
-  <li id="add-tab" class="about" data-where="add"><span class="material-icons-outlined">add</span></li>
-  <li id="user-tab" class="help" data-where="user"><span class="material-icons-outlined">person</span></li>
+<li>
+  <%= link_to medications_path, class: "icon-link" do %>
+    <i class="fas fa-home"></i>
+    <span>Home</span>
+    <!-- <span>Home</span> -->
+  <% end %>
+</li>
+<li>
+  <%= link_to new_medication_path, class: "icon-link" do %>
+    <i class="fas fa-plus"></i>
+    <span>Add</span>
+    <!-- <span>Add</span> -->
+  <% end %>
+</li>
+<li>
+  <%= link_to profile_path, class: "icon-link" do %>
+    <i class="fas fa-user"></i>
+    <span>User</span>
+    <!-- <span>User</span> -->
+  <% end %>
+</li>
 </ul>
-          </li>
-        </ul>
-      </div>
-    </div>
-
