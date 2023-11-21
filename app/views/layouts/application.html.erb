@@ -25,13 +25,23 @@
   <%= render "shared/flashes" %>
 
   <%= yield %>
-<div class = "footer-position">
+<div id = "footer-position">
     <%= render "shared/footer" %>
     </div>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const footer = document.getElementById("footer-position");
 
+    // Initially hide the footer
+    footer.style.transform = "translateY(100%)";
 
+    // Toggle the footer visibility on touch
+    document.addEventListener("touchstart", function () {
+      const isVisible = footer.style.transform === "translateY(0%)";
+      footer.style.transform = isVisible ? "translateY(100%)" : "translateY(0%)";
+    });
 
-<script>document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function () {
   const homeTab = document.getElementById("home-tab");
   const addTab = document.getElementById("add-tab");
   const userTab = document.getElementById("user-tab");
@@ -94,6 +104,13 @@ function clearClass(node, className) {
 function setClass(node, className) {
   node.classList.add(className);
 }
+
+
+  });
 </script>
+
+
+
+
 </body>
 </html>
