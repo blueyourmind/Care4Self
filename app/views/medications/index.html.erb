@@ -47,8 +47,8 @@
             </div>
             <div class="flip-card-back">
               <div class="text-center mt-3">
-                <%= link_to 'Edit', edit_medication_path(medication), class: 'btn btn-primary btn-sm rounded-pill mx-1' %>
-                <%= link_to 'Destroy', medication, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm rounded-pill mx-1' %>
+               <div class="mx-1"> <%= link_to 'Edit', edit_medication_path(medication), class: 'btn btn-primary btn-sm rounded-pill mx-1' %> </div>
+                <%= link_to 'Destroy', medications_path, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm rounded-pill mx-1' %>
               </div>
             </div>
           </div>
@@ -66,8 +66,8 @@
   </button>
 </div>
 </div>
-<div class="pill-container">
-  <div class="pill-wrapper">
+<%# <div class="pill-container"> %>
+  <%# <div class="pill-wrapper"> %>
     <div class="pill-left"></div>
     <div class="pill-right"></div>
   </div>
