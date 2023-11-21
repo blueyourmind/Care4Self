@@ -1,5 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
-@import url("https://fonts.googleapis.com/icon?family=Material+Icons+Outlined");
+
 
 :root {
   --accent-color: #1fa8f5;
@@ -15,7 +14,7 @@
 
 body {
   background-color: var(--backdrop-color);
-  font-size: 10px;
+  font-size: 18px;
   font-family: "Roboto", sans-serif;
 }
 
@@ -91,7 +90,7 @@ body {
 }
 
 .tabbar {
-  background-color: var(--app-content-background-color);
+  background-color:rgba(224, 85, 85, 0.594);
   border-bottom-left-radius: 1rem;
   border-bottom-right-radius: 1rem;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
@@ -103,8 +102,8 @@ body {
   overflow: hidden;
   transition: background-color 0.4s;
   margin-top: -23px;
-  width:374px;
-  margin-left: -24px;
+  width:375px;
+  margin-left: -16px;
 }
 .tabbar ul,
 .tabbar li {
@@ -356,4 +355,15 @@ body {
 }
 .tab-style5 .active span {
   font-size: 2rem;
+}
+.footer-position{
+  position: fixed;
+  left: 0;
+  bottom: -10px;
+  width: 100%;
+
+
+
+
+
 }
