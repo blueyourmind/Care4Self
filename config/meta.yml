@@ -1,0 +1,11 @@
+# config/meta.yml
+
+meta_product_name: “care4self”
+
+meta_title: “care4self – Health is wealth”
+
+meta_description: “Medication Reminnder app”
+
+meta_image: “app/assets/images/care.avif” # should exist in `app/assets/images/`
+
+twitter_account: “@product_twitter_account” # required for Twitter Cards
