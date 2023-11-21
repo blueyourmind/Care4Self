@@ -52,10 +52,7 @@ h1{
 .card p strong {
   color: rgb(52, 66, 91); /* Color for the strong tag inside p */
 }
-// .mx-1{
-//   margin-right: 23px;
-//   margin-left: 27px;
-// }
+
 
 .flip-card {
   perspective: 1000px;
@@ -85,7 +82,7 @@ h1{
 }
 
 .flip-card-back {
-  transform: rotateY(180deg);
+  transform: rotateY(900deg);
 
 }
 
