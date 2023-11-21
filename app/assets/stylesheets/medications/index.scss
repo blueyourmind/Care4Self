@@ -40,16 +40,17 @@ html {
 margin-top: 99px;
 box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
+h1{
+  color:rgb(248, 0, 0);
+  font-family: 'Urbanist', sans-serif;
 
-.card {
-  width: 18rem;
-  background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);;
-  color: #000000;
-  border-radius: 5px;
-  overflow: hidden;
-  font-size:medium;
+}
+.card p {
+  font-size: 1em; /* Adjust the font size for the p tags */
+}
 
-
+.card p strong {
+  color: rgb(52, 66, 91); /* Color for the strong tag inside p */
 }
 
 
@@ -88,11 +89,12 @@ box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30p
 
 .card-body {
   padding: 20px;
+  background-color: #ccd9e1;
 }
 
 
 .btn-primary {
-  background-color:#63d09d ;
+  background-color:#6378d0 ;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
   border-radius: 5px;
 
@@ -105,38 +107,58 @@ box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30p
   border-radius: 5px;
   color: #ffffff;
 }
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
 
 .pill-container {
   position: relative;
 }
 
+.pill-wrapper {
+  position: absolute;
+  animation: pulse 0.8s infinite;
+}
+
 .pill-left,
 .pill-right {
-  position: absolute;
   width: 30px;
   height: 30px;
   display: inline-block;
-  padding: 15px;
+  padding: 17px;
   border: 1px solid #ccc;
+  margin: -2px;
 }
 
 .pill-left {
-  background: linear-gradient(to bottom, #efa0a0, #ff0000); /* Light blue gradient for the left pill */
+  background: linear-gradient(to bottom, #efa0a0, #ff0000);
   border-radius: 100% 100% 0 0;
-  transform: rotate(-90deg);
-  top: -30px;
-  left: 5px;
+  transform: rotate(292deg);
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3), inset -2px -2px 5px rgba(255, 255, 255, 0.5);
+  margin-bottom: 34px;
+  margin-top: -122px;
+
 }
 
 .pill-right {
   background: linear-gradient(to bottom, #e3e3e3, #f7f7f7);
   border-radius: 100% 100% 0 0;
-  transform: rotate(90deg);
-  top: -30px;
-  left: 38px;
+  transform: rotate(111deg);
   box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.3), inset 2px -2px 5px rgba(255, 255, 255, 0.5);
+  margin-top: -124px;
+  margin-bottom: 20px;
 }
+
+
+
 
 
 .header-1 {
