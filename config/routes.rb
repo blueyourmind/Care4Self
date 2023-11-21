@@ -2,27 +2,26 @@ Rails.application.routes.draw do
   # devise_for :users, controllers: { registrations: 'profiles' }
   root to: "pages#home"
   devise_for :users
-  resources :medications
-  resources :medications do
+  # resources :medications
+  resources :medications, only: [:new, :index, :show, :create, :update, :edit, :destroy] do
     member do
-      get 'set_duration'
-      patch 'set_duration', to: 'medications#update_duration'
+      # get 'set_duration'
+      # patch 'set_duration', to: 'medications#update_duration'
       get 'congrats'
     end
   end
 
 
 
-  resources :frequencies, only: [:index, :show, :create, :update, :destroy]
+  # resources :frequencies, only: [:index, :show, :create, :update, :destroy]
   resources :intervals, only: [:index, :show, :create, :update, :destroy]
   resources :medication_frequencies, only: [:index, :show, :create, :update, :destroy]
   resources :reminders, only: [:index, :show, :create, :update, :destroy]
 
-
-  # resources :dashboards, only: [:index, :show]
-
-  # get 'profile', to: 'profiles#show'
   resource :profile, only: [:show]
 
+  devise_scope :user do
+    resources :sessions, only: [:destroy], path: 'users/sign_out', as: :destroy_user_session
+  end
 
 end
