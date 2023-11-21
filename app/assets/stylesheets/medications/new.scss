@@ -1,10 +1,12 @@
 .medication-form {
-  max-width: 400px;
+  max-width: 362px;
   margin: 0 auto;
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 5px;
   background-color: #f7f7f7;
+  position: fixed;
+  max-height:fit-content;
 }
 
 .form-title {

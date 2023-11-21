@@ -1,12 +1,11 @@
-/* app/assets/stylesheets/custom_styles.scss */
 
-/* Reset some default styles for the body */
 body {
   margin: 5px;
   padding:9px;
-background-color: rgb(255, 255, 255);
-border: 2px solid #00000053; /* You can adjust the color and width as needed */
-border-radius: 5px;
+background-image: linear-gradient( 109.6deg,  rgba(61,131,97,1) 11.2%, rgba(28,103,88,1) 91.1% );;
+position: fixed;
+margin-top: -77px;
+
 
 
 }
@@ -44,8 +43,8 @@ box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30p
 
 .card {
   width: 18rem;
-  background-color:#00A9FF;
-  color: #faf4f4;
+  background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);;
+  color: #000000;
   border-radius: 5px;
   overflow: hidden;
   font-size:medium;
@@ -114,29 +113,29 @@ box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30p
 .pill-left,
 .pill-right {
   position: absolute;
-  width: 50px;
-  height: 50px;
+  width: 30px;
+  height: 30px;
   display: inline-block;
-  padding: 20px;
-  border: 1px solid #ccc; /* Add a border for better separation */
+  padding: 15px;
+  border: 1px solid #ccc;
 }
 
 .pill-left {
-  background: #63d09d;
+  background: linear-gradient(to bottom, #efa0a0, #ff0000); /* Light blue gradient for the left pill */
   border-radius: 100% 100% 0 0;
   transform: rotate(-90deg);
-  top: -50px;
-  left: 10px; /* Adjust the left position to bring it closer */
-  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2), inset -5px -5px 10px rgba(255, 255, 255, 0.7); /* Adjust the values for your desired shadow effect */
+  top: -30px;
+  left: 5px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3), inset -2px -2px 5px rgba(255, 255, 255, 0.5);
 }
 
 .pill-right {
-  background: #d9dadb;
+  background: linear-gradient(to bottom, #e3e3e3, #f7f7f7);
   border-radius: 100% 100% 0 0;
   transform: rotate(90deg);
-  top: -50px;
-  left: 63px; /* Adjust the left position to bring it closer */
-  box-shadow: -5px 5px 10px rgba(0, 0, 0, 0.2), inset 5px -5px 10px rgba(255, 255, 255, 0.7); /* Adjust the values for your desired shadow effect */
+  top: -30px;
+  left: 38px;
+  box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.3), inset 2px -2px 5px rgba(255, 255, 255, 0.5);
 }
 
 
@@ -159,9 +158,9 @@ color: rgba(68, 62, 62, 0.847);
   position: relative;
   margin: auto;
   height: 40vw;
-margin-left: 135px;
+margin-left: -21px;
   width: 40vw;
-  background: url("https://media.geeksforgeeks.org/wp-content/uploads/20210302161254/imgonlinecomuaCompressToSizeOmNATjUMFKw-300x300.jpg") no-repeat;
+  background: url("https://i.ibb.co/vsvTBFF/pngwing-com-1.png") no-repeat;
 
   background-size: 100%;
 }
@@ -201,13 +200,15 @@ margin-left: 135px;
 
 
 .thirteen h1 {
-  position:relative; font-size:20px; font-weight:700;  letter-spacing:0px; text-transform:uppercase; width:208px; text-align:center; margin:auto; white-space:nowrap; border:0.5px solid #222;padding:5px 11px 3px 11px;
+  color: whitesmoke;
+  position:fixed; font-size:20px; font-weight:700;  letter-spacing:0px; text-transform:uppercase; width:208px; text-align:center; margin:54px; white-space:nowrap; border:0.5px solid #ffffff;padding:5px 1px 3px 9px;
 }
 .thirteen h1:before, .thirteen h1:after {
     background-color: #00c57d;
     position:absolute;
     content: '';
     height: 7px;
+
 
     width: 7px; border-radius:50%;
     bottom: 12px;
@@ -217,4 +218,17 @@ margin-left: 135px;
 }
 .thirteen h1:after {
    right:-20px;
+}
+
+.quote-container {
+  margin-top: 50px;
+  position: relative;
+
+}
+img{
+  padding-top: 140px;
+  position:absolute;
+}
+.thirteen{
+  padding-top: 77px;
 }
