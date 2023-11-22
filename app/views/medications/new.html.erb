@@ -1,49 +1,33 @@
 <%= simple_form_for @medication, html: { class: 'medication-form' } do |f| %>
   <h2 class="form-title">Add Medication</h2>
-
   <div class="form-group">
     <%= f.input :name, label: 'Medication Name', input_html: { class: 'form-control' } %>
   </div>
-
   <div class="form-group">
     <%= f.input :med_type, label: 'Medication Type', collection: ['Tablets', 'Capsules','Drops','Inhalers','Injections','Liquid','Topical medecines','Suppositories'], prompt: 'Select Medication Type', input_html: { class: 'form-control' } %>
   </div>
-
   <div class="form-group">
     <%= f.input :quantity, label: 'Quantity', input_html: { min: 1, max: 100, value: '', class: 'form-control' } %>
   </div>
-
   <div class="form-group">
     <%= f.input :instruction, label: 'Instruction', collection: ['Before meal', 'After meal'], input_html: { class: 'form-control' } %>
   </div>
  <div class="form-group">
-
 <%#= f.input :frequency_id, collection: @frequencies, label_method: :name, value_method: :id, prompt: 'Select a Frequency', input_html: { class: 'form-control' } %>
-
 <div class="form-group">
   <%= f.input :frequency, label: 'Frequency', collection: ['Once per day', 'Twice per day', 'Thrice per day'], prompt: 'Select Frequency', input_html: { class: 'form-control' } %>
 </div>
-
 <div class="form-group">
   <%= f.label :start_time %>
   <%= f.time_field :start_time, label: 'Start Time', input_html: { class: 'form-control' } %>
 </div>
-
-
-
-
   <div class="form-group">
     <%= f.association :interval, label: 'Interval', collection: Interval.all, prompt: 'Select Interval', input_html: { class: 'form-control',id: 'interval_select' } %>
   </div>
-
   <!-- <div class="form-group" id="days_field" style="display: none;">
     <%#= f.collection_check_boxes :days, [['Monday', 'Monday'], ['Tuesday', 'Tuesday'], ['Wednesday', 'Wednesday'], ['Thursday', 'Thursday'], ['Friday', 'Friday'], ['Saturday', 'Saturday'], ['Sunday', 'Sunday']], :first, :last, { item_wrapper_class: 'inline' } %>
   </div> -->
-
-
-
 <%# <%= link_to 'Set Medication Duration', set_duration_medication_path(@medication), method: :get %>
-
  <div class="form-field">
           <%= f.label :start_date %>
           <%= f.date_field :start_date %>
@@ -53,25 +37,3 @@
     <%= f.button :submit, 'Continue', class: 'btn btn-primary' %>
     <%= link_to 'Back', medications_path, class: 'btn btn-secondary' %>
 <% end %>
-
-<!-- <script>
-document.addEventListener('DOMContentLoaded', function() {
-  var intervalSelect = document.getElementById('interval_select');
-  var daysField = document.getElementById('days_field');
-
-  // Show or hide the days field when the interval select field changes
-  intervalSelect.addEventListener('change', function() {
-    if (intervalSelect.options[intervalSelect.selectedIndex].text == 'Daily' || intervalSelect.options[intervalSelect.selectedIndex].text == 'Weekly') {
-      daysField.style.display = 'block';
-      // Clear the selection in the daysField
-      var checkboxes = daysField.querySelectorAll('input[type=checkbox]');
-      checkboxes.forEach(function(checkbox) {
-        checkbox.checked = false;
-      });
-    } else {
-      daysField.style.display = 'none';
-    }
-  });
-});
-
-  </script> -->

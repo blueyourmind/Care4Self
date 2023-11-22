@@ -1,10 +1,18 @@
 class MedicationsController < ApplicationController
-  before_action :set_medication, only: [:show, :edit, :update, :destroy, :set_duration, :congrats]
+  before_action :set_medication, only: [:show, :edit, :update, :destroy, :congrats]
   def index
     @user = current_user
-    @medications = @user.medications
 
+    case params[:filter]
+    when 'today'
+      @medications = @user.medications.where(start_date: Date.today)
+    when 'tomorrow'
+      @medications = @user.medications.where(start_date: Date.tomorrow)
+    else
+      @medications = @user.medications
+    end
   end
+
   def show
 
     # @medication is already set by before_action
@@ -37,11 +45,9 @@ class MedicationsController < ApplicationController
     end
 
 
-    if @medication.save
-      redirect_to congrats_medication_path(@medication)
-    else
-      render :new
-    end
+    @medication.save
+      redirect_to medications_path, notice: "Medication successfully created!"
+
   end
 
   def edit
@@ -49,18 +55,16 @@ class MedicationsController < ApplicationController
   end
 
   def update
-    if @medication.update(medication_params)
-      flash[:notice] = "Medication successfully updated!"
-      redirect_to medications_path
-    else
-      render 'edit'
-    end
+    @medication.update(medication_params)
+      redirect_to medications_path, notice: "Medication successfully updated!"
+
+
   end
 
   def destroy
+    @medication = Medication.find(params[:id])
     @medication.destroy
-    flash[:notice] = "Medication successfully deleted!"
-    redirect_to medications_path
+    redirect_to medications_path, notice: "Medication successfully deleted!"
   end
 
 
