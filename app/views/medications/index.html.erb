@@ -1,11 +1,26 @@
-<div class="container">
-  <!-- Welcome message -->
-  <h1 class="mt-4">Hello <%= @user.name %></h1>
-  <h3>Here is a list of your medications and status.</h3>
-  <p>Click on the filtering below to display all your medications, today's medication, and upcoming medications.</p>
+<div class="container-index">
+  <div class="row">
+
+    <div class="col-md-6">
+ <h2> Hello <%= @user.name %></h2>
+    </div>
+
+    <div class="col-md-6">
+ <img src="https://i.ibb.co/F0Csccy/pngwing-com.png" width="100" alt="Stethoscope Image">
+    </div>
+ <h3>Here is a list of your medications and status.</h3>
+  </div>
+
+
+
+<div class ="hello-msg">
+
+
+   </div>
+<div class = "h3">
 
   <!-- Filter Medications buttons -->
-  <div class="btn-group mt-4" role="group" aria-label="Filter Medications">
+  <div class="filter-meds" role="group" aria-label="Filter Medications">
     <%= link_to 'All', medications_path, class: 'btn btn-secondary' %>
     <%= link_to 'Today', medications_path(filter: 'today'), class: 'btn btn-secondary' %>
     <%= link_to 'Tomorrow', medications_path(filter: 'tomorrow'), class: 'btn btn-secondary' %>
@@ -16,10 +31,7 @@
     <h1>Your Medications</h1>
   </div>
 
-  <!-- Stethoscope image -->
-  <div>
-    <img src="https://i.ibb.co/F0Csccy/pngwing-com.png" width="230" alt="Stethoscope Image">
-  </div>
+
 
   <!-- Clock -->
   <div id="clockContainer">
@@ -44,6 +56,7 @@
   second.style.transform = `rotate(${sec_rotation}deg)`;
 }, 1000);
 </script>
+
 
   <!-- Carousel for medications -->
   <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
@@ -93,4 +106,6 @@
     <div class="pill-left"></div>
     <div class="pill-right"></div>
   </div>
+</div>
+</div>
 </div>

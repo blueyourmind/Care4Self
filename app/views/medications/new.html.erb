@@ -18,8 +18,11 @@
   <%= f.input :frequency, label: 'Frequency', collection: ['Once per day', 'Twice per day', 'Thrice per day'], prompt: 'Select Frequency', input_html: { class: 'form-control' } %>
 </div>
 <div class="form-group">
-  <%= f.label :start_time %>
-  <%= f.time_field :start_time, label: 'Start Time', input_html: { class: 'form-control' } %>
+<label for="start-time">Start Time</label>
+<div class="input-group">
+  <%= f.time_field :start_time, id: 'start-time', class: 'form-control' %>
+
+  </div>
 </div>
   <div class="form-group">
     <%= f.association :interval, label: 'Interval', collection: Interval.all, prompt: 'Select Interval', input_html: { class: 'form-control',id: 'interval_select' } %>
@@ -29,11 +32,16 @@
   </div> -->
 <%# <%= link_to 'Set Medication Duration', set_duration_medication_path(@medication), method: :get %>
  <div class="form-field">
-          <%= f.label :start_date %>
-          <%= f.date_field :start_date %>
-          <%= f.label :end_date %>
-          <%= f.date_field :end_date %>
-  <div class="form-actions">
-    <%= f.button :submit, 'Continue', class: 'btn btn-primary' %>
+  <div class="start-date-field">
+    <%= f.label :start_date %>
+    <%= f.date_field :start_date %>
+  </div>
+  <div class="end-date-field">
+    <%= f.label :end_date %>
+    <%= f.date_field :end_date %>
+  </div>
+</div>
+<div class="form-actions">
+    <%= f.button :submit, 'Save', class: 'btn btn-primary' %>
     <%= link_to 'Back', medications_path, class: 'btn btn-secondary' %>
 <% end %>

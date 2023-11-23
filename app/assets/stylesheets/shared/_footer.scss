@@ -12,11 +12,11 @@
   --clay-fg-color: #444;
 }
 
-body {
-  background-color: var(--backdrop-color);
-  font-size: 18px;
-  font-family: "Roboto", sans-serif;
-}
+//  {
+//   background-color: var(--backdrop-color);
+//   font-size: 18px;
+//   font-family: "Roboto", sans-serif;
+// }
 
 .flex-center {
   display: flex;
@@ -24,7 +24,7 @@ body {
   align-items: center;
 }
 
-.container {
+.container-footer {
   padding: 1rem 1rem 1.5rem;
 }
 
