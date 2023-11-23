@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <div class="container-index">
 
     <div>
@@ -19,14 +18,6 @@
 
   <!-- Filter Medications buttons -->
   <div class="filter-meds" role="group" aria-label="Filter Medications">
-=======
-<div class="container">
-  <h1 class="mt-4">Hello<%= @user.name %></h1>
-  <h3>Here is a list of your medications and status.</h3>
-  <p>Click on the filtering below to display all your medications, today's medication and upcoming medications.</p>
-
-  <div class="btn-group mt-4" role="group" aria-label="Filter Medications">
->>>>>>> master
     <%= link_to 'All', medications_path, class: 'btn btn-secondary' %>
     <%= link_to 'Today', medications_path(filter: 'today'), class: 'btn btn-secondary' %>
     <%= link_to 'Tomorrow', medications_path(filter: 'tomorrow'), class: 'btn btn-secondary' %>
