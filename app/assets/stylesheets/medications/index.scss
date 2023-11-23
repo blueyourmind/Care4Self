@@ -45,8 +45,16 @@ html {
   perspective: 1000px;
   border-radius: 10px;
   overflow: hidden;
-  background-color: rgba(203, 208, 212, 0.9);
+  transition: background-color 0.3s, box-shadow 0.3s;
+  background-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1);
+  border: none;
 }
+  h1{
+    padding-left: 9px;
+    margin-left: -8px;
+}
+
 
 .card .flip-card-inner {
   width: 100%;
@@ -57,6 +65,7 @@ html {
 
 .card:hover .flip-card-inner {
   transform: rotateY(180deg);
+
 }
 
 .card .flip-card-front,
@@ -99,11 +108,11 @@ html {
 
 
 .carousel-control-prev {
-  left: -20px;
+  left: 0px;
 }
 
 .carousel-control-next {
-  right: 6px;
+  right: -18px;
 }
 
 
@@ -255,11 +264,12 @@ margin-left:80px;
   position: relative;
 
 }
-img {
+.image-index {
   margin-top: -46px;
   width: 132px;
-  margin-left: 29px; /* Adjusted margin-left for spacing */
-  transform: rotate(340deg); /* Added diagonal tilt */
+  margin-left: -8px;
+  transform: rotate(340deg);
+
 }
 
 .thirteen{
@@ -268,7 +278,7 @@ img {
 .filter-meds{
   padding: -26px;
   margin-top: -17px;
-  margin-left:0px;
+  margin-left:67px;
 }
 .hello-msg{
   padding:9px;
@@ -279,9 +289,17 @@ h3{
   margin-left: 13px;
   color:rgb(179, 189, 197)
 }
-.container-index{
-  padding: 5.5rem 0rem 0.5rem;
+.container-index {
+  padding-bottom: 86px; /* Adjust the value based on your footer height */
+  margin-top: 99px; /* Add a top margin to create space for the fixed footer */
 }
+
+
 h2{
-  margin-left:149px;
+  margin-left:120px;
+}
+.logo-on-index{
+  margin-left: 50px;
+
+
 }

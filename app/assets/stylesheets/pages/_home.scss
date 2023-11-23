@@ -11,10 +11,11 @@
 }
 
 .logo {
-  max-width: 180px;
+  max-width: 197px;
   border-radius: 18px;
   -webkit-animation: flip infinite;
   animation: flip 4.5s infinite;
+  margin-left: -32px;
 }
 
 @-webkit-keyframes flip {
@@ -77,8 +78,11 @@ body {
 }
 
 .logo2 {
-  max-width: 180px;
+  max-width: 170px;
   border-radius: 18px;
+  margin-top: 95px;
+  padding: 3px;
+  margin-left: -26px;
 }
 
 p {
@@ -87,4 +91,16 @@ p {
 
 .no-scroll {
   overflow: hidden;
+}
+.img{
+  margin-top: 9px;
+  padding-left: 9px;
+
+}
+h1{
+  padding-left: 9px;
+  margin-left: -48px;
+}
+h4{
+  margin-left: -37px;
 }
