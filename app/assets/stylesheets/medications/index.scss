@@ -13,7 +13,7 @@ html {
   height: 100%;
   margin: 0;
 }
-/* Flexbox utility classes */
+
 .d-flex {
   display: flex;
 }
@@ -26,87 +26,136 @@ html {
   justify-content: center;
 }
 
-/* Carousel and card styles */
-#carouselExampleControls {
-  width: 81%;
-}
-
-.carousel-inner {
-  border-bottom-left-radius: 90px;
-  border-bottom-right-radius: 15px;
-  border-top-right-radius: 15px;
-  border-top-left-radius:15px ;
-
-margin-top: 99px;
-box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
-}
-h1{
-  color:rgb(255, 0, 0);
-  font-family: 'Urbanist', sans-serif;
-
-}
-.card p {
-  font-size: 1em;
-}
-
-.card p strong {
-  color: rgb(52, 99, 179);
-}
-
-
-.flip-card {
+/* Updated Style Card */
+.card {
+  position: relative;
+  width: 18rem;
+  height: 250px;
   perspective: 1000px;
-  height: 300px;
-
+  border-radius: 10px;
+  overflow: hidden;
+  margin-left: 20px;
+  background-color: rgba(255, 255, 255, 0.9); /* Adjusted background color with opacity */
 }
 
+.card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
 
 .flip-card-inner {
   width: 100%;
   height: 100%;
   transform-style: preserve-3d;
-  transition: transform 3.2s;
-}
-
-.flip-card:hover .flip-card-inner {
-  transform: rotateY(200deg);
+  transition: transform 2s ease; /* Slowed down the transition */
 }
 
 .flip-card-front,
 .flip-card-back {
-  width: 131%;
-  height: 70%;
-  position:absolute;
+  width: 100%;
+  height: 100%;
+  position: absolute;
   backface-visibility: hidden;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
 
+.flip-card-front {
+  background-color: #f0f0f0;
+  color: #333;
+  padding: 20px;
 }
 
 .flip-card-back {
-  transform: rotateY(900deg);
-
+  background-color: #000000;
+  color: #fff;
+  transform: rotateY(180deg);
+  padding: 20px;
 }
 
+.card p strong {
+  color: #3499db;
+}
 
 .card-body {
   padding: 20px;
   background-color: #ccd9e1;
+  border-radius: 10px;
+  overflow: hidden;
 }
 
+/* Edit and Delete Buttons */
+.edit-delete-buttons {
+  margin-top: 15px;
+}
 
-.btn-primary {
-  background-color:#0b38ee ;
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+.edit-delete-buttons a {
+  display: inline-block;
+  margin: 0 10px;
+  padding: 8px 15px;
   border-radius: 5px;
-
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
 }
 
-.btn-danger {
-  background-color: rgb(230, 5, 5);
-  border-color: #a17d814d;
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
-  border-radius: 5px;
-  color: #ffffff;
+.edit-delete-buttons .edit-button {
+  background-color: #4caf50;
 }
+
+.edit-delete-buttons .delete-button {
+  background-color: #f44336;
+}
+
+/* Updated Carousel Styles */
+#carouselExampleControls {
+  width: 100%;
+  margin-top: 90px;
+  position: relative; /* Added relative positioning */
+}
+
+.carousel-inner {
+  display: flex;
+  margin-top: 23px;
+}
+
+.carousel-item {
+  width: 54rem; /* Match the card width */
+  margin-left: -250px;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  position: absolute;
+  top: 2%;
+  // transform: translateY(-50%);
+  background-color: rgba(255, 255, 255, 0.5); /* Semi-transparent white background */
+  border: none;
+  border-radius: 50%;
+  padding: 100px;
+  cursor: pointer;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  font-size: 24px;
+  color: #f30101; /* Icon color */
+}
+
+.carousel-control-prev {
+  left: 100px;
+}
+
+.carousel-control-next {
+  right: 100px;
+}
+
+
+
+
     //  pills pulse effect
     @keyframes pulse {
       0% {
@@ -127,6 +176,8 @@ h1{
     .pill-wrapper {
       position: absolute;
       animation: pulse 0.8s infinite;
+      margin-top:-220px;
+      margin-left: 263px;
     }
 
     .pill-left,
@@ -179,9 +230,9 @@ color: rgba(68, 62, 62, 0.847);
 #clockContainer {
   position: relative;
   margin: auto;
-  height: 40vw;
-margin-left: 192px;
-  width: 40vw;
+  height: 55vw;
+margin-left: 62px;
+  width: 55vw;
   background: url("https://i.ibb.co/vsvTBFF/pngwing-com-1.png") no-repeat;
 
   background-size: 100%;
@@ -224,6 +275,8 @@ margin-left: 192px;
 .thirteen h1 {
   color: whitesmoke;
   position:fixed; font-size:20px; font-weight:700;  letter-spacing:0px; text-transform:uppercase; width:208px; text-align:center; margin:54px; white-space:nowrap;padding:169px 13px 1px 2px;
+  margin-left: 70px;
+  margin-top: 77px;
 }
 .thirteen h1:before, .thirteen h1:after {
     background-color: #00c57d;
@@ -247,25 +300,31 @@ margin-left: 192px;
   position: relative;
 
 }
-// img{
-//   margin-left:7px;
-//   width:99px;
-//  margin:9px;
-// }
+img{
+ margin-top: -62px;
+  width:122px;
+ margin-left:221px;
+}
 .thirteen{
   padding-top: 14px;
 }
 .filter-meds{
   padding: -26px;
   margin-top: -17px;
+  margin-left:9px;
 }
 .hello-msg{
   padding:9px;
   margin:9px;
 }
 h3{
-  font-size: smaller;
+  font-size: medium;
+  margin-left: 13;
+  color:rgb(179, 189, 197)
 }
 .container-index{
-  padding: 14rem 1rem 0.5rem;
+  padding: 5.5rem 0rem 0.5rem;
+}
+h2{
+  margin-left:66px;
 }
