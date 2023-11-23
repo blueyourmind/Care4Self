@@ -25,32 +25,42 @@ html {
 .justify-content-center {
   justify-content: center;
 }
+/* Add this to your existing CSS or create a new stylesheet */
+.carousel-inner {
+  display: flex;
+  flex-wrap: nowrap;
+  margin-top: 90px;
+  margin-left: 40px;
 
-/* Updated Style Card */
+}
+
+.carousel-item {
+  width: 18rem; /* Adjust the width as needed */
+}
+
 .card {
   position: relative;
-  width: 18rem;
+  width: 100%;
   height: 250px;
   perspective: 1000px;
   border-radius: 10px;
   overflow: hidden;
-  margin-left: 20px;
-  background-color: rgba(255, 255, 255, 0.9); /* Adjusted background color with opacity */
+  background-color: rgba(203, 208, 212, 0.9);
+}
+
+.card .flip-card-inner {
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.6s;
 }
 
 .card:hover .flip-card-inner {
   transform: rotateY(180deg);
 }
 
-.flip-card-inner {
-  width: 100%;
-  height: 100%;
-  transform-style: preserve-3d;
-  transition: transform 2s ease; /* Slowed down the transition */
-}
-
-.flip-card-front,
-.flip-card-back {
+.card .flip-card-front,
+.card .flip-card-back {
   width: 100%;
   height: 100%;
   position: absolute;
@@ -60,100 +70,34 @@ html {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.flip-card-front {
-  background-color: #f0f0f0;
-  color: #333;
-  padding: 20px;
-}
-
-.flip-card-back {
-  background-color: #000000;
-  color: #fff;
+.card .flip-card-back {
   transform: rotateY(180deg);
-  padding: 20px;
 }
 
-.card p strong {
-  color: #3499db;
-}
+/* Include your existing styles for edit and delete buttons */
 
-.card-body {
-  padding: 20px;
-  background-color: #ccd9e1;
-  border-radius: 10px;
-  overflow: hidden;
-}
-
-/* Edit and Delete Buttons */
-.edit-delete-buttons {
-  margin-top: 15px;
-}
-
-.edit-delete-buttons a {
-  display: inline-block;
-  margin: 0 10px;
-  padding: 8px 15px;
-  border-radius: 5px;
-  text-decoration: none;
-  color: #fff;
-  font-weight: bold;
-}
-
-.edit-delete-buttons .edit-button {
-  background-color: #4caf50;
-}
-
-.edit-delete-buttons .delete-button {
-  background-color: #f44336;
-}
-
-/* Updated Carousel Styles */
-#carouselExampleControls {
-  width: 100%;
-  margin-top: 90px;
-  position: relative; /* Added relative positioning */
-}
-
-.carousel-inner {
-  display: flex;
-  margin-top: 23px;
-}
-
-.carousel-item {
-  width: 54rem; /* Match the card width */
-  margin-left: -250px;
-}
-
+/* Adjust the carousel control button size if needed */
 .carousel-control-prev,
 .carousel-control-next {
-  position: absolute;
-  top: 2%;
-  // transform: translateY(-50%);
-  background-color: rgba(255, 255, 255, 0.5); /* Semi-transparent white background */
+  font-size: 24px;
+  color: #231d1d;
+  background-color: rgba(23, 22, 22, 0.5);
   border: none;
   border-radius: 50%;
-  padding: 100px;
   cursor: pointer;
 }
 
-.carousel-control-prev-icon,
-.carousel-control-next-icon {
-  font-size: 24px;
-  color: #f30101; /* Icon color */
-}
-
+/* Adjust the carousel control button position if needed */
 .carousel-control-prev {
-  left: 100px;
+  left: 20px;
 }
 
 .carousel-control-next {
-  right: 100px;
+  right: 20px;
 }
-
-
 
 
     //  pills pulse effect
@@ -275,7 +219,7 @@ margin-left: 62px;
 .thirteen h1 {
   color: whitesmoke;
   position:fixed; font-size:20px; font-weight:700;  letter-spacing:0px; text-transform:uppercase; width:208px; text-align:center; margin:54px; white-space:nowrap;padding:169px 13px 1px 2px;
-  margin-left: 70px;
+  margin-left: 79px;
   margin-top: 77px;
 }
 .thirteen h1:before, .thirteen h1:after {
@@ -300,11 +244,13 @@ margin-left: 62px;
   position: relative;
 
 }
-img{
- margin-top: -62px;
-  width:122px;
- margin-left:221px;
+img {
+  margin-top: -46px;
+  width: 132px;
+  margin-left: 29px; /* Adjusted margin-left for spacing */
+  transform: rotate(340deg); /* Added diagonal tilt */
 }
+
 .thirteen{
   padding-top: 14px;
 }
@@ -319,12 +265,12 @@ img{
 }
 h3{
   font-size: medium;
-  margin-left: 13;
+  margin-left: 13px;
   color:rgb(179, 189, 197)
 }
 .container-index{
   padding: 5.5rem 0rem 0.5rem;
 }
 h2{
-  margin-left:66px;
+  margin-left:149px;
 }
