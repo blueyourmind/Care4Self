@@ -12,11 +12,11 @@
   --clay-fg-color: #444;
 }
 
-body {
-  background-color: var(--backdrop-color);
-  font-size: 18px;
-  font-family: "Roboto", sans-serif;
-}
+//  {
+//   background-color: var(--backdrop-color);
+//   font-size: 18px;
+//   font-family: "Roboto", sans-serif;
+// }
 
 .flex-center {
   display: flex;
@@ -24,7 +24,7 @@ body {
   align-items: center;
 }
 
-.container {
+.container-footer {
   padding: 1rem 1rem 1.5rem;
 }
 
@@ -90,9 +90,9 @@ body {
 }
 
 .tabbar {
-  background-color:rgba(181, 169, 169, 0.94);
-  border-bottom-left-radius: 1rem;
-  border-bottom-right-radius: 1rem;
+  background-color:rgba(55, 73, 164, 0.94);
+  border-bottom-left-radius: 0rem;
+  border-bottom-right-radius: 0rem;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
   height: 86px;
   display: flex;
@@ -101,9 +101,9 @@ body {
   position: relative;
   overflow: hidden;
   transition: background-color 0.4s;
-  margin-top: -23px;
-  width:391px;
-  margin-left: -16px;
+  margin-top: -2px;
+  width:390px;
+  margin-left: -30px;
 }
 .tabbar ul,
 .tabbar li {

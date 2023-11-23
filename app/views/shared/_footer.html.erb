@@ -1,22 +1,99 @@
-<li>
-  <%= link_to medications_path, class: "icon-link" do %>
-    <i class="fas fa-home"></i>
-    <span>Home</span>
-    <!-- <span>Home</span> -->
-  <% end %>
-</li>
-<li>
-  <%= link_to new_medication_path, class: "icon-link" do %>
-    <i class="fas fa-plus"></i>
-    <span>Add</span>
-    <!-- <span>Add</span> -->
-  <% end %>
-</li>
-<li>
-  <%= link_to profile_path, class: "icon-link" do %>
-    <i class="fas fa-user"></i>
-    <span>User</span>
-    <!-- <span>User</span> -->
-  <% end %>
-</li>
+
+ <div class="container-footer">
+      <div class="tabbar tab-style5">
+        <ul class="flex-center">
+         <li id="home-tab" class="home active" data-where="home"><span class="material-icons-outlined">medication</span></li>
+  <li id="add-tab" class="about" data-where="add"><span class="material-icons-outlined">add</span></li>
+  <li id="user-tab" class="help" data-where="user"><span class="material-icons-outlined">person</span></li>
 </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+<script>
+   document.addEventListener("DOMContentLoaded", function () {
+    const footer = document.getElementById("footer-position");
+    const footerButtons = document.querySelectorAll("#footer-position button");
+
+    // Toggle the footer visibility on click
+    document.addEventListener("click", function (event) {
+      const target = event.target;
+      const isVisible = footer.style.transform === "translateY(0%)";
+      const isFooterButton = Array.from(footerButtons).some(button => button.contains(target));
+
+      if (isFooterButton) {
+        // If the clicked element is a button, don't hide the footer
+        return;
+      }
+
+      if (isVisible) {
+        footer.style.transform = "translateY(100%)";
+      } else {
+        footer.style.transform = "translateY(0%)";
+      }
+    });
+
+
+    const homeTab = document.getElementById("home-tab");
+    const addTab = document.getElementById("add-tab");
+    const userTab = document.getElementById("user-tab");
+
+    homeTab.addEventListener("click", function () {
+      setTimeout(function () {
+        window.location.href = "<%= medications_path %>";
+      }, 300);
+    });
+
+    addTab.addEventListener("click", function () {
+      setTimeout(function () {
+        window.location.href = "<%= new_medication_path %>";
+      }, 300);
+    });
+
+    userTab.addEventListener("click", function () {
+      setTimeout(function () {
+        window.location.href = "<%= profile_path %>";
+      }, 300);
+    });
+
+    const uls = document.querySelectorAll("ul");
+
+    uls.forEach((ul) => {
+      const resetClass = ul.parentNode.getAttribute("class");
+      const lis = ul.querySelectorAll("li");
+
+      lis.forEach((li) => {
+        li.addEventListener("click", (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          const target = e.currentTarget;
+
+          if (
+            target.classList.contains("active") ||
+            target.classList.contains("follow")
+          ) {
+            return;
+          }
+
+          ul.parentNode.setAttribute(
+            "class",
+            `${resetClass} ${target.getAttribute("data-where")}-style`
+          );
+
+          lis.forEach((item) => clearClass(item, "active"));
+
+          setClass(target, "active");
+        });
+      });
+    });
+
+    function clearClass(node, className) {
+      node.classList.remove(className);
+    }
+
+    function setClass(node, className) {
+      node.classList.add(className);
+    }
+  });
+</script>
