@@ -8,8 +8,8 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 # puts 'Cleaning up database...'
-# Medication.destroy_all
-# Interval.destroy_all
+Medication.destroy_all
+Interval.destroy_all
 # Frequency.destroy_all
 
 
@@ -19,11 +19,11 @@
 # Frequency.create(name: 'Twice per day', description: 'Two times per day', value: 2)
 # Frequency.create(name: 'Thrice per day', description: 'Three times per day', value: 3)
 
-# Interval.create(name: 'Daily', value: 1)
-# Interval.create(name: 'Weekly', value: 7)
-# Interval.create(name: 'Monthly', value: 30)
+Interval.create(name: '3 hours', value: 3)
+Interval.create(name: '4 hours', value: 4)
+Interval.create(name: '5 hours', value: 5)
 
-# puts 'Finished creating frequencies and intervals!'
+puts 'Finished creating frequencies and intervals!'
 
 # User.create!(
 # id: '5',

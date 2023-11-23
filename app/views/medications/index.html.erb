@@ -39,7 +39,7 @@
 
   <!-- Include JavaScript for clock -->
   <!-- Needs to be placed seperately -->
-  <script> setInterval(() => {
+  <%# <script> setInterval(() => {
   d = new Date();
   hr = d.getHours();
   min = d.getMinutes();
@@ -55,7 +55,7 @@
 </script>
 <!-- Add this script at the end of your HTML file, before the </body> tag -->
 
-<script>
+<%# <script>
   document.addEventListener("DOMContentLoaded", function() {
     const pillContainer = document.getElementById('pillContainer');
     const flipCard = document.querySelector('.flip-card');
@@ -64,7 +64,7 @@
       flipCard.classList.toggle('flipped');
     });
   });
-</script>
+</script> %>
 
 
 
@@ -77,6 +77,7 @@
         <div class="card mx-auto body-container flip-card">
           <div class="flip-card-inner">
             <div class="flip-card-front">
+
               <!-- Medication name on the front of the card -->
               <h1><%= medication.name %></h1>
             </div>
