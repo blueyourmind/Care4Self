@@ -31,7 +31,7 @@
     <%#= f.collection_check_boxes :days, [['Monday', 'Monday'], ['Tuesday', 'Tuesday'], ['Wednesday', 'Wednesday'], ['Thursday', 'Thursday'], ['Friday', 'Friday'], ['Saturday', 'Saturday'], ['Sunday', 'Sunday']], :first, :last, { item_wrapper_class: 'inline' } %>
   </div> -->
 <%# <%= link_to 'Set Medication Duration', set_duration_medication_path(@medication), method: :get %>
- <div class="form-field">
+<div class="form-field">
   <div class="start-date-field">
     <%= f.label :start_date %>
     <%= f.date_field :start_date %>
@@ -42,6 +42,8 @@
   </div>
 </div>
 <div class="form-actions">
-    <%= f.button :submit, 'Save', class: 'btn btn-primary' %>
+
+
+    <%= f.button :submit, 'Continue', class: 'btn btn-primary' %>
     <%= link_to 'Back', medications_path, class: 'btn btn-secondary' %>
 <% end %>

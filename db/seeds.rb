@@ -7,7 +7,7 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
-# puts 'Cleaning up database...'
+puts 'Cleaning up database...'
 Medication.destroy_all
 Interval.destroy_all
 # Frequency.destroy_all
