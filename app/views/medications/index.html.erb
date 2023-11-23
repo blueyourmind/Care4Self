@@ -53,22 +53,43 @@
   second.style.transform = `rotate(${sec_rotation}deg)`;
 }, 1000);
 </script>
+<!-- Add this script at the end of your HTML file, before the </body> tag -->
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const pillContainer = document.getElementById('pillContainer');
+    const flipCard = document.querySelector('.flip-card');
+
+    pillContainer.addEventListener('click', function() {
+      flipCard.classList.toggle('flipped');
+    });
+  });
+</script>
+
+
+
 
 <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-inner">
+    <!-- Medications carousel items -->
     <% @medications.each_with_index do |medication, index| %>
       <div class="carousel-item <%= 'active' if index.zero? %>">
         <div class="card mx-auto body-container flip-card">
           <div class="flip-card-inner">
             <div class="flip-card-front">
+              <!-- Medication name on the front of the card -->
               <h1><%= medication.name %></h1>
             </div>
             <div class="flip-card-back">
+              <!-- Interaction details, quantity, med type, start date, end date on the back of the card -->
               <p><strong>Instruction:</strong> <%= medication.instruction %></p>
               <p><strong>Quantity:</strong> <%= medication.quantity %></p>
               <p><strong>Med Type:</strong> <%= medication.med_type %></p>
-              <p><strong>Start Date:</strong> <%= medication.start_date&.strftime("%B %e, %Y") %></p>
-              <p><strong>End Date:</strong> <%= medication.end_date&.strftime("%B %e, %Y") %></p>
+              <p><strong>Start Date:</strong> <%= medication.start_date %></p>
+              <p><strong>End Date:</strong> <%= medication.end_date %></p>
+              <p><strong>Frequency:</strong> <%= medication.frequency %></p>
+
+              <!-- Medication actions (Edit and Delete buttons) -->
               <div class="edit-delete-buttons">
                 <%= link_to 'Edit', edit_medication_path(medication), class: 'edit-button btn btn-success' %>
                 <%= link_to 'Delete', medication_path(medication), data: { turbo_method: :delete, turbo_confirm: 'Are you sure you want to delete this medication?' }, class: 'delete-button btn btn-danger' %>
@@ -79,6 +100,7 @@
       </div>
     <% end %>
   </div>
+  <!-- Left and Right Navigation Arrows -->
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Previous</span>
@@ -92,13 +114,15 @@
 
 
 
+
   <!-- Pills design -->
-<div class="pill-container">
+<div class="pill-container" id="pillContainer">
   <div class="pill-wrapper">
     <div class="pill-left"></div>
     <div class="pill-right"></div>
   </div>
 </div>
+
 </div>
 
 </div>
