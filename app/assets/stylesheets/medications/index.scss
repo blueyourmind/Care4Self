@@ -31,13 +31,15 @@ html {
   flex-wrap: nowrap;
   margin-top: 90px;
   margin-left: 40px;
-
 }
 
 .carousel-item {
-  width: 18rem; /* Adjust the width as needed */
+  width: 18rem;
 }
-
+.card-container {
+  border: 1px solid rgb(0, 0, 0);
+  border-radius: 10px;
+}
 .card {
   position: relative;
   width: 100%;
@@ -47,12 +49,24 @@ html {
   overflow: hidden;
   transition: background-color 0.3s, box-shadow 0.3s;
   background-image: url(https://png.pngtree.com/thumb_back/fh260/background/20211116/pngtree-dark-blue-plain-background-for-design-template-image_916068.png);
-  background-size: cover; /* Resize the background image to cover the entire container */
-  background-position: center; /* Center the background image */
-  background-color: rgba(255, 255, 255, 0.7); /* Adjust the alpha value for transparency */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1);
   border: none;
+  background-size: cover;
 }
+
+.card:empty::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 2px solid rgba(255, 255, 255, 0.195);
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+
+
 
   h1{
     padding-left: 10px;
@@ -100,7 +114,7 @@ html {
 
 
 .flip-card-back p strong {
-  color: #ff6347;
+  color: #ffffff;
 }
 
 
@@ -296,8 +310,8 @@ h3{
   color:rgb(179, 189, 197)
 }
 .container-index {
-  padding-bottom: 86px; /* Adjust the value based on your footer height */
-  margin-top: 99px; /* Add a top margin to create space for the fixed footer */
+  padding-bottom: 86px;
+  margin-top: 99px;
 }
 
 
@@ -308,4 +322,8 @@ h2{
   margin-left: 50px;
 
 
+}
+h4{
+  color:#ff0000;
+  margin-left: -1px;
 }
