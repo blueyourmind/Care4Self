@@ -4,9 +4,9 @@
  <h2> Hello <%= @user.name %></h2>
     </div>
 
-    <div class="image-index">
+    <%# <div class="image-index">
  <img src="https://i.ibb.co/F0Csccy/pngwing-com.png" width="140" alt="Stethoscope Image">
-    </div>
+    </div> %>
  <h3>Here is a list of your medications and status.</h3>
 
 
@@ -53,18 +53,9 @@
   second.style.transform = `rotate(${sec_rotation}deg)`;
 }, 1000);
 </script>
-<!-- Add this script at the end of your HTML file, before the </body> tag -->
 
-<script>
-  document.addEventListener("DOMContentLoaded", function() {
-    const pillContainer = document.getElementById('pillContainer');
-    const flipCard = document.querySelector('.flip-card');
 
-    pillContainer.addEventListener('click', function() {
-      flipCard.classList.toggle('flipped');
-    });
-  });
-</script>
+
 
 
 
@@ -114,8 +105,28 @@
   </button>
 </div>
 
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const pillContainer = document.getElementById('pillContainer');
+    const flipCard = document.querySelector('.flip-card');
+
+    pillContainer.addEventListener('click', function() {
+      flipCard.classList.toggle('flipped');
+    });
+  });
+</script>
+<%# <script>document.addEventListener("DOMContentLoaded", function () {
+  const pillWrapper = document.querySelector(".pill-wrapper");
+
+  function pulse() {
+    pillWrapper.classList.toggle("pulse");
+  }
 
 
+  // Add the 'pulse' class every 0.8 seconds
+  setInterval(pulse, 800);
+});
+ </script> %>
 
 
   <!-- Pills design -->

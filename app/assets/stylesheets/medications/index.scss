@@ -1,10 +1,12 @@
-
+@media screen and (max-width: 768px) {
 body {
   margin: 5px;
   padding:9px;
-background-image: linear-gradient( 109.6deg,  rgb(110, 132, 164) 11.2%, rgb(6, 120, 201) 91.1% );;
-position: fixed;
-margin-top: -77px;
+  background: linear-gradient(109.6deg, rgb(110, 132, 164) 11.2%, rgb(6, 120, 201) 91.1%),
+  url("your-image-url.jpg") no-repeat center center fixed;
+  background-size: cover;
+  position: fixed;
+  margin-top: -77px;
 
 
 
@@ -29,19 +31,19 @@ html {
 .carousel-inner {
   display: flex;
   flex-wrap: nowrap;
-  margin-top: 90px;
-  margin-left: 40px;
+  margin-top: -48px;
+  margin-left: -1px;
 
 }
 
 .carousel-item {
-  width: 18rem; /* Adjust the width as needed */
+  width: 18rem;
 }
 
 .card {
   position: relative;
   width: 100%;
-  height: 250px;
+  height: 233px;
   perspective: 1000px;
   border-radius: 10px;
   overflow: hidden;
@@ -108,11 +110,11 @@ html {
 
 
 .carousel-control-prev {
-  left: 0px;
+  left:-39px;
 }
 
 .carousel-control-next {
-  right: -18px;
+  right: -38px;
 }
 
 
@@ -128,44 +130,50 @@ html {
         transform: scale(1);
       }
     }
-
     .pill-container {
       position: relative;
+      margin-top: 50px;
+      margin-left: 50px;
     }
 
     .pill-wrapper {
       position: absolute;
-      animation: pulse 0.8s infinite;
-      margin-top:-220px;
-      margin-left: 263px;
+      animation: pulse 0.4s infinite;
+      margin-top: -256px;
+      margin-left: 100px;
     }
+
 
     .pill-left,
     .pill-right {
       width: 30px;
       height: 30px;
       display: inline-block;
-      padding: 17px;
-      border: 1px solid #ccc;
+      padding: 21px;
+      border: 1px solid #484a4d;
       margin: -2px;
     }
 
     .pill-left {
-      background: linear-gradient(to bottom, #efa0a0, #ff0000);
+      background: linear-gradient(to bottom, #a0e4ef, #0d00ff);
       border-radius: 100% 100% 0 0;
-      transform: rotate(292deg);
+      transform: rotate(39deg);
       box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3), inset -2px -2px 5px rgba(255, 255, 255, 0.5);
-      margin-bottom: 34px;
-      margin-top: -122px;
+      margin-bottom: 31px;
+      margin-top: -101px;
+      margin-left: -5px;
     }
 
     .pill-right {
       background: linear-gradient(to bottom, #e3e3e3, #f7f7f7);
       border-radius: 100% 100% 0 0;
-      transform: rotate(111deg);
+      transform: rotate(220deg);
       box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.3), inset 2px -2px 5px rgba(255, 255, 255, 0.5);
       margin-top: -124px;
       margin-bottom: 20px;
+      margin-left:-34px;
+
+
     }
 
 .flip-card.flipped .flip-card-inner {
@@ -195,11 +203,11 @@ color: rgba(68, 62, 62, 0.847);
   position: relative;
   margin: auto;
   height: 55vw;
-margin-left:80px;
+  margin-left: -18px;
   width: 55vw;
-  background: url("https://i.ibb.co/vsvTBFF/pngwing-com-1.png") no-repeat;
-
+  background: url(https://i.ibb.co/vsvTBFF/pngwing-com-1.png) no-repeat;
   background-size: 100%;
+  margin-top: 9px;
 }
 
 #hour,
@@ -238,9 +246,18 @@ margin-left:80px;
 
 .thirteen h1 {
   color: whitesmoke;
-  position:fixed; font-size:20px; font-weight:700;  letter-spacing:0px; text-transform:uppercase; width:208px; text-align:center; margin:54px; white-space:nowrap;padding:169px 13px 1px 2px;
-  margin-left: 79px;
-  margin-top: 77px;
+  position: fixed;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0px;
+  text-transform: uppercase;
+  width: 220px;
+  text-align: center;
+  margin: 48px;
+  white-space: nowrap;
+  padding: 119px 13px 1px 10px;
+  margin-left: -100px;
+  margin-top: -185px;
 }
 .thirteen h1:before, .thirteen h1:after {
     background-color: #00c57d;
@@ -264,21 +281,22 @@ margin-left:80px;
   position: relative;
 
 }
-.image-index {
-  margin-top: -46px;
-  width: 132px;
-  margin-left: -8px;
-  transform: rotate(340deg);
+// .image-index {
+//   margin-top: -46px;
+//   width: 80%;
+//   margin-left: -8px;
+//   transform: rotate(340deg);
 
-}
+// }
 
-.thirteen{
-  padding-top: 14px;
-}
+// .thirteen{
+//   padding-top: 14px;
+// }
 .filter-meds{
-  padding: -26px;
-  margin-top: -17px;
-  margin-left:67px;
+  padding: -77px;
+  margin-top: -22px;
+  margin-left: 1px;
+}
 }
 .hello-msg{
   padding:9px;
@@ -287,16 +305,21 @@ margin-left:80px;
 h3{
   font-size: medium;
   margin-left: 13px;
-  color:rgb(179, 189, 197)
+  color: #b3bdc5;
 }
-.container-index {
-  padding-bottom: 86px; /* Adjust the value based on your footer height */
-  margin-top: 99px; /* Add a top margin to create space for the fixed footer */
+.container-index{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
 }
+
 
 
 h2{
-  margin-left:120px;
+  margin-left: -58px;
+  margin-top: 79px;
 }
 .logo-on-index{
   margin-left: 50px;

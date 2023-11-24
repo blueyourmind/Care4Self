@@ -1,6 +1,6 @@
 .medication-form {
   max-width: 300px;
-  margin: -3px auto; /* Added margin at the top */
+  margin: -3px auto; 
   padding: 11px;
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -8,6 +8,8 @@
   max-height: 65vh;
   overflow-y: auto;
   margin-left: 29px;
+  width: 80%;
+  margin: auto;
   h2{
     margin-left: 48px;
     color: #0816ad;
