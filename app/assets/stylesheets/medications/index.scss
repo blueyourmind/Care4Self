@@ -1,12 +1,10 @@
-@media screen and (max-width: 768px) {
+
 body {
   margin: 5px;
   padding:9px;
-  background: linear-gradient(109.6deg, rgb(110, 132, 164) 11.2%, rgb(6, 120, 201) 91.1%),
-  url("your-image-url.jpg") no-repeat center center fixed;
-  background-size: cover;
-  position: fixed;
-  margin-top: -77px;
+background-image: linear-gradient( 109.6deg,  rgb(110, 132, 164) 11.2%, rgb(6, 120, 201) 91.1% );;
+position: fixed;
+margin-top: -77px;
 
 
 
@@ -31,30 +29,35 @@ html {
 .carousel-inner {
   display: flex;
   flex-wrap: nowrap;
-  margin-top: -48px;
-  margin-left: -1px;
+  margin-top: 90px;
+  margin-left: 40px;
 
 }
 
 .carousel-item {
-  width: 18rem;
+  width: 18rem; /* Adjust the width as needed */
 }
 
 .card {
   position: relative;
   width: 100%;
-  height: 233px;
+  height: 250px;
   perspective: 1000px;
   border-radius: 10px;
   overflow: hidden;
   transition: background-color 0.3s, box-shadow 0.3s;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-image: url(https://png.pngtree.com/thumb_back/fh260/background/20211116/pngtree-dark-blue-plain-background-for-design-template-image_916068.png);
+  background-size: cover; /* Resize the background image to cover the entire container */
+  background-position: center; /* Center the background image */
+  background-color: rgba(255, 255, 255, 0.7); /* Adjust the alpha value for transparency */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1);
   border: none;
 }
+
   h1{
-    padding-left: 9px;
-    margin-left: -8px;
+    padding-left: 10px;
+    margin-left: -152px;
+    color:rgb(0, 0, 0);
 }
 
 
@@ -74,7 +77,7 @@ html {
 .card .flip-card-back {
   width: 100%;
   height: 100%;
-  position: absolute;
+  position: fixed;
   backface-visibility: hidden;
   border-radius: 10px;
   display: flex;
@@ -110,11 +113,11 @@ html {
 
 
 .carousel-control-prev {
-  left:-39px;
+  left: 5px;
 }
 
 .carousel-control-next {
-  right: -38px;
+  right: -36px;
 }
 
 
@@ -130,50 +133,44 @@ html {
         transform: scale(1);
       }
     }
+
     .pill-container {
       position: relative;
-      margin-top: 50px;
-      margin-left: 50px;
     }
 
     .pill-wrapper {
-      position: absolute;
-      animation: pulse 0.4s infinite;
-      margin-top: -256px;
-      margin-left: 100px;
+      position: fixed;
+      animation: pulse 0.8s infinite;
+      margin-top:-220px;
+      margin-left: 263px;
     }
-
 
     .pill-left,
     .pill-right {
       width: 30px;
       height: 30px;
       display: inline-block;
-      padding: 21px;
-      border: 1px solid #484a4d;
+      padding: 17px;
+      border: 1px solid #ccc;
       margin: -2px;
     }
 
     .pill-left {
-      background: linear-gradient(to bottom, #a0e4ef, #0d00ff);
+      background: linear-gradient(to bottom, #efa0a0, #ff0000);
       border-radius: 100% 100% 0 0;
-      transform: rotate(39deg);
+      transform: rotate(292deg);
       box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3), inset -2px -2px 5px rgba(255, 255, 255, 0.5);
-      margin-bottom: 31px;
-      margin-top: -101px;
-      margin-left: -5px;
+      margin-bottom: 34px;
+      margin-top: -122px;
     }
 
     .pill-right {
       background: linear-gradient(to bottom, #e3e3e3, #f7f7f7);
       border-radius: 100% 100% 0 0;
-      transform: rotate(220deg);
+      transform: rotate(111deg);
       box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.3), inset 2px -2px 5px rgba(255, 255, 255, 0.5);
       margin-top: -124px;
       margin-bottom: 20px;
-      margin-left:-34px;
-
-
     }
 
 .flip-card.flipped .flip-card-inner {
@@ -200,14 +197,14 @@ color: rgba(68, 62, 62, 0.847);
 }
 
 #clockContainer {
-  position: relative;
+  position: absolute;
   margin: auto;
-  height: 55vw;
-  margin-left: -18px;
-  width: 55vw;
-  background: url(https://i.ibb.co/vsvTBFF/pngwing-com-1.png) no-repeat;
+  height: 140vw;
+margin-left:-9px;
+  width: 140vw;
+  background: url("https://i.ibb.co/vsvTBFF/pngwing-com-1.png") no-repeat;
+
   background-size: 100%;
-  margin-top: 9px;
 }
 
 #hour,
@@ -244,59 +241,50 @@ color: rgba(68, 62, 62, 0.847);
 }
 
 
-.thirteen h1 {
-  color: whitesmoke;
-  position: fixed;
-  font-size: 20px;
-  font-weight: 700;
-  letter-spacing: 0px;
-  text-transform: uppercase;
-  width: 220px;
-  text-align: center;
-  margin: 48px;
-  white-space: nowrap;
-  padding: 119px 13px 1px 10px;
-  margin-left: -100px;
-  margin-top: -185px;
-}
-.thirteen h1:before, .thirteen h1:after {
-    background-color: #00c57d;
-    position:absolute;
-    content: '';
-    height: 7px;
+// .thirteen h1 {
+//   color: whitesmoke;
+//   position:fixed; font-size:20px; font-weight:700;  letter-spacing:0px; text-transform:uppercase; width:208px; text-align:center; margin:54px; white-space:nowrap;padding:169px 13px 1px 2px;
+//   margin-left: 79px;
+//   margin-top: 77px;
+// }
+// .thirteen h1:before, .thirteen h1:after {
+//     background-color: #00c57d;
+//     position:fixed;
+//     content: '';
+//     height: 7px;
 
 
-    width: 7px; border-radius:50%;
-    bottom: 12px;
-}
-.thirteen h1:before {
-   left:-20px;
-}
-.thirteen h1:after {
-   right:-20px;
-}
+//     width: 7px; border-radius:50%;
+//     bottom: 12px;
+// }
+// .thirteen h1:before {
+//    left:-20px;
+// }
+// .thirteen h1:after {
+//    right:-20px;
+// }
 
 .quote-container {
   margin-top: 50px;
-  position: relative;
+  position: fixed;
 
 }
 // .image-index {
 //   margin-top: -46px;
-//   width: 80%;
+//   width: 132px;
 //   margin-left: -8px;
 //   transform: rotate(340deg);
+//   position: fixed;
 
 // }
 
-// .thirteen{
-//   padding-top: 14px;
-// }
-.filter-meds{
-  padding: -77px;
-  margin-top: -22px;
-  margin-left: 1px;
+.thirteen{
+  padding-top: 14px;
 }
+.filter-meds{
+  padding: -26px;
+  margin-top: -25px;
+  margin-left:6px;
 }
 .hello-msg{
   padding:9px;
@@ -304,22 +292,17 @@ color: rgba(68, 62, 62, 0.847);
 }
 h3{
   font-size: medium;
-  margin-left: 13px;
-  color: #b3bdc5;
+  margin-left: 6px;
+  color:rgb(179, 189, 197)
 }
-.container-index{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 1rem;
+.container-index {
+  padding-bottom: 86px; /* Adjust the value based on your footer height */
+  margin-top: 99px; /* Add a top margin to create space for the fixed footer */
 }
-
 
 
 h2{
-  margin-left: -58px;
-  margin-top: 79px;
+  margin-left:12px;
 }
 .logo-on-index{
   margin-left: 50px;
