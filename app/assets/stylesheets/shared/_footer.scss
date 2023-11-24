@@ -1,5 +1,3 @@
-
-
 :root {
   --accent-color: #1fa8f5;
   --accent-color-fg: #fefefe;
@@ -11,12 +9,6 @@
   --clay-background-color: #c0d8ec;
   --clay-fg-color: #444;
 }
-
-//  {
-//   background-color: var(--backdrop-color);
-//   font-size: 18px;
-//   font-family: "Roboto", sans-serif;
-// }
 
 .flex-center {
   display: flex;
@@ -69,12 +61,12 @@
   --outset-shadow: rgba(93, 255, 85, 0.45);
   --inset-shadow: rgba(28, 78, 26, 0.45);
   --clay-box-shadow: rgba(28, 78, 26, 0.4);
-  --clay-background-color: #4dd146;
+  --clay-background-color: #578ebf;
   --clay-fg-color: #f1f2f3;
-  color: #4dd146;
+  color: #464bd1;
 }
 .about-style {
-  --app-content-background-color: #4dd146;
+  --app-content-background-color: #465bd1;
 }
 
 .help.active {
@@ -90,7 +82,7 @@
 }
 
 .tabbar {
-  background-color:rgba(24, 105, 79, 0.94);
+  background-color:#005500d6;
   border-bottom-left-radius: 0rem;
   border-bottom-right-radius: 0rem;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
@@ -102,11 +94,10 @@
   overflow: hidden;
   transition: background-color 0.4s;
   margin-top: -2px;
-  width:100%;
+  width: 100%;
   margin-left: 0px;
   bottom: 0;
   left: 0;
-
 }
 .tabbar ul,
 .tabbar li {
@@ -165,7 +156,8 @@
   top: -3rem;
   transition: left 0.4s ease-in, background-color 0.4s, border-color 0.4s;
 }
-.tab-style1 li.follow:before, .tab-style1 li.follow:after {
+.tab-style1 li.follow:before,
+.tab-style1 li.follow:after {
   content: " ";
   position: absolute;
   top: 27px;
@@ -231,7 +223,8 @@
 .tab-style2 .active span {
   font-size: 2rem;
 }
-.tab-style2 .active:before, .tab-style2 .active:after {
+.tab-style2 .active:before,
+.tab-style2 .active:after {
   position: absolute;
   content: " ";
   width: 13px;
@@ -315,20 +308,15 @@
   text-shadow: inset 2px 2px 8px var(--clay-box-shadow);
 }
 .tab-style4 li:nth-child(1):after {
-  content: "home";
+  content: "medications";
 }
 .tab-style4 li:nth-child(2):after {
-  content: "products";
+  content: "add";
 }
 .tab-style4 li:nth-child(3):after {
-  content: "services";
+  content: "user";
 }
-.tab-style4 li:nth-child(4):after {
-  content: "company";
-}
-.tab-style4 li:nth-child(5):after {
-  content: "help";
-}
+
 .tab-style4 .active span {
   font-size: 1.1rem;
   top: -4px;
@@ -353,15 +341,5 @@
   border-radius: 100%;
   top: -1rem;
   background-color: var(--clay-background-color);
-  box-shadow: 1px 2px 4px 0 var(--clay-box-shadow), 2px 4px 8px 0 var(--clay-box-shadow), inset 2px 2px 8px var(--outset-shadow), inset -2px -2px 8px var(--inset-shadow);
-  color: var(--clay-fg-color);
+  box-shadow: 1px 2px 4px 0 var(--clay-box-shadow), 2px 4px 8px 0 var(--clay-box-shadow), inset 2px
 }
-.tab-style5 .active span {
-  font-size: 2rem;
-}
-#footer-position{
-  position: fixed;
-  left: 0;
-  bottom: -10px;
-  width: 100%;
-  }
