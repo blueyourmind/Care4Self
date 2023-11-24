@@ -46,13 +46,18 @@ html {
   border-radius: 10px;
   overflow: hidden;
   transition: background-color 0.3s, box-shadow 0.3s;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-image: url(https://png.pngtree.com/thumb_back/fh260/background/20211116/pngtree-dark-blue-plain-background-for-design-template-image_916068.png);
+  background-size: cover; /* Resize the background image to cover the entire container */
+  background-position: center; /* Center the background image */
+  background-color: rgba(255, 255, 255, 0.7); /* Adjust the alpha value for transparency */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1);
   border: none;
 }
+
   h1{
-    padding-left: 9px;
-    margin-left: -8px;
+    padding-left: 10px;
+    margin-left: -152px;
+    color:rgb(0, 0, 0);
 }
 
 
@@ -72,7 +77,7 @@ html {
 .card .flip-card-back {
   width: 100%;
   height: 100%;
-  position: absolute;
+  position: fixed;
   backface-visibility: hidden;
   border-radius: 10px;
   display: flex;
@@ -108,11 +113,11 @@ html {
 
 
 .carousel-control-prev {
-  left: 0px;
+  left: 5px;
 }
 
 .carousel-control-next {
-  right: -18px;
+  right: -36px;
 }
 
 
@@ -134,7 +139,7 @@ html {
     }
 
     .pill-wrapper {
-      position: absolute;
+      position: fixed;
       animation: pulse 0.8s infinite;
       margin-top:-220px;
       margin-left: 263px;
@@ -192,11 +197,11 @@ color: rgba(68, 62, 62, 0.847);
 }
 
 #clockContainer {
-  position: relative;
+  position: absolute;
   margin: auto;
-  height: 55vw;
-margin-left:80px;
-  width: 55vw;
+  height: 140vw;
+margin-left:-9px;
+  width: 140vw;
   background: url("https://i.ibb.co/vsvTBFF/pngwing-com-1.png") no-repeat;
 
   background-size: 100%;
@@ -236,49 +241,50 @@ margin-left:80px;
 }
 
 
-.thirteen h1 {
-  color: whitesmoke;
-  position:fixed; font-size:20px; font-weight:700;  letter-spacing:0px; text-transform:uppercase; width:208px; text-align:center; margin:54px; white-space:nowrap;padding:169px 13px 1px 2px;
-  margin-left: 79px;
-  margin-top: 77px;
-}
-.thirteen h1:before, .thirteen h1:after {
-    background-color: #00c57d;
-    position:absolute;
-    content: '';
-    height: 7px;
+// .thirteen h1 {
+//   color: whitesmoke;
+//   position:fixed; font-size:20px; font-weight:700;  letter-spacing:0px; text-transform:uppercase; width:208px; text-align:center; margin:54px; white-space:nowrap;padding:169px 13px 1px 2px;
+//   margin-left: 79px;
+//   margin-top: 77px;
+// }
+// .thirteen h1:before, .thirteen h1:after {
+//     background-color: #00c57d;
+//     position:fixed;
+//     content: '';
+//     height: 7px;
 
 
-    width: 7px; border-radius:50%;
-    bottom: 12px;
-}
-.thirteen h1:before {
-   left:-20px;
-}
-.thirteen h1:after {
-   right:-20px;
-}
+//     width: 7px; border-radius:50%;
+//     bottom: 12px;
+// }
+// .thirteen h1:before {
+//    left:-20px;
+// }
+// .thirteen h1:after {
+//    right:-20px;
+// }
 
 .quote-container {
   margin-top: 50px;
-  position: relative;
+  position: fixed;
 
 }
-.image-index {
-  margin-top: -46px;
-  width: 132px;
-  margin-left: -8px;
-  transform: rotate(340deg);
+// .image-index {
+//   margin-top: -46px;
+//   width: 132px;
+//   margin-left: -8px;
+//   transform: rotate(340deg);
+//   position: fixed;
 
-}
+// }
 
 .thirteen{
   padding-top: 14px;
 }
 .filter-meds{
   padding: -26px;
-  margin-top: -17px;
-  margin-left:67px;
+  margin-top: -25px;
+  margin-left:6px;
 }
 .hello-msg{
   padding:9px;
@@ -286,7 +292,7 @@ margin-left:80px;
 }
 h3{
   font-size: medium;
-  margin-left: 13px;
+  margin-left: 6px;
   color:rgb(179, 189, 197)
 }
 .container-index {
@@ -296,7 +302,7 @@ h3{
 
 
 h2{
-  margin-left:120px;
+  margin-left:12px;
 }
 .logo-on-index{
   margin-left: 50px;
