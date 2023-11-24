@@ -8,6 +8,13 @@
 
   <h3>Here is a list of your medications.</h3>
 
+  <!-- clock 2 -->
+    <div id="clockContainer2">
+    <div id="hour2"></div>
+    <div id="minute2"></div>
+    <div id="second2"></div>
+  </div>
+
   <div class="hello-msg"></div>
 
   <!-- Filter Medications buttons -->
@@ -55,7 +62,7 @@
         <% @medications.each_with_index do |medication, index| %>
           <div class="carousel-item <%= 'active' if index.zero? %>">
             <div class="card-container">
-              <div class="card mx-auto body-container flip-card">
+              <div class="card mx-auto body-container flip-card transparent-card">
                 <div class="flip-card-inner">
                   <div class="flip-card-front">
                     <h1><%= medication.name %></h1>
@@ -141,3 +148,86 @@
       second.style.transform = `rotate(${sec_rotation}deg)`;
     }, 1000);
   </script>
+<script>
+  setInterval(() => {
+    const d = new Date();
+    const hr = d.getHours();
+    const min = d.getMinutes();
+    const sec = d.getSeconds();
+    const hr_rotation = 30 * hr + min / 2;
+    const min_rotation = 6 * min;
+    const sec_rotation = 6 * sec;
+
+    const hour2 = document.getElementById('hour2');
+    const minute2 = document.getElementById('minute2');
+    const second2 = document.getElementById('second2');
+
+    if (hour2) {
+      hour2.style.transform = `rotate(${hr_rotation}deg)`;
+    }
+
+    if (minute2) {
+      minute2.style.transform = `rotate(${min_rotation}deg)`;
+    }
+
+    if (second2) {
+      second2.style.transform = `rotate(${sec_rotation}deg)`;
+    }
+  }, 1000);
+</script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    let currentIndex = 0; // Track the current index of the displayed medication
+
+    // Function to toggle the 'flipped' class on the card
+    function toggleFlip() {
+      const flipCard = document.querySelector('.flip-card');
+      if (flipCard) {
+        flipCard.classList.toggle('flipped');
+      }
+    }
+
+    // Add click event listeners to the pills
+    const pillLeft = document.querySelector('.pill-left');
+    if (pillLeft) {
+      pillLeft.addEventListener('click', function () {
+        toggleFlip();
+        showPreviousMedication();
+      });
+    }
+
+    const pillRight = document.querySelector('.pill-right');
+    if (pillRight) {
+      pillRight.addEventListener('click', function () {
+        toggleFlip();
+        showNextMedication();
+      });
+    }
+
+    // Function to show the next medication
+    function showNextMedication() {
+      const medications = document.querySelectorAll('.carousel-item');
+      currentIndex = (currentIndex + 1) % medications.length;
+      showMedicationAtIndex(currentIndex);
+    }
+
+    // Function to show the previous medication
+    function showPreviousMedication() {
+      const medications = document.querySelectorAll('.carousel-item');
+      currentIndex = (currentIndex - 1 + medications.length) % medications.length;
+      showMedicationAtIndex(currentIndex);
+    }
+
+    // Function to show a specific medication by index
+    function showMedicationAtIndex(index) {
+      const medications = document.querySelectorAll('.carousel-item');
+      medications.forEach((medication, i) => {
+        medication.classList.remove('active');
+        if (i === index) {
+          medication.classList.add('active');
+        }
+      });
+    }
+  });
+</script>
+
