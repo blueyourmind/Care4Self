@@ -1,233 +1,223 @@
 <div class="container-index">
-  <div>
-    <h2> Hello <%= @user.name %></h2>
-  </div>
+    <div>
+        <h2> Hello <%= @user.name %></h2>
+    </div>
     <div id="logo-container">
-      <img id="logo" src="https://i.ibb.co/ZfmhmLt/logo-no-background.png" alt="Your Logo">
-        </div>
+        <a href="/"> <img id="logo" src="https://i.ibb.co/ZfmhmLt/logo-no-background.png" alt="care4self logo"></a>
+    </div>
+    <h3>Here is a list of your medications.</h3>
 
-  <h3>Here is a list of your medications.</h3>
-
-  <!-- clock 2 -->
+    <!-- clock 2 -->
     <div id="clockContainer2">
-    <div id="hour2"></div>
-    <div id="minute2"></div>
-    <div id="second2"></div>
-  </div>
+        <div id="hour2"></div>
+        <div id="minute2"></div>
+        <div id="second2"></div>
+    </div>
+    <div class="hello-msg"></div>
 
-  <div class="hello-msg"></div>
+    <!-- Filter Medications buttons -->
+    <div class="filter-meds" role="group" aria-label="Filter Medications">
+        <%= link_to 'All', medications_path, class: 'btn btn-secondary' %>
+        <%= link_to 'Today', medications_path(filter: 'today'), class: 'btn btn-secondary' %>
+        <%= link_to 'Tomorrow', medications_path(filter: 'tomorrow'), class: 'btn btn-secondary' %>
+    </div>
 
-  <!-- Filter Medications buttons -->
-  <div class="filter-meds" role="group" aria-label="Filter Medications">
-    <%= link_to 'All', medications_path, class: 'btn btn-secondary' %>
-    <%= link_to 'Today', medications_path(filter: 'today'), class: 'btn btn-secondary' %>
-    <%= link_to 'Tomorrow', medications_path(filter: 'tomorrow'), class: 'btn btn-secondary' %>
-  </div>
+    <!-- Clock -->
+    <div id="clockContainer">
+        <div id="hour"></div>
+        <div id="minute"></div>
+        <div id="second"></div>
+    </div>
 
-
-
-  <!-- Clock -->
-  <div id="clockContainer">
-    <div id="hour"></div>
-    <div id="minute"></div>
-    <div id="second"></div>
-  </div>
-
-
-  <!-- card carousel -->
-  <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-inner">
-      <% if @medications.empty? %>
-        <!-- Display a placeholder card with a border when there are no medications -->
-        <div class="carousel-item active">
-          <div class="card-container">
-            <div class="card mx-auto body-container">
-              <div class="flip-card-inner">
-                <div class="flip-card-front">
-                  <h4>No Medications</h4>
-                  <p><strong>Click the '+' to add them here.</strong></p>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1"/>
-                  </svg>
-                </div>
-                <div class="flip-card-back">
-                  <p><strong>Add medications to view them here.</strong></p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      <% else %>
-        <!-- Display medications as usual -->
-        <% @medications.each_with_index do |medication, index| %>
-          <div class="carousel-item <%= 'active' if index.zero? %>">
-            <div class="card-container">
-              <div class="card mx-auto body-container flip-card transparent-card">
-                <div class="flip-card-inner">
-                  <div class="flip-card-front">
-                    <h1><%= medication.name %></h1>
-                  </div>
-                  <div class="flip-card-back">
-                    <!-- Medication details -->
-                    <p><strong>Instruction:</strong> <%= medication.instruction %></p>
-                    <p><strong>Quantity:</strong> <%= medication.quantity %></p>
-                    <p><strong>Med Type:</strong> <%= medication.med_type %></p>
-                    <p><strong>Start Date:</strong> <%= medication.start_date.strftime("%d %B, %Y") %></p>
-                    <p><strong>End Date:</strong> <%= medication.end_date.strftime("%d %B, %Y") %></p>
-                    <p><strong>Frequency:</strong> <%= medication.frequency %></p>
-                    <!-- Medication actions (Edit and Delete buttons) -->
-                    <div class="edit-delete-buttons">
-                      <%= link_to 'Edit', edit_medication_path(medication), class: 'edit-button btn btn-success' %>
-                      <%= link_to 'Delete', medication_path(medication), data: { turbo_method: :delete, turbo_confirm: 'Are you sure you want to delete this medication?' }, class: 'delete-button btn btn-danger' %>
+    <!-- card carousel -->
+    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <% if @medications.empty? %>
+                <!-- Display a placeholder card with a border when there are no medications -->
+                <div class="carousel-item active">
+                    <div class="card-container">
+                        <div class="card mx-auto body-container">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front">
+                                    <h4>No Medications</h4>
+                                    <p><strong>Click the '+' to add them here.</strong></p>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                        class="bi bi-arrow-down" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd"
+                                            d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1" />
+                                    </svg>
+                                </div>
+                                <div class="flip-card-back">
+                                    <p><strong>Add medications to view them here.</strong></p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                  </div>
                 </div>
-              </div>
-            </div>
-          </div>
-        <% end %>
-      <% end %>
-    </div>
-    <!-- Left and Right Navigation Arrows -->
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
-  </div>
+            <% else %>
+                <!-- Display medications as usual -->
+                <% @medications.each_with_index do |medication, index| %>
+                    <div class="carousel-item <%= 'active' if index.zero? %>">
+                        <div class="card-container">
+                            <div class="card mx-auto body-container flip-card transparent-card">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front">
+                                        <h2>Medication Name:</h2> <h1><%= medication.name %></h1>
+                                    </div>
+                                    <div class="flip-card-back">
 
-  <!-- Pills design -->
-  <div class="pill-container" id="pillContainer">
-    <div class="pill-wrapper">
-      <div class="pill-left"></div>
-      <div class="pill-right"></div>
+                                        <!-- Medication details -->
+
+                                        <p><strong>Instruction:</strong> <%= medication.instruction %></p>
+                                        <p><strong>Quantity:</strong> <%= medication.quantity %></p>
+                                        <p><strong>Med Type:</strong> <%= medication.med_type %></p>
+                                        <p><strong>Start Date:</strong><%= medication.start_date.strftime("%d %B, %Y") %></p>
+                                        <p><strong>End Date:</strong> <%= medication.end_date.strftime("%d %B, %Y") %></p>
+                                        <p><strong>Frequency:</strong> <%= medication.frequency %></p>
+
+                                        <!-- Medication actions (Edit and Delete buttons) -->
+
+                                        <div class="edit-delete-buttons">
+                                            <%= link_to 'Edit', edit_medication_path(medication), class: 'edit-button btn btn-success' %>
+                                            <%= link_to 'Delete', medication_path(medication),
+                                                data: { turbo_method: :delete,
+                                                        turbo_confirm: 'Are you sure you want to delete this medication?' },
+                                                class: 'delete-button btn btn-danger' %>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <% end %>
+            <% end %>
+        </div>
+        <!-- Left and Right Navigation Arrows -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
     </div>
-  </div>
+
+    <!-- Pills design -->
+    <div class="pill-container" id="pillContainer">
+        <div class="pill-wrapper">
+            <div class="pill-left"></div>
+            <div class="pill-right"></div>
+        </div>
+    </div>
 </div>
-</div>
+
+<!-- click to the pills -->
 <script>
-  document.addEventListener('DOMContentLoaded', function () {
-    // Function to toggle the 'flipped' class on the card
-    function toggleFlip() {
-      const flipCard = document.querySelector('.flip-card');
-      if (flipCard) {
-        flipCard.classList.toggle('flipped');
-      }
-    }
+    document.addEventListener('DOMContentLoaded', function () {
+        function toggleFlip() {
+            const flipCard = document.querySelector('.flip-card');
+            if (flipCard) {
+                flipCard.classList.toggle('flipped');
+            }
+        }
+        const pillLeft = document.querySelector('.pill-left');
+        if (pillLeft) {
+            pillLeft.addEventListener('click', toggleFlip);
+        }
 
-    // Add click event listeners to the pills
-    const pillLeft = document.querySelector('.pill-left');
-    if (pillLeft) {
-      pillLeft.addEventListener('click', toggleFlip);
-    }
-
-    const pillRight = document.querySelector('.pill-right');
-    if (pillRight) {
-      pillRight.addEventListener('click', toggleFlip);
-    }
-  });
+        const pillRight = document.querySelector('.pill-right');
+        if (pillRight) {
+            pillRight.addEventListener('click', toggleFlip);
+        }
+    });
 </script>
 
-
-
+<!-- clock -->
 <script>
     setInterval(() => {
-      d = new Date();
-      hr = d.getHours();
-      min = d.getMinutes();
-      sec = d.getSeconds();
-      hr_rotation = 30 * hr + min / 2;
-      min_rotation = 6 * min;
-      sec_rotation = 6 * sec;
+        d = new Date();
+        hr = d.getHours();
+        min = d.getMinutes();
+        sec = d.getSeconds();
+        hr_rotation = 30 * hr + min / 2;
+        min_rotation = 6 * min;
+        sec_rotation = 6 * sec;
 
-      hour.style.transform = `rotate(${hr_rotation}deg)`;
-      minute.style.transform = `rotate(${min_rotation}deg)`;
-      second.style.transform = `rotate(${sec_rotation}deg)`;
+        hour.style.transform = `rotate(${hr_rotation}deg)`;
+        minute.style.transform = `rotate(${min_rotation}deg)`;
+        second.style.transform = `rotate(${sec_rotation}deg)`;
     }, 1000);
-  </script>
-<script>
-  setInterval(() => {
-    const d = new Date();
-    const hr = d.getHours();
-    const min = d.getMinutes();
-    const sec = d.getSeconds();
-    const hr_rotation = 30 * hr + min / 2;
-    const min_rotation = 6 * min;
-    const sec_rotation = 6 * sec;
-
-    const hour2 = document.getElementById('hour2');
-    const minute2 = document.getElementById('minute2');
-    const second2 = document.getElementById('second2');
-
-    if (hour2) {
-      hour2.style.transform = `rotate(${hr_rotation}deg)`;
-    }
-
-    if (minute2) {
-      minute2.style.transform = `rotate(${min_rotation}deg)`;
-    }
-
-    if (second2) {
-      second2.style.transform = `rotate(${sec_rotation}deg)`;
-    }
-  }, 1000);
 </script>
+
+<!-- clock 2 -->
 <script>
-  document.addEventListener('DOMContentLoaded', function () {
-    let currentIndex = 0; // Track the current index of the displayed medication
+    setInterval(() => {
+        const d = new Date();
+        const hr = d.getHours();
+        const min = d.getMinutes();
+        const sec = d.getSeconds();
+        const hr_rotation = 30 * hr + min / 2;
+        const min_rotation = 6 * min;
+        const sec_rotation = 6 * sec;
 
-    // Function to toggle the 'flipped' class on the card
-    function toggleFlip() {
-      const flipCard = document.querySelector('.flip-card');
-      if (flipCard) {
-        flipCard.classList.toggle('flipped');
-      }
-    }
+        const hour2 = document.getElementById('hour2');
+        const minute2 = document.getElementById('minute2');
+        const second2 = document.getElementById('second2');
 
-    // Add click event listeners to the pills
-    const pillLeft = document.querySelector('.pill-left');
-    if (pillLeft) {
-      pillLeft.addEventListener('click', function () {
-        toggleFlip();
-        showPreviousMedication();
-      });
-    }
-
-    const pillRight = document.querySelector('.pill-right');
-    if (pillRight) {
-      pillRight.addEventListener('click', function () {
-        toggleFlip();
-        showNextMedication();
-      });
-    }
-
-    // Function to show the next medication
-    function showNextMedication() {
-      const medications = document.querySelectorAll('.carousel-item');
-      currentIndex = (currentIndex + 1) % medications.length;
-      showMedicationAtIndex(currentIndex);
-    }
-
-    // Function to show the previous medication
-    function showPreviousMedication() {
-      const medications = document.querySelectorAll('.carousel-item');
-      currentIndex = (currentIndex - 1 + medications.length) % medications.length;
-      showMedicationAtIndex(currentIndex);
-    }
-
-    // Function to show a specific medication by index
-    function showMedicationAtIndex(index) {
-      const medications = document.querySelectorAll('.carousel-item');
-      medications.forEach((medication, i) => {
-        medication.classList.remove('active');
-        if (i === index) {
-          medication.classList.add('active');
+        if (hour2) {
+            hour2.style.transform = `rotate(${hr_rotation}deg)`;
         }
-      });
-    }
-  });
+
+        if (minute2) {
+            minute2.style.transform = `rotate(${min_rotation}deg)`;
+        }
+
+        if (second2) {
+            second2.style.transform = `rotate(${sec_rotation}deg)`;
+        }
+    }, 1000);
 </script>
 
+<!-- flip card -->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        let currentIndex = 0;
+
+        function toggleFlip() {
+            const flipCard = document.querySelector('.flip-card');
+            if (flipCard) {
+                flipCard.classList.toggle('flipped');
+            }
+        }
+        // show the next medication
+
+        function showNextMedication() {
+            const medications = document.querySelectorAll('.carousel-item');
+            currentIndex = (currentIndex + 1) % medications.length;
+            showMedicationAtIndex(currentIndex);
+        }
+
+        // Function to show the previous medication
+
+        function showPreviousMedication() {
+            const medications = document.querySelectorAll('.carousel-item');
+            currentIndex = (currentIndex - 1 + medications.length) % medications.length;
+            showMedicationAtIndex(currentIndex);
+        }
+
+        // Function to show a specific medication by index
+
+        function showMedicationAtIndex(index) {
+            const medications = document.querySelectorAll('.carousel-item');
+            medications.forEach((medication, i) => {
+                medication.classList.remove('active');
+                if (i === index) {
+                    medication.classList.add('active');
+                }
+            });
+        }
+    });
+</script>
