@@ -23,6 +23,8 @@ html {
   justify-content: center;
 }
 
+// card carousel
+
 .carousel-inner {
   display: flex;
   flex-wrap: nowrap;
@@ -74,9 +76,9 @@ html {
 }
 
 h1 {
-  padding-left: 10px;
+  padding-left: 145px;
   margin-left: -152px;
-  color: rgb(104, 96, 96);
+  color: rgb(221, 6, 6);
 }
 .flip-card {
   position: relative;
@@ -364,4 +366,9 @@ h4 {
   left: 49.25%;
   opacity: 0.8;
   background: rgb(245, 2, 2);
+}
+.medication-label {
+  color: #800000;
+  font-weight: bold;
+  margin-bottom: 5px;
 }
