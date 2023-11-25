@@ -41,7 +41,10 @@ html {
 .card-container {
   border: 1px solid rgb(0, 0, 0);
   border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+
 }
+
 .transparent-card {
   background-image: url('https://png.pngtree.com/thumb_back/fh260/background/20211116/pngtree-dark-blue-plain-background-for-design-template-image_916068.png'); /* Replace 'your-background-image.jpg' with the path to your image */
   background-size: cover;
@@ -224,7 +227,7 @@ h1 {
   width: 154vw;
   background: url("https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/9e8d34ab-b036-4cc8-9ffa-0603574ea68a/d8xmo10-c7898d16-7875-480a-9c2b-70d1a615dcb3.png/v1/fill/w_1024,h_1024/clock_face_11_by_stephenjohnsmith_d8xmo10-fullview.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTAyNCIsInBhdGgiOiJcL2ZcLzllOGQzNGFiLWIwMzYtNGNjOC05ZmZhLTA2MDM1NzRlYTY4YVwvZDh4bW8xMC1jNzg5OGQxNi03ODc1LTQ4MGEtOWMyYi03MGQxYTYxNWRjYjMucG5nIiwid2lkdGgiOiI8PTEwMjQifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.M2dzzpyuPEO3dEYKTHCMf-ZBMjhr11WA2BXBLnHBxPI") no-repeat;
   background-size: 100%;
-
+  filter: blur(3.2px);
 
 }
 
@@ -243,7 +246,7 @@ h1 {
   top: 25%;
   left: 48.85%;
   opacity: 0.8;
-  background: whitesmoke;
+  background: rgba(245, 245, 245, 0.2);
 }
 
 #minute {
@@ -252,7 +255,7 @@ h1 {
   top: 19%;
   left: 48.9%;
   opacity: 0.8;
-  background: whitesmoke;
+  background: rgba(245, 245, 245, 0.2);
 }
 
 #second {
@@ -261,7 +264,7 @@ h1 {
   top: 9%;
   left: 49.25%;
   opacity: 0.8;
-  background: rgb(245, 2, 2);
+  background: rgba(255, 0, 0, 0.395);
 }
 
 .quote-container {
@@ -279,6 +282,28 @@ h1 {
   margin-left: 6px;
 }
 
+
+.filter-meds a {
+
+
+
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
+}
+
+.filter-meds a:hover {
+
+  transform: translateY(2px);
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.filter-meds a:active {
+
+  background-color: #007bff; /* Change to your desired color */
+}
+
+
+
 .hello-msg {
   padding: 9px;
   margin: 9px;
@@ -288,6 +313,7 @@ h3 {
   font-size: medium;
   margin-left: 6px;
   color: rgb(179, 189, 197);
+  margin-top: 9px;
 }
 
 .container-index {
@@ -296,7 +322,7 @@ h3 {
 }
 
 h2 {
-  margin-left: 12px;
+  margin-left: 8px;
 }
 
 .logo-on-index {
@@ -315,8 +341,10 @@ h4 {
 }
 
 #logo {
-  width: 59px;
+  width: 57px;
   height: auto;
+  margin-left: -25px;
+  margin-top: 0px;
 }
 
   //  clock 2
@@ -371,4 +399,16 @@ h4 {
   color: #800000;
   font-weight: bold;
   margin-bottom: 5px;
+}
+
+
+
+.hello-container {
+  background-color: rgba(255, 255, 255, 0.086);
+  padding: 10px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  margin-top: -22px;
+  margin-right: -44px;
+  margin-left: -25px;
+
 }
