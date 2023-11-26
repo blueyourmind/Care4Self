@@ -4,7 +4,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :medications
   has_many :notifications
-
+  has_one :recipient
+  belongs_to :recipient
   attribute :user_type, :string
   attribute :scheduled_medication_time, :time
   # validates :name, presence: true

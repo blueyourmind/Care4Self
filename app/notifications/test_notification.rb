@@ -6,7 +6,7 @@ class TestNotification < Noticed::Base
   # Define your parameters
   param :post
 
-  def to_database
+  def to_database(recipient)
     {
       params: params,
     }
@@ -21,10 +21,10 @@ class TestNotification < Noticed::Base
       }
     }
   end
-  
+
   def deliver(user)
     # Check if it's time to deliver the notification
-    if user.scheduled_medication_time - 2.minutes <= Time.current
+    if user.scheduled_medication_time&. - 2.minutes <= Time.current
       super(user)
     end
   end
