@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_18_125639) do
+ActiveRecord::Schema[7.1].define(version: 2023_11_26_214557) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -28,6 +28,14 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_18_125639) do
     t.bigint "reminder_id"
     t.index ["medication_id"], name: "index_medication_frequencies_on_medication_id"
     t.index ["reminder_id"], name: "index_medication_frequencies_on_reminder_id"
+  end
+
+  create_table "medication_notifications", force: :cascade do |t|
+    t.bigint "medication_id", null: false
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["medication_id"], name: "index_medication_notifications_on_medication_id"
   end
 
   create_table "medications", force: :cascade do |t|
@@ -48,6 +56,28 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_18_125639) do
     t.index ["user_id"], name: "index_medications_on_user_id"
   end
 
+  create_table "notifications", force: :cascade do |t|
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.string "message"
+    t.string "post"
+    t.datetime "scheduled_at"
+    t.string "recipient_type"
+    t.string "type"
+    t.index ["user_id"], name: "index_notifications_on_user_id"
+  end
+
+  create_table "notifies", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.text "message"
+    t.boolean "read"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_notifies_on_user_id"
+  end
+
   create_table "reminders", force: :cascade do |t|
     t.bigint "medication_frequency_id", null: false
     t.datetime "created_at", null: false
@@ -58,6 +88,11 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_18_125639) do
     t.integer "alarm_duration"
     t.boolean "has_taken", default: false
     t.index ["medication_frequency_id"], name: "index_reminders_on_medication_frequency_id"
+  end
+
+  create_table "user_notifications", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -72,13 +107,17 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_18_125639) do
     t.integer "phone_number"
     t.integer "family_phone_number"
     t.string "photo"
+    t.string "user_type"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "medication_frequencies", "medications"
   add_foreign_key "medication_frequencies", "reminders"
+  add_foreign_key "medication_notifications", "medications"
   add_foreign_key "medications", "intervals"
   add_foreign_key "medications", "users"
+  add_foreign_key "notifications", "users"
+  add_foreign_key "notifies", "users"
   add_foreign_key "reminders", "medication_frequencies"
 end

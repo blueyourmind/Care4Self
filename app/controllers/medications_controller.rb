@@ -67,6 +67,13 @@ class MedicationsController < ApplicationController
     redirect_to medications_path, notice: "Medication successfully deleted!"
   end
 
+  def send_medication_reminders
+    # Fetch the medications that need reminders
+
+
+    # Iterate through medications and send reminders
+
+  end
 
 
   # def set_duration
