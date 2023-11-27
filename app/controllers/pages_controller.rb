@@ -1,6 +1,8 @@
 class PagesController < ApplicationController
-  # skip_before_action :authenticate_user!, only: [ :home ]
+  # Your existing controller code...
 
-  def home
-  end
+  def send_medication_reminders
+    # Assuming you have a User model with a `send_medication_reminder` method
+
+end
 end

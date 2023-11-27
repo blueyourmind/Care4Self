@@ -13,6 +13,11 @@
 # gem "pg"
 #
 default: &default
+  # ...
+  timezone: 'Abu Dhabi'
+
+
+default: &default
   adapter: postgresql
   encoding: unicode
   # For details on connection pooling, see Rails configuration guide

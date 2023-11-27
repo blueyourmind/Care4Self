@@ -22,6 +22,9 @@ module Care4self
     config.autoload_lib(ignore: %w(assets tasks))
     # config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
     config.autoload_paths += %W(#{config.root}/app/notifications)
+# config/application.rb
+
+config.active_job.queue_adapter = :sidekiq
 
     # Configuration for the application, engines, and railties goes here.
     #
@@ -30,5 +33,8 @@ module Care4self
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+    config.time_zone = 'Abu Dhabi'
+
   end
+
 end

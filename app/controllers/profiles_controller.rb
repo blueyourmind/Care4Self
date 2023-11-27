@@ -9,4 +9,6 @@ class ProfilesController < ApplicationController
     @user = current_user
 
   end
+  def send_medication_reminders
+  end
 end
