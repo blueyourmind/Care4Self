@@ -8,6 +8,8 @@ Rails.application.routes.draw do
 
   # mount Noticed::Engine, at: 'notifications'
   # get 'notifications', to: 'pages#notifications', as: :user_notifications
+  get '/service-worker.js', to: 'application#service_worker_js', format: :js
+
 
   resources :medications, only: [:new, :index, :show, :create, :update, :edit, :destroy] do
     member do
@@ -36,7 +38,7 @@ Rails.application.routes.draw do
   devise_scope :user do
     resources :sessions, only: [:destroy], path: 'users/sign_out', as: :destroy_user_session
   end
-  
+
 if Rails.env.development?
     mount Sidekiq::Web => '/sidekiq'
   end

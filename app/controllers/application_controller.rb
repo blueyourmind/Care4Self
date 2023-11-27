@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  # [...]
+  protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :send_medication_reminders
 
@@ -7,8 +7,9 @@ class ApplicationController < ActionController::Base
     # Your devise controller configuration logic goes here
   end
 
-
-
+  def service_worker_js
+    render 'service_worker.js.erb', content_type: 'application/javascript'
+  end
 
   # private
   # def send_medication_reminders

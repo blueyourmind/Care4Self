@@ -3,7 +3,9 @@ class SendMedicationNotificationJob < ApplicationJob
   queue_as :default
 
   def perform(user_id, med_type)
+    puts "Performing SendMedicationNotificationJob for user #{user_id}"
     user = User.find(user_id)
+
     # Check if it's time to send the notification
     if user.scheduled_medication_time.present? && user.scheduled_medication_time - 2.minutes <= Time.current
       # Your code here

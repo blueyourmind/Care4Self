@@ -8,7 +8,7 @@ class TestNotification < Noticed::Base
 
 
   def to_action_cable
-    {
+    {  puts "Preparing Action Cable notification"
       channel: "NotificationsChannel",
       data: {
         message: options[:post],
