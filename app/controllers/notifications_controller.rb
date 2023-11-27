@@ -7,15 +7,13 @@ class NotificationsController < ApplicationController
 
  end
  # Inside a controller action
-def create
-  # Logic to create a new record
-  @record = Record.create(record_params)
+ 
+  def create
+    # Your logic to create a notification
+    message = "New notification message!"
 
-  # Create and deliver a notification
-  notification = Notification.new(category: 'take medication').with(params: { message: 'Test message' })
-  notification.deliver(User.find_by(email: 'test@example.com'))
-
-  # Other logic for the create action
-end
+    # Broadcast the message to the channel
+    ActionCable.server.broadcast("notifications_channel", message: message)
+  end
 
 end

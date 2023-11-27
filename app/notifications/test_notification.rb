@@ -6,11 +6,6 @@ class TestNotification < Noticed::Base
   # Define your parameters
   param :post
 
-  def to_database(recipient)
-    {
-      params: params,
-    }
-  end
 
   def to_action_cable
     {
@@ -22,12 +17,31 @@ class TestNotification < Noticed::Base
     }
   end
 
-  def deliver(user)
+  def deliver(user_id, medication_name)
+    user = params[:user]
+    scheduled_time = user.scheduled_medication_time&.is_a?(Numeric) ? Time.zone.at(user.scheduled_medication_time) : nil
+
     # Check if it's time to deliver the notification
-    if user.scheduled_medication_time&. - 2.minutes <= Time.current
-      super(user)
+    if scheduled_time.present? && scheduled_time - 2.minutes <= Time.current
+      super(user: user)  # Pass the user parameter to the super call
     end
   end
+
+  def initialize(user_id, medication_name)
+    @user_id = user_id
+    @medication_name = medication_name
+  end
+
+  def to_database
+    {
+      user_id: params[:user_id],
+      medication_name: params[:medication_name],
+      # other notification data
+    }
+  end
+
+
+
 
 
   def message

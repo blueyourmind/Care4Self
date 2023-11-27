@@ -1,12 +1,8 @@
-
 class PagesController < ApplicationController
-  def notifications
-    if user_signed_in?
-      @notifications = current_user.notification
-    else
-      # Handle the case where the user is not signed in
-      # For example, you might want to redirect them to the login page
-      redirect_to new_user_session_path, alert: 'Please sign in to view notifications.'
-    end
-  end
+  # Your existing controller code...
+
+  def send_medication_reminders
+    # Assuming you have a User model with a `send_medication_reminder` method
+
+end
 end

@@ -5,7 +5,7 @@ class User < ApplicationRecord
   has_many :medications
   has_many :notifications
   has_one :recipient
-  belongs_to :recipient
+  belongs_to :recipient, optional: true
   attribute :user_type, :string
   attribute :scheduled_medication_time, :time
   # validates :name, presence: true
