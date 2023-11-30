@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_26_234457) do
+ActiveRecord::Schema[7.1].define(version: 2023_11_28_084440) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -52,6 +52,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_26_234457) do
     t.datetime "end_date", precision: nil
     t.string "frequency"
     t.time "start_time"
+    t.boolean "reminder_required"
     t.index ["interval_id"], name: "index_medications_on_interval_id"
     t.index ["user_id"], name: "index_medications_on_user_id"
   end
@@ -66,6 +67,9 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_26_234457) do
     t.datetime "scheduled_at"
     t.string "recipient_type"
     t.string "type"
+    t.datetime "read_at"
+    t.bigint "recipient_id", null: false
+    t.index ["recipient_id"], name: "index_notifications_on_recipient_id"
     t.index ["user_id"], name: "index_notifications_on_user_id"
   end
 
@@ -126,6 +130,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_26_234457) do
   add_foreign_key "medication_notifications", "medications"
   add_foreign_key "medications", "intervals"
   add_foreign_key "medications", "users"
+  add_foreign_key "notifications", "recipients"
   add_foreign_key "notifications", "users"
   add_foreign_key "notifies", "users"
   add_foreign_key "reminders", "medication_frequencies"

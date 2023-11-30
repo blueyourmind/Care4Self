@@ -1,39 +1,30 @@
-
- <div class="container-footer">
-      <div class="tabbar tab-style5">
-        <ul class="flex-center">
-         <li id="home-tab" class="home active" data-where="home"><span class="material-icons-outlined">medication</span></li>
-  <li id="add-tab" class="about" data-where="add"><span class="material-icons-outlined">add</span></li>
-  <li id="user-tab" class="help" data-where="user"><span class="material-icons-outlined">person</span></li>
-</ul>
-          </li>
-        </ul>
-      </div>
-    </div>
+<div class="container-footer">
+  <div class="tabbar tab-style5">
+    <ul class="flex-center">
+      <li id="home-tab" class="home active" data-where="home"><span class="material-icons-outlined">medication</span></li>
+      <li id="add-tab" class="about" data-where="add"><span class="material-icons-outlined">add</span></li>
+      <li id="user-tab" class="help" data-where="user"><span class="material-icons-outlined">person</span></li>
+    </ul>
+  </div>
+</div>
 
 <script>
-   document.addEventListener("DOMContentLoaded", function () {
-    const footer = document.getElementById("footer-position");
-    const footerButtons = document.querySelectorAll("#footer-position button");
+  document.addEventListener("DOMContentLoaded", function () {
+    const footerButtons = document.querySelectorAll(".container-footer button");
 
-    // Toggle the footer visibility on click
     document.addEventListener("click", function (event) {
       const target = event.target;
-      const isVisible = footer.style.transform === "translateY(0%)";
+      const isVisible = footerButtons[0].style.transform === "translateY(0%)";
       const isFooterButton = Array.from(footerButtons).some(button => button.contains(target));
 
       if (isFooterButton) {
-        // If the clicked element is a button, don't hide the footer
         return;
       }
 
-      if (isVisible) {
-        footer.style.transform = "translateY(100%)";
-      } else {
-        footer.style.transform = "translateY(0%)";
-      }
+      footerButtons.forEach(button => {
+        button.style.transform = isVisible ? "translateY(100%)" : "translateY(0%)";
+      });
     });
-
 
     const homeTab = document.getElementById("home-tab");
     const addTab = document.getElementById("add-tab");

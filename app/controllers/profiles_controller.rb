@@ -2,7 +2,7 @@ class ProfilesController < ApplicationController
   before_action :authenticate_user!, except: [:new]
 
   def new
-    @user = User.new
+    head :no_content
   end
 
   def show

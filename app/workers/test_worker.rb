@@ -3,9 +3,10 @@ class TestWorker
   include Sidekiq::Worker
 
   def perform(*args)
-    # Your worker logic here
-    puts "TestWorker performing with arguments: #{args.inspect}"
+    # Log the arguments to help diagnose the issue
+    Rails.logger.info("TestWorker.perform received arguments: #{args.inspect}")
 
-    # Additional logic can be added based on your requirements
+    # Your existing logic here...
   end
 end
+

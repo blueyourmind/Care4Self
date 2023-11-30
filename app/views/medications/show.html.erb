@@ -12,6 +12,6 @@
   <% end %>
 
   <%= link_to 'Back', medications_path, class: 'btn btn-secondary' %>
-  <%#= link_to 'Edit', edit_medication_path(@medication), class: 'btn btn-primary' %>
-  <%#= link_to 'Delete', @medication, data: { turbo_method: :delete, confirm: 'Are you sure?' }, class: 'btn btn-danger btn-delete' %>
+  <%= link_to 'Edit', edit_medication_path(@medication), class: 'btn btn-primary' %>
+  <%= link_to 'Delete', @medication, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: 'btn btn-danger btn-delete' %>
 </div>
