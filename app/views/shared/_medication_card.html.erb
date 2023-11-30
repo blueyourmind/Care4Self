@@ -1,0 +1,13 @@
+<div class="rectangle-medi">
+  <a href="<%= medication_path(medication) %>" class="medication-link">
+    <img src="https://i.ibb.co/1Rx7HYZ/pngwing-com-2.png" alt="pngwing-com-2" class="medication-image">
+    <div class="medication-info">
+      <h5><%= medication.name %></h5>
+      <p><%= medication.med_type %></p>
+    </div>
+  </a>
+  <!-- Checkbox at the right end of the medication card -->
+  <div class="red-checkbox-container">
+    <%= check_box_tag "medication_ids[]", medication.id, false, class: "red-checkbox", data: { remote: true } %>
+  </div>
+</div>

@@ -1,19 +1,29 @@
-.custom-dropdown {
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  background-color: #fff;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  padding: 10px;
-  width: 200px;
+.navbar{
+background-image: linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%);
+color: #fff;
+padding: 10px;
+position: fixed;
+top: 0;
+width: 100%;
+z-index: 1;
 }
 
-.custom-dropdown .dropdown-item {
-  padding: 8px 16px;
-  color: #333;
-  text-decoration: none;
+.hello-msg {
+  margin: 92px;
+  align-items:flex-start;
+  position: absolute;
+h2{
+  font-size:20px;
+  font-family: 'Fira Code', monospace;
+  color:azure
+}
 }
 
-.custom-dropdown .dropdown-item:hover {
-  background-color: #007BFF;
-  color: #fff;
+/* Add this CSS to your stylesheet or in a <style> tag in your HTML */
+.navbar-img-small {
+  width: 54px; /* Adjust the width as needed */
+  height: auto; /* Maintain the aspect ratio */
+}
+.content {
+  padding-top: 60px; /* Add padding to account for fixed navbar */
 }

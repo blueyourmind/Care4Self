@@ -1,10 +1,22 @@
 class Notification < ApplicationRecord
-  include Noticed::Model
-  belongs_to :user, polymorphic: true
-  # belongs_to :account, class_name: 'User'
-  attribute :scheduled_at, :datetime
-  # belongs_to :recipient, class_name: 'User'
-  attribute :post, :string
-  attribute :user_id, :integer
-  attribute :med_type, :string
+  belongs_to :user
+  belongs_to :recipient
+  scope :unread, -> { where(read_at: nil) }
+
+  def self.create_notification
+    user = User.find(1)
+    recipient = Recipient.find(1)
+
+    notification = new(
+      user: user,
+      recipient: recipient,
+      message: "It's time to take your #{@medication.med_type} of #{@medication.name} !"
+    )
+
+    if notification.save
+      puts "Notification saved successfully!"
+    else
+      puts "Error saving notification: #{notification.errors.full_messages.join(', ')}"
+    end
+  end
 end

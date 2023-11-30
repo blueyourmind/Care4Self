@@ -47,4 +47,3 @@ class IntervalsController < ApplicationController
     params.require(:interval).permit(:name)
   end
 end
-
