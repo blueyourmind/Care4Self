@@ -10,7 +10,7 @@ class Notification < ApplicationRecord
     notification = new(
       user: user,
       recipient: recipient,
-      message: "It's time to take your medication"
+      message: "It's time to take your #{@medication.med_type} of #{@medication.name} !"
     )
 
     if notification.save

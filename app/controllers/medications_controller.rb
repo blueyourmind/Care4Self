@@ -3,7 +3,8 @@ class MedicationsController < ApplicationController
 
   def index
     @user = current_user
-
+    @notifications = @user.notifications.unread
+    @notifications.update_all(read_at: Time.zone.now)
     if @user
       case params[:filter]
       when 'today'
@@ -24,6 +25,7 @@ class MedicationsController < ApplicationController
   end
 
   def new
+    @notifications = Notification.unread
     @medication = Medication.new
     @medication.medication_frequencies.new
   end

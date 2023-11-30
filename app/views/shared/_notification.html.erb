@@ -1,0 +1,10 @@
+<% if @notifications.present? %>
+  <% @notifications.each do |notification| %>
+    <% unless notification.read? %>
+      <div class="alert alert-info">
+        <%= notification.message %>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>
+

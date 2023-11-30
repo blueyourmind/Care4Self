@@ -37,11 +37,20 @@
     <%= render "shared/flashes" %>
 <%= render "shared/navbar" %>
 
-   <%# <%= render "shared/notifications"%>
+<!-- shared/_notification.html.erb -->
+
+<%= render "shared/notification"%>
+
 
 
     <%= yield %>
     <%= render "shared/footer"%>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    document.querySelector('.notification').classList.add('fade-out');
+  });
+</script>
 
 
 </body>

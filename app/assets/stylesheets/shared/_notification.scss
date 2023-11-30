@@ -1,0 +1,9 @@
+
+
+.notification {
+  transition: opacity 0.5s ease-out; /* Adjust timing and easing as needed */
+}
+
+.notification.fade-out {
+  opacity: 0;
+}
