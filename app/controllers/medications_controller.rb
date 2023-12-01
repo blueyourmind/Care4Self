@@ -1,10 +1,11 @@
 class MedicationsController < ApplicationController
-  before_action :set_medication, only: [:show, :edit, :update, :destroy, :congrats]
+  before_action :set_medication, only: [:show, :edit, :update, :destroy]
 
   def index
     @user = current_user
     @notifications = @user.notifications.unread
     @notifications.update_all(read_at: Time.zone.now)
+    @medication = Medication.all
     if @user
       case params[:filter]
       when 'today'
@@ -19,41 +20,32 @@ class MedicationsController < ApplicationController
     end
   end
 
-
   def show
-    # @medication is already set by before_action
+    @medications = Medication.where(user_id: current_user.id)
   end
 
   def new
     @notifications = Notification.unread
     @medication = Medication.new
     @medication.medication_frequencies.new
+    @medications = Medication.where(user_id: current_user.id)
   end
 
   def create
-    @medication = Medication.new(medication_params)
-    @medication.user = current_user
-    calculate_medication_duration
+    @medication = current_user.medications.build(medication_params)
 
-    case @medication.frequency
-    when "Once per day"
-      @medication_quantity = @medication_duration * 1
-    when "Twice per day"
-      @medication_quantity = @medication_duration * 2
-    when "Thrice per day"
-      @medication_quantity = @medication_duration * 3
-    end
+    if @medication.save
+      message = "It's Time to take your #{@medication.med_type} of #{@medication.name}"
+      create_medication_notification(message)
+      schedule_medication_notification(@medication, message)
 
-    if @medication_duration == 1
-      @medication.duration = "1 day"
+      redirect_to medications_path, notice: 'Medication successfully created!'
+      NotificationBroadcastJob.schedule_medication_notification(@medication)
     else
-      @medication.duration = "#{@medication_duration} days"
+      render :new
     end
-
-    @medication.save
-      redirect_to medications_path, notice: "Medication successfully created!"
-
   end
+
 
 
 
@@ -63,23 +55,40 @@ class MedicationsController < ApplicationController
 
   def update
     @medication.update(medication_params)
-    redirect_to medications_path, notice: "Medication successfully updated!"
+    redirect_to medications_path, notice: 'Medication successfully updated!'
   end
 
   def destroy
-    @medication = Medication.find(params[:id])
     @medication.destroy
-    redirect_to medications_path, notice: "Medication successfully deleted!"
+    redirect_to medications_path, notice: 'Medication successfully deleted!'
+  end
+
+  private
+
+  def create_medication_notification(message)
+    notification = current_user.notifications.build(message: message, recipient_id: current_user.id)
+
+    if notification.save
+      NotificationBroadcastJob.perform_later("notification_channel_#{current_user.id}", current_user.id, message)
+    else
+      handle_notification_creation_error(notification)
+    end
+  end
+
+  def handle_notification_creation_error(notification)
+    flash[:alert] = "Notification couldn't be saved: #{notification.errors.full_messages.join(', ')}"
+    Rails.logger.error(flash[:alert])
   end
 
 
-  # def congrats
-  #   Rails.logger.debug("Entering congrats action")
-  #   # @medication is already set by before_action
-  # end
+  def schedule_medication_notification(user_id, message)
+    notification_time = @medication.start_time
+    message = " It's Time to take your #{@medication.med_type} of #{@medication.name}"
+    NotificationBroadcastJob.set(wait_until: notification_time).perform_later("notification_channel_#{current_user.id}", current_user.id, message)
+  end
 
 
-  private
+
 
   def set_medication
     @medication = current_user.medications.find(params[:id])
@@ -87,17 +96,5 @@ class MedicationsController < ApplicationController
 
   def medication_params
     params.require(:medication).permit(:name, :med_type, :quantity, :instruction, :frequency, :start_time, :interval_id, :start_date, :end_date)
-  end
-
-  def calculate_medication_duration
-    @medication_duration = (@medication.end_date - @medication.start_date).to_i / 1.day.to_i
-  end
-
-
-  def schedule_medication_notification(medication)
-    notification_message = "It's time to take your #{medication.quantity} #{medication.medication_type} of #{medication.name}"
-
-
-    TestWorker.perform_at(medication.start_time, current_user.id, medication.name, notification_message)
   end
 end

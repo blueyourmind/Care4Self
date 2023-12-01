@@ -5,15 +5,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :medications
-  has_many :notifications
+  has_many :notifications, dependent: :destroy
   has_one :recipient
-  belongs_to :recipient, optional: true
+  # belongs_to :recipient, optional: true
   attribute :user_type, :string
   attribute :scheduled_medication_time, :time
 
-
-  def notify(message)
-   
-    Notification.with(message: message).deliver(self)
-  end
 end

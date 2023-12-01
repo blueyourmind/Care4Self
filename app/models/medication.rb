@@ -18,12 +18,13 @@ class Medication < ApplicationRecord
   has_many :medication_frequencies, dependent: :destroy
   accepts_nested_attributes_for :medication_frequencies
 
-  after_create :schedule_medication_notification
+  # after_create :schedule_medication_notification
+
 
 
   private
 
-  def schedule_medication_notification
-    TestWorker.perform_at(start_time, user_id, name)
+  def schedule_medication_notification(user_id)
+    create_medication_notification("Medication successfully created: #{name}")
   end
 end

@@ -1,22 +1,11 @@
 class Notification < ApplicationRecord
   belongs_to :user
-  belongs_to :recipient
+  # belongs_to :recipient, class_name: "User", foreign_key: "recipient_id", optional: true
+
   scope :unread, -> { where(read_at: nil) }
-
-  def self.create_notification
-    user = User.find(1)
-    recipient = Recipient.find(1)
-
-    notification = new(
-      user: user,
-      recipient: recipient,
-      message: "It's time to take your #{@medication.med_type} of #{@medication.name} !"
-    )
-
-    if notification.save
-      puts "Notification saved successfully!"
-    else
-      puts "Error saving notification: #{notification.errors.full_messages.join(', ')}"
-    end
-  end
+  validates :message, presence: true
+end
+def show_notifications
+  @notifications = Notification.where(user_id: current_user.id)
+  render json: @notifications
 end

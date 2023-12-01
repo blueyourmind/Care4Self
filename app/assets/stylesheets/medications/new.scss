@@ -8,13 +8,6 @@ body {
 
 }
 
-.container {
-  max-width: 400px;
-  margin: auto;
-  padding-top: 80px;
-
-}
-
 .medication-form {
   background: linear-gradient(90deg, #74EBD5 0%, #9FACE6 100%);
   background-size: 200% 200%;
@@ -24,6 +17,14 @@ body {
   border-radius: 5px;
   box-shadow: 0px 0px 10px 2px rgba(0,0,0,0.1);
 }
+
+.container {
+  max-width: 400px;
+  margin: auto;
+  padding-top: 80px;
+}
+
+
 
 @keyframes gradient {
   0% {background-position: 100% 50%;}
