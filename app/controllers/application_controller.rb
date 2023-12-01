@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   # before_action :send_medication_reminders
 
   def configure_permitted_parameters
-  
+
   end
 
   def service_worker_js
