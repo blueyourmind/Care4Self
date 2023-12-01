@@ -1,18 +1,35 @@
 class NotificationsController < ApplicationController
   before_action :authenticate_user!
+  notifications = Notification.all 
+
+
+
+  def index
+    notifications = Notification.all
+
+ render json: notifications, content_type: 'application/json'
+  end
 
   def create
     @medication = Medication.find(params[:medication_id])
-    message = "Medication successfully created: #{@medication.name}"
+    message = " It's Time to take your #{@medication.med_type} of #{@medication.name}"
     create_medication_notification(message, current_user.id, @medication)
     schedule_medication_notification(@medication)
   end
 
-  def close
-    notification = Notification.find(params[:id])
-    notification.destroy
-    render json: { status: 'success', message: 'Notification closed successfully' }
+
+
+# Example in Rails controller
+def destroy
+  if notification_destroy_logic
+    head :no_content
+  else
+    render json: { error: 'Unable to delete notifications' }, status: :unprocessable_entity
   end
+end
+
+
+
 
 
   private

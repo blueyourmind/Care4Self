@@ -34,11 +34,12 @@ class MedicationsController < ApplicationController
     @medication = current_user.medications.build(medication_params)
 
     if @medication.save
-      message = "Medication successfully created: #{@medication.name}"
+      message = "It's Time to take your #{@medication.med_type} of #{@medication.name}"
       create_medication_notification(message)
       schedule_medication_notification(@medication, message)
 
       redirect_to medications_path, notice: 'Medication successfully created!'
+      NotificationBroadcastJob.schedule_medication_notification(@medication)
     else
       render :new
     end
@@ -80,8 +81,8 @@ class MedicationsController < ApplicationController
 
 
   def schedule_medication_notification(user_id, message)
-    notification_time = @medication.start_time 
-    message = "Time to take your #{@medication.name}"
+    notification_time = @medication.start_time
+    message = " It's Time to take your #{@medication.med_type} of #{@medication.name}"
     NotificationBroadcastJob.set(wait_until: notification_time).perform_later("notification_channel_#{current_user.id}", current_user.id, message)
   end
 

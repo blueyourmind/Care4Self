@@ -40,39 +40,72 @@
 
 
 
+
+
+
+
     <%= render "shared/flashes" %>
 <%= render "shared/navbar" %>
 
   <%= yield %>
-    <%= render "shared/footer"%>
-<div id="medicationNotification" class="notification">
-  <span id="notificationMessage"></span>
-</div>
+
+<div id="notificationsContainer"></div>
 
 
+ <%= render "shared/footer"%>
 
-
-
-<script> function showNotification(message) {
-  var notification = document.getElementById('medicationNotification');
-  var notificationMessage = document.getElementById('notificationMessage');
-
-  notificationMessage.textContent = message;
-  notification.style.display = 'block';
-
-  // Hide the notification after 5 seconds (adjust as needed)
-  setTimeout(function() {
-    notification.style.display = 'none';
-  }, 5000); // 5000 milliseconds = 5 seconds
+<script>
+function fetchNotifications() {
+  fetch('/notifications')
+    .then(response => response.json())
+    .then(data => {
+      displayNotifications(data);
+    })
+    .catch(error => console.error('Error fetching notifications:', error));
 }
 
-// Assuming you have a variable 'notification_time' with the time in milliseconds
-var notification_time = /* calculate your notification time in milliseconds */;
+// Fetch notifications every minute (adjust as needed)
+setInterval(fetchNotifications, 60000);
 
-// Display notification after a delay
-setTimeout(function() {
-  showNotification("Time to take your medication!");
-}, notification_time); </script>
+// Display notifications on the frontend
+function displayNotifications(notifications) {
+  const notificationsContainer = document.getElementById('notificationsContainer');
+
+  // Clear existing notifications
+  notificationsContainer.innerHTML = '';
+
+  // Iterate through notifications and append to the container
+  notifications.forEach(notification => {
+    const notificationCard = createNotificationCard(notification);
+    notificationsContainer.appendChild(notificationCard);
+  });
+}
+
+// Helper function to create a notification card
+function createNotificationCard(notification) {
+  const card = document.createElement('div');
+  card.classList.add('notification-card');
+
+  // Add content to the card
+  const message = document.createElement('p');
+  message.textContent = notification.message; // Adjust this based on your Notification model
+  card.appendChild(message);
+
+  // Add a close button
+  const closeButton = document.createElement('button');
+  closeButton.textContent = 'Close';
+  closeButton.addEventListener('click', () => {
+    // Logic to handle closing the notification, e.g., remove it from the UI or mark it as read
+    card.remove();
+  });
+  card.appendChild(closeButton);
+
+  return card;
+}
+</script>
+
+
+
 
 
 

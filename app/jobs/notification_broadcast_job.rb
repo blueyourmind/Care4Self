@@ -5,11 +5,9 @@ class NotificationBroadcastJob < ApplicationJob
   def perform(channel, user_id, message)
     ActionCable.server.broadcast( user_id, message)
   end
+
+
+def self.schedule_medication_notification(medication)
+  set(wait_until: medication.start_time).perform_later("notification_channel_#{medication.user_id}", medication.user_id, "Time to take your medication: #{medication.name}")
 end
-
-
-# def perform(item) # this method dispatch when job is called
-#   item.user_ids.each do |user_id|
-#     Notification.create(item: item, user_id: user_id)
-#   end
-# end
+end
