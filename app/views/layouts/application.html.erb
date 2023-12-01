@@ -39,18 +39,31 @@
 
 <!-- shared/_notification.html.erb -->
 
-<%= render "shared/notification"%>
+<%# <%= render "shared/notification"%>
+<!-- Example in your layout file -->
+<% if flash[:success] %>
+  <div class="alert alert-success">
+    <%= flash[:success] %>
+  </div>
+<% end %>
+
+<% if flash[:error] %>
+  <div class="alert alert-danger">
+    <%= flash[:error] %>
+  </div>
+<% end %>
+
+<!-- Example layout.erb -->
+<body>
+  <div id="notifications-container">
+    <!-- Notifications will be dynamically added here -->
+  </div>
+  <%= yield %>
+</body>
+
+<%= render "shared/footer"%>
 
 
-
-    <%= yield %>
-    <%= render "shared/footer"%>
-
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    document.querySelector('.notification').classList.add('fade-out');
-  });
-</script>
 
 
 </body>

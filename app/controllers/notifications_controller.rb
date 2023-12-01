@@ -1,19 +1,26 @@
 class NotificationsController < ApplicationController
   before_action :authenticate_user!
-  # before_action :send_notification_if_needed
-
-  def index
-    @notifications = Notification.where(recipient: current_user)
-
- end
-
 
   def create
-
-    message = "New notification message!"
-
-    # Broadcast the message to the channel
-    ActionCable.server.broadcast("notifications_channel", message: message)
+    @medication = Medication.find(params[:medication_id])
+    message = "Medication successfully created: #{@medication.name}"
+    create_medication_notification(message)
   end
 
+  private
+
+  def create_medication_notification(message)
+    notification = current_user.notifications.build(message: message, recipient_id: current_user.id)
+
+    if notification.save
+      
+    NotificationBroadcastJob.perform_later('notifications_channel', "Time to take your #{@medication.name}")
+
+
+
+    else
+      flash[:alert] = "Notification couldn't be saved: #{notification.errors.full_messages.join(', ')}"
+      Rails.logger.error(flash[:alert])
+    end
+  end
 end
