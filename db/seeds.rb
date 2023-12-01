@@ -49,7 +49,7 @@ frequencies = ['Once a day', 'Twice a day', 'Three times a day', 'Four times a d
 # Assuming you have a User instance (replace with your logic to get a User)
 user = User.first
 
-25.times do
+2.times do
   Medication.create!(
     user: user,
     name: Faker::Lorem.word,

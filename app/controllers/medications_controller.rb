@@ -5,7 +5,7 @@ class MedicationsController < ApplicationController
     @user = current_user
     @notifications = @user.notifications.unread
     @notifications.update_all(read_at: Time.zone.now)
-
+    @medication = Medication.all
     if @user
       case params[:filter]
       when 'today'
@@ -21,13 +21,14 @@ class MedicationsController < ApplicationController
   end
 
   def show
-    # @medication is already set by before_action
+    @medications = Medication.where(user_id: current_user.id)
   end
 
   def new
     @notifications = Notification.unread
     @medication = Medication.new
     @medication.medication_frequencies.new
+    @medications = Medication.where(user_id: current_user.id)
   end
 
   def create

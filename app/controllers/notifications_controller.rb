@@ -1,6 +1,6 @@
 class NotificationsController < ApplicationController
   before_action :authenticate_user!
-  notifications = Notification.all 
+  notifications = Notification.all
 
 
 
@@ -19,7 +19,7 @@ class NotificationsController < ApplicationController
 
 
 
-# Example in Rails controller
+
 def destroy
   if notification_destroy_logic
     head :no_content
@@ -28,14 +28,7 @@ def destroy
   end
 end
 
-
-
-
-
-  private
-
-
-
+private
 
   def create_medication_notification(user_id,message)
     notification = current_user.notifications.build(message: message, recipient_id: current_user.id)

@@ -8,6 +8,6 @@ class NotificationBroadcastJob < ApplicationJob
 
 
 def self.schedule_medication_notification(medication)
-  set(wait_until: medication.start_time).perform_later("notification_channel_#{medication.user_id}", medication.user_id, "Time to take your medication: #{medication.name}")
+  set(wait_until: medication.start_time - 2.minutes).perform_later("notification_channel_#{medication.user_id}", medication.user_id, "Time to take your medication: #{medication.name}")
 end
 end
