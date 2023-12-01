@@ -1,8 +1,11 @@
-// app/assets/javascripts/channels/notifications.coffee
-App.notifications = App.cable.subscriptions.create('NotificationsChannel', {
+// app/assets/javascripts/channels/notifications.js
+
+App.notifications = App.cable.subscriptions.create({
+  channel: 'NotificationsChannel'
+}, {
   received: function(data) {
-    // Handle the received data and display notifications on the UI
-    console.log(data.message);
-    // Add logic to display notifications (e.g., using a notification library)
+    // Handle the received data, e.g., display the notification message
+    alert(data.message);
   }
 });
+

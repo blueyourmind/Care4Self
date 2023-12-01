@@ -34,12 +34,17 @@ class MedicationsController < ApplicationController
     @medication = current_user.medications.build(medication_params)
 
     if @medication.save
-      create_medication_notification("Medication successfully created: #{@medication.name}", current_user.id)
+      message = "Medication successfully created: #{@medication.name}"
+      create_medication_notification(message)
+      schedule_medication_notification(@medication, message)
+
       redirect_to medications_path, notice: 'Medication successfully created!'
     else
       render :new
     end
   end
+
+
 
 
   def edit
@@ -58,16 +63,30 @@ class MedicationsController < ApplicationController
 
   private
 
-  def create_medication_notification(message, recipient_id)
-    notification = current_user.notifications.build(message: message, recipient_id: recipient_id)
+  def create_medication_notification(message)
+    notification = current_user.notifications.build(message: message, recipient_id: current_user.id)
 
     if notification.save
-      NotificationBroadcastJob.perform_later('notifications_channel', "Time to take your #{@medication.name}")
+      NotificationBroadcastJob.perform_later("notification_channel_#{current_user.id}", current_user.id, message)
     else
-      flash[:alert] = "Notification couldn't be saved: #{notification.errors.full_messages.join(', ')}"
-      Rails.logger.error(flash[:alert])
+      handle_notification_creation_error(notification)
     end
   end
+
+  def handle_notification_creation_error(notification)
+    flash[:alert] = "Notification couldn't be saved: #{notification.errors.full_messages.join(', ')}"
+    Rails.logger.error(flash[:alert])
+  end
+
+
+  def schedule_medication_notification(user_id, message)
+    notification_time = @medication.start_time 
+    message = "Time to take your #{@medication.name}"
+    NotificationBroadcastJob.set(wait_until: notification_time).perform_later("notification_channel_#{current_user.id}", current_user.id, message)
+  end
+
+
+
 
   def set_medication
     @medication = current_user.medications.find(params[:id])

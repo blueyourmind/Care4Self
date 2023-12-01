@@ -5,6 +5,12 @@ Rails.application.routes.draw do
   root to: "pages#home"
   devise_for :users
 
+  resources :notifications do
+    member do
+      post 'close'
+    end
+  end
+
   resources :medications, only: [:new, :index, :show, :create, :update, :edit, :destroy] do
     member do
       get 'congrats'
@@ -24,6 +30,8 @@ Rails.application.routes.draw do
   devise_scope :user do
     resources :sessions, only: [:destroy], path: 'users/sign_out', as: :destroy_user_session
   end
+
+
 
 
 end

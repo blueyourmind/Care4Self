@@ -5,12 +5,13 @@
     <%= link_to 'Today', medications_path(filter: 'today'), class: 'btn btn-secondary' %>
     <%= link_to 'Tomorrow', medications_path(filter: 'tomorrow'), class: 'btn btn-secondary' %>
   </div>
-  
-<% @notifications.each do |notification| %>
-  <div class="<%= notification.read_at.nil? ? 'unread' : 'read' %>">
-    <%= notification.message %>
+<% flash.each do |key, value| %>
+  <div class="alert alert-<%= key %>">
+    <%= value %>
   </div>
 <% end %>
+
+
 
   <div class="meds-c">
   <% if @medications.present? %>

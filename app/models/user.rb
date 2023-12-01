@@ -11,9 +11,4 @@ class User < ApplicationRecord
   attribute :user_type, :string
   attribute :scheduled_medication_time, :time
 
-
-  # def notify(message)
-
-  #   Notification.with(message: message).deliver(self)
-  # end
 end
