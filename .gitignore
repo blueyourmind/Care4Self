@@ -11,6 +11,9 @@
 /.env*
 !/.env*.erb
 
+# Ignore dump.rdb
+/.rdb*
+
 # Ignore all logfiles and tempfiles.
 /log/*
 /tmp/*
@@ -43,3 +46,4 @@
 # Ignore Mac and Linux file system files
 *.swp
 .DS_Store
+dump.rdb

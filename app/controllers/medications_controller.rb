@@ -34,7 +34,9 @@ class MedicationsController < ApplicationController
   def create
     @medication = current_user.medications.build(medication_params)
 
-    if @medication.save
+    # raise
+
+    if @medication.save!
       message = "It's Time to take your #{@medication.med_type} of #{@medication.name}"
       create_medication_notification(message)
       schedule_medication_notification(@medication, message)
@@ -66,14 +68,21 @@ class MedicationsController < ApplicationController
   private
 
   def create_medication_notification(message)
-    notification = current_user.notifications.build(message: message, recipient_id: current_user.id)
+    # notification = Notification.new(message: message)
+    # notification.recipient = current_user
 
-    if notification.save
-      NotificationBroadcastJob.perform_later("notification_channel_#{current_user.id}", current_user.id, message)
-    else
-      handle_notification_creation_error(notification)
-    end
+    # raise
+    # # notification = current_user.notifications.build(message: message)
+
+    # if notification.save
+    #   NotificationBroadcastJob.perform_later("notification_channel_#{current_user.id}", current_user.id, message)
+    # else
+    #   handle_notification_creation_error(notification)
+    # end
   end
+
+
+
 
   def handle_notification_creation_error(notification)
     flash[:alert] = "Notification couldn't be saved: #{notification.errors.full_messages.join(', ')}"
@@ -81,11 +90,11 @@ class MedicationsController < ApplicationController
   end
 
 
-  def schedule_medication_notification(user_id, message)
-    notification_time = @medication.start_time
-    message = " It's Time to take your #{@medication.med_type} of #{@medication.name}"
+  def schedule_medication_notification(medication, message)
+    notification_time = medication.start_time
     NotificationBroadcastJob.set(wait_until: notification_time).perform_later("notification_channel_#{current_user.id}", current_user.id, message)
   end
+
 
 
 
@@ -95,6 +104,16 @@ class MedicationsController < ApplicationController
   end
 
   def medication_params
-    params.require(:medication).permit(:name, :med_type, :quantity, :instruction, :frequency, :start_time, :interval_id, :start_date, :end_date)
+    params.require(:medication).permit(
+      :name,
+      :med_type,
+      :quantity,
+      :instruction,
+      :frequency,
+      :start_time,
+      :interval_id,
+      :start_date,
+      :end_date
+    )
   end
 end

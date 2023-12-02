@@ -28,3 +28,9 @@ class Medication < ApplicationRecord
     create_medication_notification("Medication successfully created: #{name}")
   end
 end
+
+  def create_medication_for_user(user, medication_params)
+    user.medications.create(medication_params)
+  end
+
+
