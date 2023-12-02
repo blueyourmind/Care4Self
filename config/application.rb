@@ -34,6 +34,8 @@ config.active_job.queue_adapter = :sidekiq
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
     config.time_zone = 'Abu Dhabi'
+    config.active_record.default_timezone = :local
+    config.active_record.time_zone_aware_attributes = false
 
   end
 
