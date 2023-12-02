@@ -1,21 +1,23 @@
 .front_page_text {
-  margin-top: 20px;
+  margin-top: 10px;
   font-family: 'Hammersmith One', sans-serif;
+  text-align: center;
 }
 
 .logo-container {
   text-align: center;
-  margin: 150px 0;
-	width: 400px;
+  margin: 100px 0;
+	// width: 400px;
   color: #010C80;
 }
 
 .logo {
-  max-width: 197px;
+  max-width: 300px;
   border-radius: 18px;
   -webkit-animation: flip infinite;
   animation: flip 4.5s infinite;
-  margin-left: -32px;
+  // margin-left: -32px;
+  text-align: center;
 }
 
 @-webkit-keyframes flip {
@@ -36,6 +38,10 @@
   }
 }
 
+.element {
+  /* Adjust the duration as needed (e.g., 4s for 4 seconds) */
+  animation: flip 20s infinite;
+}
 
 .h2-container {
   margin: -85px;
@@ -55,6 +61,7 @@
 .photo {
   max-width: 360px;
   border-radius: 18px;
+  text-align: center;
 
 }
 /* @keyframes flip-with-scale {
@@ -68,7 +75,9 @@
 } */
 
 body {
-  background-color: #F1F3FE;
+  background: linear-gradient(90deg, #74EBD5 0%, #9FACE6 100%);
+  background-size: 200% 200%;
+  animation: gradient 2s ease infinite;
   font-family: 'Hammersmith One', sans-serif;
 }
 
@@ -80,9 +89,9 @@ body {
 .logo2 {
   max-width: 170px;
   border-radius: 18px;
-  margin-top: 95px;
+  margin-top: 5px;
   padding: 3px;
-  margin-left: -26px;
+  // margin-left: -26px;
 }
 
 p {
@@ -94,13 +103,16 @@ p {
 }
 .img{
   margin-top: 9px;
-  padding-left: 9px;
+  // padding-left: 9px;
+  text-align: center;
 
 }
 h1{
-  padding-left: 9px;
-  margin-left: -48px;
+  // padding-left: 9px;
+  // margin-left: -48px;
+  text-align: center;
 }
 h4{
-  margin-left: -37px;
+  // margin-left: -37px;
+  text-align: center;
 }

@@ -1,6 +1,5 @@
 # app/models/user.rb
 class User < ApplicationRecord
-  include Noticed::Model
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
