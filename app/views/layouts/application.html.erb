@@ -70,14 +70,17 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   // Assuming medicationStartTimes is an array of start times sent from your Rails view
-  const medicationStartTimes = [
-    <% @medications.each do |medication| %>
-      new Date('<%= medication.start_time %>'),
+  const medicationStartTimes =
+  [
+    <% if user_signed_in? && !@medications.nil? %>
+      <% @medications.each do |medication| %>
+        new Date('<%= medication.start_time %>'),
+      <% end %>
     <% end %>
   ];
 
   // Calculate time differences for each medication
-  medicationStartTimes.forEach(medicationStartTime => {
+  medicationStartTimes?.forEach(medicationStartTime => {
     calculateTimeDifference(medicationStartTime);
   });
 });
@@ -109,12 +112,12 @@ document.addEventListener("DOMContentLoaded", function() {
   </head>
 
   <body>
-
+ <div id="notificationsContainer"></div>
     <%= render "shared/flashes" %>
     <%= render "shared/navbar" %>
     <%= yield %>
     <%= render "shared/footer"%>
-  <div id="notificationsContainer"></div>
+
 
   </body>
 </html>
