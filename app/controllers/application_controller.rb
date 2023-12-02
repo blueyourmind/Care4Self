@@ -6,6 +6,8 @@ class ApplicationController < ActionController::Base
 
   def configure_permitted_parameters
 
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :phone_number, :family_phone_number])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:name, :phone_number, :family_phone_number])
   end
 
   def service_worker_js

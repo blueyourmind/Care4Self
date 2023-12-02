@@ -10,6 +10,7 @@
 puts 'Cleaning up database...'
 Medication.destroy_all
 Interval.destroy_all
+User.destroy_all
 # Frequency.destroy_all
 
 
@@ -25,9 +26,8 @@ Interval.create(name: '5 hours', value: 5)
 
 puts 'Finished creating frequencies and intervals!'
 
-# User.create!(
-# id: '5',
-# name:  "Example User",
+# user = User.create!(
+#         name:  "Example User",
 #          email: "example@railstutorial.org",
 #          password: '123456',
 #          photo: 'image_tag "https://kitt.lewagon.com/placeholder/users/arthur-littm"',
@@ -35,6 +35,14 @@ puts 'Finished creating frequencies and intervals!'
 #           family_phone_number: 1234567890,
 
 # )
+
+user = User.create!(
+        name:  "Example User",
+          email: "test@test.test",
+          password: '123456',
+          phone_number: 1234567890,
+          family_phone_number: 1234567890,
+)
 
 
 
@@ -47,7 +55,7 @@ medication_types = ['Tablets', 'Capsules', 'Drops', 'Inhalers', 'Injections', 'L
 
 frequencies = ['Once a day', 'Twice a day', 'Three times a day', 'Four times a day', 'Every 6 hours', 'Every 8 hours', 'Every 12 hours']
 # Assuming you have a User instance (replace with your logic to get a User)
-user = User.first
+
 
 2.times do
   Medication.create!(
