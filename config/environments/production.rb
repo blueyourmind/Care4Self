@@ -88,6 +88,7 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
   config.action_cable.url = "ws://localhost:3000/cable"
+  config.action_cable.allowed_request_origins = [ 'https://www.care4self.pro' ]
 
   # Enable DNS rebinding protection and other `Host` header attacks.
   # config.hosts = [
