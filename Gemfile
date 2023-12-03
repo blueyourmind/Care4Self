@@ -48,7 +48,7 @@ group :development do
   group :production do
     gem 'sidekiq'
     gem "noticed"
-    gem "redis", ">= 4.0.1"
+    gem 'redis'
     gem 'redis-store'
 
     # other production gems
