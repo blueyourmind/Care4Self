@@ -58,8 +58,8 @@ gem "actioncable"
  group :production do
   gem 'sidekiq'
   gem "noticed"
- gem "redis"
-   gem 'redis-store'
+  gem "redis", ">= 4.0.1"
+  gem 'redis-store'
 
 
   # other production gems
