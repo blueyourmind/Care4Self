@@ -89,6 +89,8 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
   config.action_cable.url = "ws://localhost:3000/cable"
   config.action_cable.allowed_request_origins = [ 'https://www.care4self.pro' ]
+  config.cache_store = :redis_store, ENV["REDIS_URL"] || "redis://localhost:6379/0/cache"
+
 
   # Enable DNS rebinding protection and other `Host` header attacks.
   # config.hosts = [
