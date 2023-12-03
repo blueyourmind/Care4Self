@@ -132,6 +132,7 @@ GEM
       sassc (~> 2.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
+    hiredis (0.6.3)
     http (5.1.1)
       addressable (~> 2.8)
       http-cookie (~> 1.0)
@@ -235,11 +236,8 @@ GEM
     rake (13.1.0)
     rdoc (6.6.0)
       psych (>= 4.0.0)
-    redis (2.2.2)
     redis-client (0.18.0)
       connection_pool
-    redis-store (1.0.0.1)
-      redis (~> 2.2.1)
     regexp_parser (2.8.2)
     reline (0.4.1)
       io-console (~> 0.5)
@@ -309,13 +307,13 @@ DEPENDENCIES
   error_highlight (>= 0.4.0)
   faker
   font-awesome-sass (~> 6.1)
+  hiredis
   jbuilder
   jsbundling-rails
   noticed
   pg (~> 1.1)
   puma (>= 5.0)
   rails (~> 7.1.1)
-  redis-store (~> 1.0.0)
   selenium-webdriver
   sidekiq
   simple_form!
