@@ -56,10 +56,9 @@ end
 
 
  group :production do
-  gem 'hiredis'
+
+end
+ gem 'redis'
   gem 'sidekiq'
   gem "noticed"
   gem "actioncable"
-
-  # other production gems
-end
