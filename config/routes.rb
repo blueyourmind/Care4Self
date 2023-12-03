@@ -13,6 +13,9 @@ Rails.application.routes.draw do
     end
   end
 
+
+resources :notifications, only: [:destroy]
+
   resources :reminders, only: [:index, :show, :edit, :update, :destroy] do
     member do
       patch :mark_as_taken

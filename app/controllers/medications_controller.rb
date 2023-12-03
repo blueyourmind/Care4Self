@@ -36,7 +36,7 @@ class MedicationsController < ApplicationController
 
 
     if @medication.save!
-      message = "It's Time to take your #{@medication.med_type} of #{@medication.name}"
+      message = "It's Time to take your #{@medication.quantity} #{@medication.med_type} of #{@medication.name} #{@medication.instruction}, Have a good day !!"
       create_medication_notification(message)
       schedule_medication_notification(@medication, message)
 
