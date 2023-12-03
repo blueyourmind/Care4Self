@@ -37,6 +37,8 @@ gem "simple_form", github: "heartcombo/simple_form"
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ]
+gem "sidekiq"
+
 end
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
@@ -45,7 +47,7 @@ group :development do
   # gem "rack-mini-profiler"
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
-gem "sidekiq"
+
   gem "error_highlight", ">= 0.4.0", platforms: [:ruby]
 end
 group :test do
