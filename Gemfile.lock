@@ -238,6 +238,8 @@ GEM
       psych (>= 4.0.0)
     redis-client (0.18.0)
       connection_pool
+    redis-store (1.10.0)
+      redis (>= 4, < 6)
     regexp_parser (2.8.2)
     reline (0.4.1)
       io-console (~> 0.5)
@@ -314,6 +316,7 @@ DEPENDENCIES
   pg (~> 1.1)
   puma (>= 5.0)
   rails (~> 7.1.1)
+  redis (>= 4.0.1)
   selenium-webdriver
   sidekiq
   simple_form!
