@@ -56,7 +56,7 @@ end
 
 
  group :production do
-  gem 'redis-rails'
+  gem 'redis-store', '~> 1.0.0'
   gem 'sidekiq'
   gem "noticed"
   gem "actioncable"
