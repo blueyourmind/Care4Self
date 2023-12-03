@@ -90,8 +90,11 @@ Rails.application.configure do
   config.action_cable.url = "ws://localhost:3000/cable"
   config.action_cable.allowed_request_origins = [ 'https://www.care4self.pro' ]
   config.cache_store = :redis_cache_store, {
-    url: ENV['REDIS_URL']
+    url: ENV["rediss://:pe6dc62d20a26571050f70100b305e6f39b07d11b6e3c23394a3b0ee15a496c4f@rediss://:pe6dc62d20a26571050f70100b305e6f39b07d11b6e3c23394a3b0ee15a496c4f@ec2-63-34-38-39.eu-west-1.compute.amazonaws.com:26589
+    :26589"],
+    password: ENV[" pe6dc62d20a26571050f70100b305e6f39b07d11b6e3c2"],
   }
+
 
 
   # Enable DNS rebinding protection and other `Host` header attacks.
