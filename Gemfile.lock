@@ -151,6 +151,13 @@ GEM
       activesupport (>= 5.0.0)
     jsbundling-rails (1.2.1)
       railties (>= 6.0.0)
+    judoscale-rails (1.5.2)
+      judoscale-ruby (= 1.5.2)
+      railties
+    judoscale-ruby (1.5.2)
+    judoscale-sidekiq (1.5.2)
+      judoscale-ruby (= 1.5.2)
+      sidekiq (>= 5.0)
     llhttp-ffi (0.4.0)
       ffi-compiler (~> 1.0)
       rake (~> 13.0)
@@ -310,6 +317,8 @@ DEPENDENCIES
   font-awesome-sass (~> 6.1)
   jbuilder
   jsbundling-rails
+  judoscale-rails
+  judoscale-sidekiq
   noticed
   pg (~> 1.1)
   puma (>= 5.0)

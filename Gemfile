@@ -62,3 +62,5 @@ end
   gem 'sidekiq'
   gem "noticed"
   gem "actioncable"
+  gem "judoscale-rails"
+  gem "judoscale-sidekiq"
