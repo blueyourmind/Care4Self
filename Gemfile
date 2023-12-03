@@ -56,8 +56,6 @@ end
 
 
  group :production do
-  gem "redis"
-  gem 'redis-store'
   gem 'redis-rails'
   gem 'sidekiq'
   gem "noticed"
