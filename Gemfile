@@ -45,15 +45,6 @@ group :development do
   # gem "rack-mini-profiler"
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
-  group :production do
-    gem 'sidekiq'
-    gem "noticed"
-    gem 'redis'
-    gem 'redis-store'
-
-    # other production gems
-  end
-
   gem "error_highlight", ">= 0.4.0", platforms: [:ruby]
 end
 group :test do
@@ -62,4 +53,13 @@ group :test do
   gem "selenium-webdriver"
 end
 
-gem "actioncable"
+
+
+ group :production do
+  gem 'hiredis'
+  gem 'sidekiq'
+  gem "noticed"
+  gem "actioncable"
+
+  # other production gems
+end
