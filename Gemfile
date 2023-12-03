@@ -59,7 +59,7 @@ gem "actioncable"
   gem 'sidekiq'
   gem "noticed"
   gem "redis", ">= 4.0.1"
-  gem 'redis-store'
+
 
 
   # other production gems
