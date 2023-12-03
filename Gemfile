@@ -53,14 +53,14 @@ group :test do
   gem "selenium-webdriver"
 end
 
-gem "actioncable"
+
 
  group :production do
   gem 'sidekiq'
   gem "noticed"
   gem "redis"
   gem "redis-actionpack"
-
+gem "actioncable"
 
   # other production gems
 end
