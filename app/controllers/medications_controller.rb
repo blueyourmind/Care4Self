@@ -40,7 +40,8 @@ class MedicationsController < ApplicationController
       create_medication_notification(message)
       schedule_medication_notification(@medication, message)
 
-      redirect_to medications_path, notice: 'Medication successfully created!'
+      flash[:notice] = 'Medication successfully created'
+      redirect_to medications_path 
       NotificationBroadcastJob.schedule_medication_notification(@medication)
     else
       render :new
