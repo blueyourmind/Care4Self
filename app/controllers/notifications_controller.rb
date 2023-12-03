@@ -19,11 +19,10 @@ class NotificationsController < ApplicationController
 
 
 
-def destroy
-  if notification_destroy_logic
+  def destroy
+    notification = Notification.find(params[:id])
+    notification.destroy
     head :no_content
-  else
-    render json: { error: 'Unable to delete notifications' }, status: :unprocessable_entity
   end
 end
 
@@ -38,6 +37,4 @@ def create_medication_notification(message)
   else
     handle_notification_creation_error(notification)
   end
-end
-
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_12_02_124547) do
+ActiveRecord::Schema[7.1].define(version: 2023_12_02_211554) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -57,6 +57,13 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_02_124547) do
     t.index ["user_id"], name: "index_medications_on_user_id"
   end
 
+  create_table "notification_recipients", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_notification_recipients_on_user_id"
+  end
+
   create_table "notifications", force: :cascade do |t|
     t.text "description"
     t.datetime "created_at", null: false
@@ -68,6 +75,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_02_124547) do
     t.string "type"
     t.datetime "read_at"
     t.bigint "recipient_id", null: false
+    t.datetime "start_time"
     t.index ["recipient_id"], name: "index_notifications_on_recipient_id"
   end
 
@@ -128,7 +136,9 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_02_124547) do
   add_foreign_key "medication_notifications", "medications"
   add_foreign_key "medications", "intervals"
   add_foreign_key "medications", "users"
+  add_foreign_key "notification_recipients", "users"
   add_foreign_key "notifications", "recipients"
+  add_foreign_key "notifications", "recipients", name: "unique_fk_constraint_name", on_delete: :cascade
   add_foreign_key "notifies", "users"
   add_foreign_key "reminders", "medication_frequencies"
   add_foreign_key "users", "recipients"

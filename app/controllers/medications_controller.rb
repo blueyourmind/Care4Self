@@ -34,14 +34,14 @@ class MedicationsController < ApplicationController
   def create
     @medication = current_user.medications.build(medication_params)
 
-    # raise
 
     if @medication.save!
-      message = "It's Time to take your #{@medication.med_type} of #{@medication.name}"
+      message = "It's Time to take your #{@medication.quantity} #{@medication.med_type} of #{@medication.name} #{@medication.instruction}, Have a good day !!"
       create_medication_notification(message)
       schedule_medication_notification(@medication, message)
 
-      redirect_to medications_path, notice: 'Medication successfully created!'
+      flash[:notice] = 'Medication successfully created'
+      redirect_to medications_path 
       NotificationBroadcastJob.schedule_medication_notification(@medication)
     else
       render :new
@@ -68,17 +68,17 @@ class MedicationsController < ApplicationController
   private
 
   def create_medication_notification(message)
-    # notification = Notification.new(message: message)
-    # notification.recipient = current_user
+    notification = Notification.new(message: message)
+    notification.recipient = current_user
 
-    # raise
-    # # notification = current_user.notifications.build(message: message)
 
-    # if notification.save
-    #   NotificationBroadcastJob.perform_later("notification_channel_#{current_user.id}", current_user.id, message)
-    # else
-    #   handle_notification_creation_error(notification)
-    # end
+    # notification = current_user.notifications.build(message: message)
+
+    if notification.save
+      NotificationBroadcastJob.perform_later("notification_channel_#{current_user.id}", current_user.id, message)
+    else
+      handle_notification_creation_error(notification)
+    end
   end
 
 
