@@ -56,11 +56,12 @@ end
 
 
  group :production do
+  gem "redis"
+  gem 'redis-store'
+  gem 'redis-rails'
   gem 'sidekiq'
   gem "noticed"
-  gem "redis"
-  gem "redis-actionpack"
-gem "actioncable"
+  gem "actioncable"
 
   # other production gems
 end
