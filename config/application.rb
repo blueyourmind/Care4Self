@@ -24,7 +24,7 @@ module Care4self
     # config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
     config.autoload_paths += %W(#{config.root}/app/notifications)
 # config/application.rb
-config.cache_store = :redis_store, ENV["REDIS_URL"] || "redis://localhost:6379/0/cache"
+# config.cache_store = :redis_store, ENV["REDIS_URL"] || "redis://localhost:6379/0/cache"
 
 
     config.active_job.queue_adapter = :sidekiq
