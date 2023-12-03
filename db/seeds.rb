@@ -7,10 +7,10 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
-puts 'Cleaning up database...'
-Medication.destroy_all
-Interval.destroy_all
-User.destroy_all
+# puts 'Cleaning up database...'
+# Medication.destroy_all
+# Interval.destroy_all
+# User.destroy_all
 # Frequency.destroy_all
 
 
@@ -24,7 +24,7 @@ Interval.create(name: '3 hours', value: 3)
 Interval.create(name: '4 hours', value: 4)
 Interval.create(name: '5 hours', value: 5)
 
-puts 'Finished creating frequencies and intervals!'
+# puts 'Finished creating frequencies and intervals!'
 
 # user = User.create!(
 #         name:  "Example User",
