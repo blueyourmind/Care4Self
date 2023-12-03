@@ -47,13 +47,13 @@ group :development do
   # gem "spring"
   group :production do
     gem 'sidekiq'
-    gem "noticed"
+
     gem 'redis'
     gem 'redis-store'
 
     # other production gems
   end
-
+  gem "noticed"
   gem "error_highlight", ">= 0.4.0", platforms: [:ruby]
 end
 group :test do
