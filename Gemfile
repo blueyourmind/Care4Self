@@ -64,7 +64,9 @@ end
 
 gem 'actionpack', '~> 7.1.1'
 
-gem 'redis-store', '~> 1.8.0'
+gem 'redis', '~> 4.2'
+
+gem 'activesupport', '~> 7.1'
 
 
 

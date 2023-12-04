@@ -245,8 +245,6 @@ GEM
     redis (4.8.1)
     redis-client (0.18.0)
       connection_pool
-    redis-store (1.8.2)
-      redis (>= 4, < 5)
     regexp_parser (2.8.2)
     reline (0.4.1)
       io-console (~> 0.5)
@@ -309,6 +307,7 @@ PLATFORMS
 DEPENDENCIES
   actioncable
   actionpack (~> 7.1.1)
+  activesupport (~> 7.1)
   autoprefixer-rails
   bootsnap
   capybara
@@ -325,7 +324,7 @@ DEPENDENCIES
   pg (~> 1.1)
   puma (>= 5.0)
   rails (~> 7.1.1)
-  redis-store (~> 1.8.0)
+  redis (~> 4.2)
   selenium-webdriver
   sidekiq
   simple_form!
