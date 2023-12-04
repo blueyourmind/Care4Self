@@ -22,7 +22,8 @@ module Care4self
 
 # ...
 
-config.cache_store = :redis_store, ENV["redis://default:oE5JupWrojIFHXeIr1O2fV7URUi8WSK6@redis-10704.c1.eu-west-1-3.ec2.cloud.redislabs.com:10704"]
+config.cache_store = :redis_cache_store, ENV["REDIS_URL"] || "redis://localhost:6379/0/cache"
+
 
 # ...
 
