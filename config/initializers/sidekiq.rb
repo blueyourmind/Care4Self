@@ -19,7 +19,7 @@ if url
   $redis = Redis.new(redis_options)
 else
   # Fallback to a local Redis server if REDIS_URL is not present
-  redis_options = { url: 'redis://localhost:6379/0' }
+  redis_options = { url: 'redis://localhost:6379/0', password: 'pe6dc62d20a26571050f70100b305e6f39b07d11b6e3c23394a3b0ee15a496c4f' }
 
   Sidekiq.configure_server do |config|
     config.redis = redis_options
