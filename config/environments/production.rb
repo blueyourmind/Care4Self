@@ -91,7 +91,9 @@ Rails.application.configure do
   config.action_cable.allowed_request_origins = [ 'https://www.care4self.pro' ]
 
 
-config.cache_store = :redis_store, "redis://:pe6dc62d20a26571050f70100b305e6f39b07d11b6e3c23394a3b0ee15a496c4f@ec2-63-34-38-39.eu-west-1.compute.amazonaws.com:26589/0/cache"
+# config/environments/production.rb
+config.cache_store = :redis_store, "redis://:pe6dc62d20a26571050f70100b305e6f39b07d11b6e3c23394a3b0ee15a496c4f@ec2-63-34-38-39.eu-west-1.compute.amazonaws.com:26589/0/cache", { version: 0 }
+
 
 
 config.redis = {
