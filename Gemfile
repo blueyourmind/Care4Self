@@ -59,7 +59,7 @@ end
 
 end
 gem 'redis', '>= 4.0.0'
-
+gem 'redis-rails'
   gem 'sidekiq'
   gem "noticed"
   gem "actioncable"
