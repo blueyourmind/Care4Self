@@ -16,6 +16,7 @@ module Care4self
     end
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.1
+    config.redis = Redis.new(url: "rediss://:pe6dc62d20a26571050f70100b305e6f39b07d11b6e3c23394a3b0ee15a496c4f@ec2-63-34-38-39.eu-west-1.compute.amazonaws.com:26589", ssl_params: { verify_mode: OpenSSL::SSL::VERIFY_NONE })
 
     # Please, add to the `ignore` list any other `lib` subdirectories that do
     # not contain `.rb` files, or that should not be reloaded or eager loaded.
