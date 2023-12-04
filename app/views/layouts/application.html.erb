@@ -41,10 +41,10 @@
       card.appendChild(message);
 
       // Add an <audio> element for the notification sound
-     const audio = document.createElement('audio');
-audio.src = '.app/assets/images/sound.mp3';
-audio.autoplay = true; // Keep autoplay set to true
-card.appendChild(audio);
+    //  const audio = document.createElement('audio');
+// audio.src = '.app/assets/images/sound.mp3';
+// audio.autoplay = true; // Keep autoplay set to true
+// card.appendChild(audio);
 
 
       const closeButton = document.createElement('button');
@@ -189,7 +189,7 @@ card.appendChild(audio);
 
     <%= render "shared/flashes" %>
     <%= render "shared/navbar" %>
-<img class="Maclogo" src="https://i.ibb.co/xfqPkHB/pngegg.png" alt="pngegg" style="width: 300px; height: 300px; border: 0;">
+
     <%= yield %>
     <%= render "shared/footer"%>
  <div id="notificationsContainer"></div>

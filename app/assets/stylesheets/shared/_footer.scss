@@ -26,9 +26,9 @@
   margin: 0 auto;
 }
 
-// .home.active {
-//   color: var(--accent-color);
-// }
+.home.active {
+  color: var(--accent-color);
+}
 .home-style {
   --app-content-background-color: #c0d8ec;
 }
@@ -123,11 +123,11 @@
   font-size: 1rem;
   margin-right: 5px;
   transition: all 0.4s;
-  // background-color: #f9f8fa;
+  background-color: #f9f8fa;
   width: 60px;
   height: 60px;
   position: relative;
-  // color: #888;
+  color: #888;
   cursor: pointer;
 }
 .tabbar li:last-child {
@@ -342,6 +342,6 @@
   height: 60px;
   border-radius: 100%;
   top: -1rem;
-  // background-color: var(--clay-background-color);
-  // box-shadow: 1px 2px 4px 0 var(--clay-box-shadow), 2px 4px 8px 0 var(--clay-box-shadow), inset 2px
+  background-color: var(--clay-background-color);
+  box-shadow: 1px 2px 4px 0 var(--clay-box-shadow), 2px 4px 8px 0 var(--clay-box-shadow), inset 2px
 }
