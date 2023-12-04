@@ -26,6 +26,7 @@ module Care4self
 
     config.redis = { url: ENV.fetch("REDISCLOUD_URL") { "redis://localhost:6379/0" }, ssl_params: { ca_file: "/etc/ssl/cert.pem" } }
 
+    config.assets.paths << Rails.root.join("app", "assets", "sounds")
 
     # Configure autoload paths
     config.autoload_paths += %W(#{config.root}/app/notifications)

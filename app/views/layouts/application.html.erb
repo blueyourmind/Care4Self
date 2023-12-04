@@ -6,8 +6,9 @@
     <title>Care4self</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+
 <script>
-  document.addEventListener("DOMContentLoaded", function() {
+  document.addEventListener("DOMContentLoaded", function () {
     // Function to display notifications
     function displayNotifications(notifications) {
       const notificationsContainer = document.getElementById('notificationsContainer');
@@ -39,6 +40,16 @@
       message.textContent = notification.message;
       card.appendChild(message);
 
+      // Create an audio element for the notification sound
+const audio = new Audio('<%= asset_path("sound-5.mp3", digest: true) %>');
+
+ // Adjust the path accordingly
+ // Adjust the path accordingly
+// Adjust the path accordingly
+ // Adjust the path accordingly
+      audio.play(); // Autoplay the audio
+      card.appendChild(audio);
+
       const closeButton = document.createElement('button');
       closeButton.textContent = 'Close';
       closeButton.classList.add('close-notification'); // Add a class for event delegation
@@ -52,7 +63,6 @@
 
       return card;
     }
-
    // Function to calculate the time difference and fetch notifications accordingly
     function calculateTimeDifference(medicationStartTime) {
       const currentTime = new Date();
