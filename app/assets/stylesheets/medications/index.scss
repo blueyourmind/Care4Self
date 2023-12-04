@@ -1,12 +1,23 @@
 /* Add this CSS to your stylesheet or in a <style> tag in your HTML */
-.container {
-  max-width: 800px;
-  margin: 0 auto;
-}
+// .container {
+//   max-width: 800px;
+//   margin: 0 auto;
+// }
 
 .meds-c {
   width: 100%;
   margin-left: 0px;
+}
+
+@keyframes slideDown {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 .rectangle-medi {
@@ -14,15 +25,22 @@
   padding: 27px;
   margin-bottom: 9px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  background-color: rgb(246, 250, 250);
+  background-color: rgb(226, 237, 237);
   max-width: 600px;
   margin-left: auto;
   margin-right: auto;
+  border: none;
+  border-radius: 5px;
+  margin-bottom: 10px;
   a {
     text-decoration: none;
   }
   display: flex;
   align-items: center;
+
+  animation-name: slideDown;
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
 }
 
 .medication-link {
@@ -57,7 +75,7 @@
   display: flex;
   gap: 10px;
   margin: 9px;
-  padding-top: 9px;
+  // padding-top: 9px;
 }
 
 .filter-meds a {
@@ -77,35 +95,54 @@
 }
 
 /* Fixed navbar styles */
-.navbar {
-  background-color: #333;
-  color: #fff;
-  padding: 10px;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 1000;
-}
+// .navbar {
+//   background-color: #333;
+//   color: #fff;
+//   padding: 10px;
+//   position: fixed;
+//   top: 0;
+//   width: 100%;
+//   z-index: 1000;
+// }
 
 .content {
-  padding-top: 60px;
+  padding-top: 5px;
 }
 
-.footer {
-  background-color: #333;
-  color: #fff;
-  padding: 10px;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-}
+// .footer {
+//   background-color: #333;
+//   color: #fff;
+//   padding: 10px;
+//   position: fixed;
+//   bottom: 0;
+//   width: 100%;
+// }
 
-.red-checkbox {
-  color: red;
-}
+// .red-checkbox {
+//   color: red;
+// }
 
 .red-checkbox-container {
   margin-left: auto;
   padding-right: 10px;
   cursor: pointer;
+}
+
+@keyframes gradient {
+  0% {background-position: 0% 50%;}
+  50% {background-position: 100% 50%;}
+  100% {background-position: 0% 50%;}
+}
+
+.body-index {
+  background: linear-gradient(to left, #74ebd5, #9face6, #ffffff);
+  background-size: 200% 200%;
+  animation: gradient 10s ease infinite;
+}
+
+
+
+.btn-secondary.index {
+  border: none;
+
 }
