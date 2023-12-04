@@ -29,12 +29,13 @@ end
 private
 
 
-def create_medication_notification(message)
-  notification = current_user.notifications.build(message: message)
+def create_medication_notification(user_id, message)
+  notification = User.find(user_id).notifications.build(message: message)
 
   if notification.save
-    NotificationBroadcastJob.perform_later("notification_channel_#{current_user.id}", current_user.id, message)
+    NotificationBroadcastJob.perform_later("notification_channel_#{user_id}", user_id, message)
   else
     handle_notification_creation_error(notification)
   end
 end
+

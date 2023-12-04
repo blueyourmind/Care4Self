@@ -1,13 +1,18 @@
-default: &default
-  adapter: redis
-  url: redis://localhost:6379/1
+  default:
+    adapter: redis
+    url: 'redis://localhost:6379/1'
 
-development:
-  <<: *default
+  development:
+    adapter: redis
+    url: 'redis://localhost:6379/1'
 
-test:
-  adapter: async
+  test:
+    adapter: async
 
-production:
-  <<: *default
-  url: <%= ENV.fetch("REDIS_URL") { "rediss://:pe6dc62d20a26571050f70100b305e6f39b07d11b6e3c23394a3b0ee15a496c4f@ec2-63-34-38-39.eu-west-1.compute.amazonaws.com:26589" } %>
+  production:
+    adapter: redis
+    url: >-
+        <%= ENV.fetch("REDIS_URL") {
+        "rediss://:pe6dc62d20a26571050f70100b305e6f39b07d11b6e3c23394a3b0ee15a496c
+        4f@ec2-63-34-38-39.eu-west-1.compute.amazonaws.com:26589"
+        } %>
