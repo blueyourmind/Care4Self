@@ -1,7 +1,7 @@
 require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
-  config.action_mailer.default_url_options = { host: "http://TODO_PUT_YOUR_DOMAIN_HERE" }
+  config.action_mailer.default_url_options = { host: "http:www.care4self.pro" }
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
@@ -101,10 +101,12 @@ config.redis = {
   url: ENV.fetch("REDIS_URL") {
     "rediss://:pe6dc62d20a26571050f70100b305e6f39b07d11b6e3c23394a3b0ee15a496c4f@ec2-63-34-38-39.eu-west-1.compute.amazonaws.com:26589"
   },
-  ssl_params: { verify_mode: OpenSSL::SSL::VERIFY_NONE } # Adjust the SSL parameters as needed
+  ssl_params: { ca_file: "/etc/ssl/cert.pem" } # Adjust the CA file path as needed
 }
 
 # ... rest of your configuration
+
+
 
 
   # Enable DNS rebinding protection and other `Host` header attacks.
