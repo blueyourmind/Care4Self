@@ -89,17 +89,14 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
   config.action_cable.url = "ws://localhost:3000/cable"
   config.action_cable.allowed_request_origins = [ 'https://www.care4self.pro' ]
-  config.cache_store = :redis_cache_store, {
-    url: ENV["rediss://:pe6dc62d20a26571050f70100b305e6f39b07d11b6e3c23394a3b0ee15a496c4f@rediss://:pe6dc62d20a26571050f70100b305e6f39b07d11b6e3c23394a3b0ee15a496c4f@ec2-63-34-38-39.eu-west-1.compute.amazonaws.com:26589
-    :26589"],
-    password: ENV[" pe6dc62d20a26571050f70100b305e6f39b07d11b6e3c2"],
-  }
 
-# config/application.rb or config/environments/production.rb
+
+config.cache_store = :redis_store, "redis://:pe6dc62d20a26571050f70100b305e6f39b07d11b6e3c23394a3b0ee15a496c4f@ec2-63-34-38-39.eu-west-1.compute.amazonaws.com:26589/0/cache"
+
 
 config.redis = {
   url: ENV.fetch("REDIS_URL") {
-    "rediss://:pe6dc62d20a26571050f70100b305e6f39b07d11b6e3c23394a3b0ee15a496c4f@ec2-63-34-38-39.eu-west-1.compute.amazonaws.com:26589"
+    "redis://:pe6dc62d20a26571050f70100b305e6f39b07d11b6e3c23394a3b0ee15a496c4f@ec2-63-34-38-39.eu-west-1.compute.amazonaws.com:26589"
   },
   ssl_params: { ca_file: "/etc/ssl/cert.pem" } # Adjust the CA file path as needed
 }
