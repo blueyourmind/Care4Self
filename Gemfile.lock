@@ -171,6 +171,7 @@ GEM
       net-smtp
     marcel (1.0.2)
     matrix (0.4.2)
+    mime-types (1.25.1)
     mini_mime (1.1.5)
     minitest (5.20.0)
     msgpack (1.7.2)
@@ -185,11 +186,9 @@ GEM
     net-smtp (0.4.0)
       net-protocol
     nio4r (2.7.0)
-    nokogiri (1.15.5-aarch64-linux)
-      racc (~> 1.4)
     nokogiri (1.15.5-arm64-darwin)
       racc (~> 1.4)
-    nokogiri (1.15.5-x86_64-linux)
+    nokogiri (1.15.5-x86_64-darwin)
       racc (~> 1.4)
     noticed (1.6.3)
       http (>= 4.0.0)
@@ -202,14 +201,14 @@ GEM
     puma (6.4.0)
       nio4r (~> 2.0)
     racc (1.7.3)
-    rack (2.2.8)
-    rack-session (1.0.2)
-      rack (< 3)
+    rack (3.0.8)
+    rack-session (2.0.0)
+      rack (>= 3.0.0)
     rack-test (2.1.0)
       rack (>= 1.3)
-    rackup (1.0.0)
-      rack (< 3)
-      webrick
+    rackup (2.1.0)
+      rack (>= 3)
+      webrick (~> 1.8)
     rails (7.1.2)
       actioncable (= 7.1.2)
       actionmailbox (= 7.1.2)
@@ -251,20 +250,26 @@ GEM
     responders (3.1.1)
       actionpack (>= 5.2)
       railties (>= 5.2)
+    rest-client (1.6.14)
+      mime-types (~> 1.16)
     rexml (3.2.6)
     ruby2_keywords (0.0.5)
     rubyzip (2.3.2)
+    rvm (1.11.3.9)
     sassc (2.4.0)
       ffi (~> 1.9)
     selenium-webdriver (4.15.0)
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
+    sequel (3.20.0)
     sidekiq (7.2.0)
       concurrent-ruby (< 2)
       connection_pool (>= 2.3.0)
       rack (>= 2.2.4)
       redis-client (>= 0.14.0)
+    sinatra (1.0)
+      rack (>= 1.0)
     sprockets (4.2.1)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
@@ -275,6 +280,11 @@ GEM
     stimulus-rails (1.3.0)
       railties (>= 6.0.0)
     stringio (3.1.0)
+    taps (0.3.24)
+      rack (>= 1.0.1)
+      rest-client (>= 1.4.0, < 1.7.0)
+      sequel (~> 3.20.0)
+      sinatra (~> 1.0.0)
     thor (1.3.0)
     timeout (0.4.1)
     turbo-rails (1.5.0)
@@ -300,9 +310,8 @@ GEM
     zeitwerk (2.6.12)
 
 PLATFORMS
-  aarch64-linux
   arm64-darwin-22
-  x86_64-linux
+  x86_64-darwin-22
 
 DEPENDENCIES
   actioncable
@@ -325,11 +334,13 @@ DEPENDENCIES
   puma (>= 5.0)
   rails (~> 7.1.2)
   redis (~> 4.2)
+  rvm
   selenium-webdriver
   sidekiq
   simple_form!
   sprockets-rails
   stimulus-rails
+  taps
   turbo-rails
   tzinfo-data
   web-console
@@ -338,4 +349,4 @@ RUBY VERSION
    ruby 3.1.2p20
 
 BUNDLED WITH
-   2.4.20
+   2.4.22
