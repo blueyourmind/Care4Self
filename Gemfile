@@ -60,8 +60,11 @@ end
 end
 # Gemfile
 
-gem 'redis', '~> 4.0'
-gem 'redis-rails', '~> 5.0'
+# Gemfile
+
+gem 'actionpack', '~> 7.1.1'
+gem 'redis-rails', '~> 5.0.2'
+
 
   gem 'sidekiq'
   gem "noticed"
