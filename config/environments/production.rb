@@ -95,6 +95,16 @@ Rails.application.configure do
     password: ENV[" pe6dc62d20a26571050f70100b305e6f39b07d11b6e3c2"],
   }
 
+# config/application.rb or config/environments/production.rb
+
+config.redis = {
+  url: ENV.fetch("REDIS_URL") {
+    "rediss://:pe6dc62d20a26571050f70100b305e6f39b07d11b6e3c23394a3b0ee15a496c4f@ec2-63-34-38-39.eu-west-1.compute.amazonaws.com:26589"
+  },
+  ssl_params: { verify_mode: OpenSSL::SSL::VERIFY_NONE } # Adjust the SSL parameters as needed
+}
+
+# ... rest of your configuration
 
 
   # Enable DNS rebinding protection and other `Host` header attacks.
