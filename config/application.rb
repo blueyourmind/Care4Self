@@ -26,7 +26,9 @@ module Care4self
 
     config.redis = { url: ENV.fetch("REDISCLOUD_URL") { "redis://localhost:6379/0" }, ssl_params: { ca_file: "/etc/ssl/cert.pem" } }
 
-    config.assets.paths << Rails.root.join("app", "assets", "sounds")
+    config.assets.paths << Rails.root.join("app", "assets", "Sound")
+
+
 
     # Configure autoload paths
     config.autoload_paths += %W(#{config.root}/app/notifications)
@@ -34,6 +36,7 @@ module Care4self
     # Time zone configuration
     config.time_zone = 'Abu Dhabi'
 
+    config.assets.enabled = true
 
 config.active_record.default_timezone = :utc
 config.active_record.time_zone_aware_attributes = true

@@ -13,4 +13,5 @@ Rails.application.config.assets.paths << Rails.root.join("node_modules")
 # Rails.application.config.assets.precompile += %w( admin.js admin.css )
 # config/initializers/assets.rb
 
-Rails.application.config.assets.precompile += %w( sound-5.mp3 )
+Rails.application.config.assets.precompile += %w( Sound/* )
+
