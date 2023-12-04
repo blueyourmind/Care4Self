@@ -25,6 +25,7 @@ module Care4self
 config.cache_store = :redis_cache_store, ENV["REDIS_URL"] || "redis://localhost:6379/0/cache"
 
 
+
 # ...
 
     # Configure Redis with SSL verification bypass
