@@ -58,12 +58,14 @@ end
  group :production do
 
 end
-# Gemfile
 
-# Gemfile
+
+
 
 gem 'actionpack', '~> 7.1.1'
-gem 'redis-rails', '~> 5.0.2'
+
+gem 'redis-store', '~> 1.8.0'
+
 
 
   gem 'sidekiq'
