@@ -93,7 +93,9 @@ Rails.application.configure do
 
 # config/environments/production.rb
 # config/environments/production.rb
-config.cache_store = :redis_store, "redis://:pe6dc62d20a26571050f70100b305e6f39b07d11b6e3c23394a3b0ee15a496c4f@ec2-63-34-38-39.eu-west-1.compute.amazonaws.com:26589/0/cache", { expires_in: nil }
+# config/environments/production.rb
+config.cache_store = :redis_store, "redis://:pe6dc62d20a26571050f70100b305e6f39b07d11b6e3c23394a3b0ee15a496c4f@ec2-63-34-38-39.eu-west-1.compute.amazonaws.com:26589/0/cache", { version: nil }
+
 
 
 
