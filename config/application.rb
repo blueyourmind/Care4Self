@@ -32,7 +32,10 @@ module Care4self
 
     # Time zone configuration
     config.time_zone = 'Abu Dhabi'
-    config.active_record.default_timezone = :local
-    config.active_record.time_zone_aware_attributes = false
+
+
+config.active_record.default_timezone = :utc
+config.active_record.time_zone_aware_attributes = true
+
   end
 end

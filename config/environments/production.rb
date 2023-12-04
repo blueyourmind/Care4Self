@@ -45,12 +45,14 @@ Rails.application.configure do
   config.log_level = ENV.fetch("RAILS_LOG_LEVEL", "info")
 
   # Use a different cache store in production.
-  config.cache_store = :redis_cache_store, ENV["REDIS_URL"] || "redis://default:oE5JupWrojIFHXeIr1O2fV7URUi8WSK6@redis-10704.c1.eu-west-1-3.ec2.cloud.redislabs.com:10704/0/cache"
+  config.cache_store = :redis_cache_store, ENV["REDIS_URL"] || "redis://localhost:6379/0/cache"
 
   config.redis = {
-    url: ENV.fetch("REDIS_URL") { "redis://default:oE5JupWrojIFHXeIr1O2fV7URUi8WSK6@redis-10704.c1.eu-west-1-3.ec2.cloud.redislabs.com:10704" }
-    # ssl_params: { ca_file: "/etc/ssl/cert.pem" } # Uncomment this line if Redis Cloud requires SSL
+    url: ENV.fetch("REDIS_URL") { "redis://localhost:6379/0" },
+    ssl_params: { ca_file: "/etc/ssl/cert.pem" } # Adjust the CA file path as needed
   }
+
+
 
   # ... rest of your configuration
 
