@@ -46,9 +46,10 @@ Rails.application.configure do
 
   # Use a different cache store in production.
   config.cache_store = :redis_cache_store, {
-  url: ENV.fetch("REDIS_URL") { "redis://localhost:6379/0/cache" },
-  ssl_params: { ca_file: "/etc/ssl/cert.pem" } # Adjust the CA file path as needed
-}
+    url: ENV.fetch("REDISCLOUD_URL") { "redis://localhost:6379/0/cache" },
+    ssl_params: { ca_file: "/etc/ssl/cert.pem" } # Adjust the CA file path as needed
+  }
+
 
 
   config.redis = {
