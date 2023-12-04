@@ -33,6 +33,24 @@ class MedicationsController < ApplicationController
 
   def create
     @medication = current_user.medications.build(medication_params)
+    @medication.user = current_user
+    @medication_duration = ((@medication.end_date - @medication.start_date).to_i) / 86400
+
+    case @medication.frequency
+    when "Once per day"
+      @medication_quantity = @medication_duration * 1
+    when "Twice per day"
+      @medication_quantity = @medication_duration * 2
+    when "Thrice per day"
+      @medication_quantity = @medication_duration * 3
+    end
+
+    if @medication_duration === 1
+      @medication_duration = "1 day"
+    else
+      @medication.duration = @medication_duration.to_s + " days"
+    end
+
 
     @medication.interval = Interval.find(params[:medication][:interval_id])
     if @medication.save!

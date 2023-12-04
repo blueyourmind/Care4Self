@@ -1,17 +1,35 @@
-<!-- app/views/medications/show.html.erb -->
-<div class="container">
-  <h1><%= @medication.name %></h1>
+<body class="body-gradient">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <div class="card border-primary mb-3 card-gradient slideDown card-border">
+          <div class="card-header bg-primary text-white">
+            <h1><%= @medication.name %></h1>
+          </div>
+          <div class="card-body">
+            <% if @medication.frequency %>
+              <!-- <p><strong>Name:</strong> <%= @medication.name %></p> -->
+              <p><strong>Duration:</strong> <%= @medication.duration %> days</p>
+              <p><strong>Quantity:</strong> <%= @medication.quantity %></p>
+              <p><strong>Frequency:</strong> <%= @medication.frequency %></p>
+              <p><strong>Start Date:</strong> <%= @medication.start_date %></p>
+              <p><strong>End Date:</strong> <%= @medication.end_date %></p>
+              <p><strong>Instruction:</strong> <%= @medication.instruction %></p>
+              <p><strong>Medication Type:</strong> <%= @medication.med_type %></p>
+              <p><strong>Interval:</strong> <%= @medication.interval.name %></p>
 
-  <% if @medication.frequency %>
-   <p><strong>Name:</strong> <%= @medication.name %></p>
-   <p><strong>Duration:</strong> <%= @medication.duration %> days</p>
-   <p><strong>Quantity:</strong> <%= @medication.quantity %></p>
-    <p><strong>Frequency:</strong> <%= @medication.frequency %></p>
-  <% else %>
-    <p><strong>Frequency:</strong> Not specified</p>
-  <% end %>
+            <% else %>
+              <p><strong>Frequency:</strong> Not specified</p>
+            <% end %>
+          </div>
+          <div class="card-footer transparent-bg">
 
-  <%= link_to 'Back', medications_path, class: 'btn btn-secondary' %>
-  <%= link_to 'Edit', edit_medication_path(@medication), class: 'btn btn-primary' %>
-  <%= link_to 'Delete', @medication, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: 'btn btn-danger btn-delete' %>
-</div>
+            <%= link_to 'Edit', edit_medication_path(@medication), class: 'btn btn-primary' %>
+            <%= link_to 'Delete', @medication, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: 'btn btn-danger btn-delete' %>
+            <%= link_to 'Back', medications_path, class: 'btn btn-secondary' %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>

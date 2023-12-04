@@ -1,12 +1,20 @@
-body {
+.body-new {
   // background: linear-gradient(to right, rgba(102, 125, 182, 0.5), rgba(0, 130, 200, 0.5), rgba(0, 130, 200, 0.5), rgba(102, 125, 182, 0.5));
   height: 100vh;
   margin: 0;
   background-repeat: no-repeat;
   background-attachment: fixed;
+  padding-top: 60px;
 
+  .form-title{
+    padding:0px;
+    margin-top: 20px;
+    margin-bottom:20px;
+  }
 
 }
+
+
 
 .medication-form {
   background: linear-gradient(90deg, #74EBD5 0%, #9FACE6 100%);
