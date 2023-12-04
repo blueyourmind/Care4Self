@@ -58,8 +58,11 @@ end
  group :production do
 
 end
-gem 'redis', '>= 4.0.0'
-gem 'redis-rails'
+# Gemfile
+
+gem 'redis', '~> 4.0'
+gem 'redis-rails', '~> 5.0'
+
   gem 'sidekiq'
   gem "noticed"
   gem "actioncable"
