@@ -21,7 +21,6 @@
 }
 
 .rectangle-medi {
-  border: 1px solid #ddd;
   padding: 27px;
   margin-bottom: 9px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -35,6 +34,7 @@
   a {
     text-decoration: none;
   }
+
   display: flex;
   align-items: center;
 
@@ -42,6 +42,8 @@
   animation-duration: 1s;
   animation-timing-function: ease-out;
 }
+
+
 
 .medication-link {
   text-decoration: none;
@@ -71,7 +73,7 @@
 }
 
 .filter-meds {
-  margin-top: 10px; /* Adjust as needed */
+  margin-top: 10px;
   display: flex;
   gap: 10px;
   margin: 9px;

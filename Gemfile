@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 ruby "3.1.2"
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem "rails", "~> 7.1.1"
+gem "rails", "~> 7.1.2"
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
 # Use postgresql as the database for Active Record
@@ -45,14 +45,8 @@ group :development do
   # gem "rack-mini-profiler"
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
-  group :production do
-    gem 'sidekiq'
-    gem "noticed"
-    gem "redis", ">= 4.0.1"
-
-    # other production gems
-  end
-
+  gem 'taps'
+  gem 'rvm'
   gem "error_highlight", ">= 0.4.0", platforms: [:ruby]
 end
 group :test do
@@ -61,4 +55,25 @@ group :test do
   gem "selenium-webdriver"
 end
 
-gem "actioncable"
+
+
+ group :production do
+
+end
+
+
+
+
+gem 'actionpack', '~> 7.1.1'
+
+gem 'redis', '~> 4.2'
+
+gem 'activesupport', '~> 7.1'
+
+
+
+  gem 'sidekiq'
+  gem "noticed"
+  gem "actioncable"
+  gem "judoscale-rails"
+  gem "judoscale-sidekiq"
