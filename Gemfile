@@ -58,7 +58,8 @@ end
  group :production do
 
 end
- gem 'redis'
+gem 'redis', '>= 4.0.0'
+
   gem 'sidekiq'
   gem "noticed"
   gem "actioncable"

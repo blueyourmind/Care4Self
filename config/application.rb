@@ -20,8 +20,8 @@ module Care4self
     config.active_job.queue_adapter = :sidekiq
 
     # Configure Redis with SSL verification bypass
-    redis_url = "rediss://:pe6dc62d20a26571050f70100b305e6f39b07d11b6e3c23394a3b0ee15a496c4f@ec2-63-34-38-39.eu-west-1.compute.amazonaws.com:26589"
-    redis = Redis.new(url:"rediss://:pe6dc62d20a26571050f70100b305e6f39b07d11b6e3c23394a3b0ee15a496c4f@ec2-63-34-38-39.eu-west-1.compute.amazonaws.com:26589" , ssl_params: { verify_mode: OpenSSL::SSL::VERIFY_NONE })
+    redis_url = "redis://:pe6dc62d20a26571050f70100b305e6f39b07d11b6e3c23394a3b0ee15a496c4f@ec2-63-34-38-39.eu-west-1.compute.amazonaws.com:26589"
+    redis = Redis.new(url:"redis://:pe6dc62d20a26571050f70100b305e6f39b07d11b6e3c23394a3b0ee15a496c4f@ec2-63-34-38-39.eu-west-1.compute.amazonaws.com:26589" , ssl_params: { verify_mode: OpenSSL::SSL::VERIFY_NONE })
 
     # Set the Redis connection for your application
     config.redis = redis
