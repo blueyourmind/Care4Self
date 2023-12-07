@@ -6,11 +6,14 @@ body.medication-page  {
 
   background: linear-gradient(90deg, #74EBD5 0%, #9FACE6 100%);
   background-size: 200% 200%;
-  animation: gradient 2s ease infinite;
+  animation: gradient 1.5s ease infinite;
 
   margin-top: 60px;
+  font-family: 'helvetica neue', helvetica, arial, sans-serif;
+  font-weight: bold;
 
 }
+
 
 // .container.edit-medication-form {
 //   max-width: 400px;
@@ -52,11 +55,13 @@ body.medication-page  {
 
 .medication-title {
   margin-left: auto;
+  font-weight: bold;
 
   }
 
   .btn {
     border-radius: 5px;
+    margin-right: 1px;
   }
 
   .container {
@@ -66,4 +71,12 @@ body.medication-page  {
 
   .btn-secondary-margin-left {
     margin-left: 10px;
+  }
+
+  .btn-edit {
+    transition: all 0.3s ease;
+  }
+
+  .btn-edit:hover {
+    transform: translateY(-5px);
   }

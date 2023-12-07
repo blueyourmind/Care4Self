@@ -1,46 +1,46 @@
 <body class="body-new">
 <!-- <div class="container mb-5"> -->
   <%= simple_form_for @medication, html: { class: 'medication-form' } do |f| %>
-    <h2 class="form-title">Add Medication</h2>
+  <h2 class="form-title"><strong>Add Medication</strong></h2>
     <div class="form-group row">
-      <%= f.input :name, label: 'Medication Name', input_html: { class: 'form-control col-12 col-md-6 mb-3', placeholder: 'Enter medication name' } %>
+      <%= f.input :name, label: '<b>Medication Name:</b>'.html_safe, input_html: { class: 'form-control col-12 col-md-6 mb-3', placeholder: 'Enter medication name' } %>
     </div>
     <div class="form-group row">
-      <%= f.input :med_type, label: 'Med_Type', collection: ['Tablets', 'Capsules','Drops','Inhalers','Injections','Liquid','Topical medecines','Suppositories'], prompt: 'Select Medication Type', input_html: { class: 'form-control col-12 col-md-6 mb-3', placeholder: 'Select medication type' } %>
+      <%= f.input :med_type, label: '<b>Med Type:</b>'.html_safe, collection: ['Tablets', 'Capsules','Drops','Inhalers','Injections','Liquid','Topical medecines','Suppositories'], prompt: 'Select Medication Type', input_html: { class: 'form-control col-12 col-md-6 mb-3', placeholder: 'Select medication type' } %>
     </div>
     <div class="form-group row">
-      <%= f.input :quantity, label: 'Quantity', input_html: { min: 1, max: 100, value: '', class: 'form-control col-12 col-md-6 mb-3', placeholder: 'Enter quantity' } %>
+      <%= f.input :quantity, label: '<b>Quantity:</b>'.html_safe, input_html: { min: 1, max: 100, value: '', class: 'form-control col-12 col-md-6 mb-3', placeholder: 'Enter quantity' } %>
     </div>
     <div class="form-group row">
-      <%= f.input :instruction, label: 'Instruction', collection: ['Before meal', 'After meal'], prompt: 'Select Instruction', input_html: { class: 'form-control col-12 col-md-6 mb-3', placeholder: 'Select instruction' } %>
+      <%= f.input :instruction, label: '<b>Instruction:</b>'.html_safe, collection: ['Before meal', 'After meal'], prompt: 'Select Instruction', input_html: { class: 'form-control col-12 col-md-6 mb-3', placeholder: 'Select instruction' } %>
     </div>
     <div class="form-group row">
-      <%= f.input :frequency, label: 'Frequency', collection: ['Once per day', 'Twice per day', 'Thrice per day'], prompt: 'Select Frequency', input_html: { class: 'form-control col-12 col-md-6 mb-3', placeholder: 'Select frequency' } %>
+      <%= f.input :frequency, label: '<b>Frequency:</b>'.html_safe, collection: ['Once per day', 'Twice per day', 'Thrice per day'], prompt: 'Select Frequency', input_html: { class: 'form-control col-12 col-md-6 mb-3', placeholder: 'Select frequency' } %>
     </div>
     <div class="form-group row">
-      <label for="start-time" class="col-12 col-md-6">Start Time</label>
+      <label for="start-time" class="col-12 col-md-6"><strong>Start Time:</strong></label>
       <div class="input-group col-12 col-md-6 mb-3">
-        <%= f.input :start_time, id: 'start-time', class: 'form-control', placeholder: 'Enter start time' %>
+        <%= f.time_select :start_time, {}, id: 'start-time', class: 'form-control' %>
       </div>
     </div>
     <div class="form-group row">
-      <%= f.association :interval, label: 'Interval', collection: Interval.all, prompt: 'Select Interval', input_html: { class: 'form-control col-12 col-md-6 mb-3',id: 'interval_select', placeholder: 'Select interval' } %>
+      <%= f.association :interval, label: '<b>Interval:</b>'.html_safe, collection: Interval.all, prompt: 'Select Interval', input_html: { class: 'form-control col-12 col-md-6 mb-3',id: 'interval_select', placeholder: 'Select interval' } %>
     </div>
     <div class="form-field row">
       <div class="start-date-field col-12 col-md-6 mb-3">
-        <%= f.label :start_date %>
+        <%= f.label :start_date, '<b>Start Date: </b>'.html_safe %>
         <%= f.date_field :start_date, placeholder: 'Enter start date' %>
       </div>
       <div class="end-date-field col-12 col-md-6 mb-3">
-        <%= f.label :end_date %>
+        <%= f.label :end_date, '<b>End Date: </b>'.html_safe %>
         <%= f.date_field :end_date, placeholder: 'Enter end date' %>
       </div>
     </div>
 
     <div class="form-actions row">
       <div class="col-12 col-md-12 mb-3 d-flex justify-content-left">
-        <%= f.button :submit, 'Save', class: 'btn btn-primary mr-2' %>
-        <%= link_to 'Back', medications_path, class: 'btn btn-secondary' %>
+        <%= f.button :submit, 'Save', class: 'btn btn-primary mr-2 btn-new' %>
+        <%= link_to 'Back', medications_path, class: 'btn btn-secondary btn-new' %>
       </div>
     </div>
   <% end %>

@@ -6,7 +6,7 @@ class NotificationsController < ApplicationController
 
   def index
     notifications = Notification.all
-
+    # @notifications = Notification.where("read = ? AND time >= ?", false, Time.current)
  render json: notifications, content_type: 'application/json'
   end
 

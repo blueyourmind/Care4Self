@@ -18,6 +18,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@200&display=swap" rel="stylesheet">
+
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
     <link href="https://fonts.googleapis.com/css2?family=Hammersmith+One&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Teko:wght@300&display=swap" rel="stylesheet">
 
@@ -40,6 +44,7 @@
     <%= render "shared/navbar" %>
     <%= yield %>
     <%= render "shared/footer"%>
+
     <%# <div id="notificationsContainer"></div> %>
     <%# <%= render 'shared/notifications' %>
     <script>
@@ -47,5 +52,10 @@
     console.log("Stimulus loaded");
   });
 </script>
+
+ <div id="notificationsContainer"></div>
+
+
+
   </body>
 </html>

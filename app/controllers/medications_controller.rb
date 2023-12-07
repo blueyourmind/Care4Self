@@ -1,27 +1,29 @@
 class MedicationsController < ApplicationController
   before_action :set_medication, only: [:show, :edit, :update, :destroy]
 
-  def index
-    @user = current_user
-    # @notifications = Notification.all
 
-    @notifications = current_user.notifications.unread
-    Rails.logger.debug(@notifications.inspect)
-    @notifications.update_all(read_at: Time.zone.now)
-    @medication = Medication.all
-    if @user
-      case params[:filter]
-      when 'today'
-        @medications = @user.medications.where('start_date >= ?', Date.today)
-      when 'tomorrow'
-        @medications = @user.medications.where('start_date >= ?', Date.tomorrow)
-      else
-        @medications = @user.medications
-      end
+def index
+  @user = current_user
+  @notifications = @user.notifications.unread
+  @notifications.update_all(read_at: Time.zone.now)
+  @medication = Medication.all
+  if @user
+    case params[:filter]
+    when 'today'
+      @medications = @user.medications.where('start_date >= ? AND start_date <= ?', Time.zone.now.beginning_of_day, Time.zone.now.end_of_day)
+      @date = Time.zone.now.strftime("%A, %B %d, %Y")
+    when 'tomorrow'
+      @medications = @user.medications.where('start_date >= ?', Time.zone.now.beginning_of_day + 1.day)
+      @date = (Time.zone.now + 1.day).strftime("%A, %B %d, %Y")
+
     else
-      redirect_to root_path, alert: 'You need to be logged in to access this page.'
+      @medications = @user.medications
+      @date = nil
     end
+  else
+    redirect_to root_path, alert: 'You need to be logged in to access this page.'
   end
+end
 
   def show
     @medications = Medication.where(user_id: current_user.id)

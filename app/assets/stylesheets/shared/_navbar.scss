@@ -12,10 +12,15 @@ z-index: 1;
   margin: 92px;
   align-items:flex-start;
   position: absolute;
+
 h2{
-  font-size:20px;
-  font-family: 'Fira Code', monospace;
-  color:azure
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+  font-size: 20px;
+  color:azure;
+  margin-left: -26px;
+  padding-top: 8px;
+
 }
 }
 
@@ -25,5 +30,5 @@ h2{
   height: auto;
 }
 .content {
-  padding-top: 60px; 
+  padding-top: 60px;
 }
