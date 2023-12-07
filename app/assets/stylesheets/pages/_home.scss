@@ -6,8 +6,7 @@
 
 .logo-container {
   text-align: center;
-  margin: 100px 0;
-	// width: 400px;
+  margin: 20px -10px; /* Adjusted margin to reduce space */
   color: #010C80;
 }
 
@@ -87,11 +86,16 @@ body {
 }
 
 .logo2 {
-  max-width: 170px;
-  border-radius: 18px;
-  margin-top: 5px;
-  padding: 3px;
-  // margin-left: -26px;
+ text-align: center;
+ margin: 20px -10px;
+ max-width: 450px;
+}
+
+.getwellsoon {
+  text-align: center!important;
+  margin: 20px -10px;
+  padding-bottom: 100px;
+  max-width: 400px;
 }
 
 p {
@@ -115,4 +119,121 @@ h1{
 h4{
   // margin-left: -37px;
   text-align: center;
+}
+
+
+.h2-container {
+  margin: 20px; /* Adjusted margin for better spacing */
+}
+
+.stay-healthy {
+  padding: 20px;
+  text-align: center;
+}
+
+.reviews-container {
+  display: flex;
+  overflow-x: auto; /* Enable horizontal scrolling */
+  scroll-snap-type: x mandatory; /* Enable snapping to each comment box */
+  margin: 20px 0; /* Adjusted margin for better spacing */
+}
+
+.review-box {
+  position: relative;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  flex: 0 0 100%; /* Each comment box takes full width */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  scroll-snap-align: start; /* Ensure proper alignment during scrolling */
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition effect */
+}
+
+.review-box h1 {
+  color: #010C80;
+  font-size: 1.2em; /* Reduced font size for the review box headings */
+  margin-bottom: 10px; /* Added margin for spacing */
+}
+
+.review-box p {
+  color: #010C80;
+  font-size: 1em; /* Adjusted font size for the review box paragraphs */
+  font-style: italic; /* Added italic style for the text */
+  margin-top: 10px; /* Added margin for spacing */
+  quotes: "“" "”"; /* Added quotation marks around the text */
+}
+
+/* Add these styles for mobile responsiveness */
+@media (max-width: 768px) {
+  .stay-healthy, .reviews-container, .review-box {
+    margin: 10px;
+  }
+}
+
+.reviews-note {
+  text-align: center;
+  margin: 20px 0; /* Adjusted margin for better spacing */
+}
+
+.reviews-note p {
+  color: #fafafa; /* Light green color */
+  font-size: 1em; /* Adjusted font size for a smaller note */
+}
+
+.add-medicine-container {
+  text-align: center;
+  margin: 20px;
+}
+
+.add-medicine-container p {
+  display: inline-block;
+  // background-color: #F08080; /* Light Coral color for the box */
+  color: #ffffff;
+}
+
+
+/* Add this style for the review box hover effect */
+.review-box:hover {
+  background-color: #FFD700; /* Yellow color for the hover effect */
+  color: #333; /* Dark Gray font color */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Added box shadow for a subtle lift */
+}
+
+.plus-symbol {
+  font-size: 2em; /* Adjusted font size for the plus symbol */
+  margin: 0 5px;
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  border-radius: 50%; /* Circle shape for the plus symbol */
+  color: #fff; /* White font color for the plus symbol */
+}
+
+.get-well-soon {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 10px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.get-well-soon {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #010C80; /* Dark Blue */
+  color: #fff; /* White */
+  text-align: center;
+  padding: 10px;
+  box-sizing: border-box;
+  border-top-left-radius: 20px; /* Rounded corners */
+  border-top-right-radius: 20px; /* Rounded corners */
 }
