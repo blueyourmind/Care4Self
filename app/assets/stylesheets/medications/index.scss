@@ -148,3 +148,57 @@
   border: none;
 
 }
+
+
+// .rectangular-medis {
+//   background-color: #ef1010;
+// }
+
+// .rectangular-medis.taken {
+
+//   background-color: #13e139;
+// }
+//
+
+// .medication-checkbox {
+//   /* Styles for the normal state of the checkbox */
+// }
+
+// .taken-checkbox {
+//
+//   background-color: #aaffaa; /* Change the background color or add a checkmark image */
+// }
+
+
+// .rectangular-medi .medication-checkbox {
+
+// }
+/* Default styling for the checkbox */
+.red-checkbox {
+  width: 20px; /* Adjust the width as needed */
+  height: 20px; /* Adjust the height as needed */
+  border: 1px solid #000; /* Replace with your desired border color */
+  background-color: #fff; /* Replace with your desired background color */
+  cursor: pointer;
+}
+
+/* Styling for the checkbox when it's checked */
+.red-checkbox:checked {
+  background-color: #00ff00; /* Replace with your desired checked background color */
+}
+
+/* Styling for the check mark inside the checked checkbox */
+.red-checkbox:checked::before {
+  content: '\2713'; /* Unicode check mark character */
+  display: block;
+  text-align: center;
+  color: #fff; /* Replace with your desired check mark color */
+}
+
+
+
+
+.taken-mark {
+  color: green; /* or any color you prefer */
+  margin-left: 5px; /* Adjust spacing as needed */
+}

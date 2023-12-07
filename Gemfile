@@ -61,6 +61,7 @@ end
 
 end
 
+gem 'rails-ujs'
 
 
 

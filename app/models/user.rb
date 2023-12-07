@@ -1,11 +1,11 @@
 # app/models/user.rb
 class User < ApplicationRecord
-  # include Noticed::Model
+  include Noticed::Model
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
   has_many :medications
-  has_many :notifications, as: :recipient, dependent: :destroy
+  has_many :notifications, as: :recipient
   # has_many :notifications, dependent: :destroy
   # has_one :recipient
   # belongs_to :recipient, optional: true
