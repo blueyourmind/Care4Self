@@ -78,6 +78,9 @@
   gap: 10px;
   margin: 9px;
   // padding-top: 9px;
+  font-family: 'helvetica neue', helvetica, arial, sans-serif;
+  font-weight: bold;
+
 }
 
 .filter-meds a {
@@ -89,11 +92,13 @@
   border-radius: 5px;
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  font-weight: bold;
 }
 
 .filter-meds a:hover {
   background-color: rgba(0, 0, 0, 0.1);
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
+
 }
 
 /* Fixed navbar styles */
@@ -137,14 +142,29 @@
 }
 
 .body-index {
-  background: linear-gradient(to left, #74ebd5, #9face6, #ffffff);
-  background-size: 200% 200%;
-  animation: gradient 10s ease infinite;
+  background: linear-gradient(to left, #74ebd5, #ACB6E5, #9face6, #ACB6E5, #74ebd5);
+  background-size: 500% 500%;
+  animation: gradient 5s ease infinite;
 }
+
 
 
 
 .btn-secondary.index {
   border: none;
+
+}
+
+.date-index {
+  margin-left: 0px;
+  margin-right: 10px;
+  font-family: 'helvetica neue', helvetica, arial, sans-serif;
+  font-size: 20px;
+  margin-top: 20px;
+  font-weight: bold;
+  font-style: italic;
+  animation-name: slideDown;
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
 
 }

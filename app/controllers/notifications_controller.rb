@@ -6,7 +6,7 @@ class NotificationsController < ApplicationController
 
   def index
     notifications = Notification.all
-
+    # @notifications = Notification.where("read = ? AND time >= ?", false, Time.current)
  render json: notifications, content_type: 'application/json'
   end
 
@@ -38,4 +38,3 @@ def create_medication_notification(user_id, message)
     handle_notification_creation_error(notification)
   end
 end
-

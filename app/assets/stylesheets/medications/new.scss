@@ -5,11 +5,13 @@
   background-repeat: no-repeat;
   background-attachment: fixed;
   padding-top: 60px;
+  font-family: 'helvetica neue', helvetica, arial, sans-serif;
 
   .form-title{
     padding:0px;
     margin-top: 20px;
     margin-bottom:20px;
+
   }
 
 }
@@ -17,9 +19,9 @@
 
 
 .medication-form {
-  background: linear-gradient(90deg, #74EBD5 0%, #9FACE6 100%);
-  background-size: 200% 200%;
-  animation: gradient 2s ease infinite;
+  background: linear-gradient(90deg, #74EBD5 0%, #ACB6E5 33%, #9FACE6 66%, #74EBD5 100%);
+  background-size: 300% 300%;
+  animation: gradient 5s ease infinite;
 
   padding: 20px;
   border-radius: 5px;
@@ -35,14 +37,17 @@
 
 
 @keyframes gradient {
-  0% {background-position: 100% 50%;}
-  50% {background-position: 0% 50%;}
-  100% {background-position: 100% 50%;}
+  0% {background-position: 0% 0%;}
+  25% {background-position: 100% 0%;}
+  50% {background-position: 100% 100%;}
+  75% {background-position: 0% 100%;}
+  100% {background-position: 0% 0%;}
 }
 
 
 .medication-form .form-control {
   padding: 10px;
+  border-radius: 10px;
 }
 
 .medication-form .btn-primary {
@@ -62,4 +67,20 @@
 
 .simple_form medication-form {
   width: calc(100% - 30px);
+}
+
+.btn-special {
+  transition: background-color 0.3s ease;
+}
+
+.btn-special:hover {
+  background-color: #ddd;
+}
+
+.btn-new {
+  transition: all 0.3s ease;
+}
+
+.btn-new:hover {
+  transform: translateY(-5px);
 }

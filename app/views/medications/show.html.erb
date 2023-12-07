@@ -9,13 +9,13 @@
           <div class="card-body">
             <% if @medication.frequency %>
               <!-- <p><strong>Name:</strong> <%= @medication.name %></p> -->
+              <p><strong>Start Date:</strong> <%= @medication.start_date.strftime("%B %d, %Y") %></p>
+              <p><strong>End Date:</strong> <%= @medication.end_date.strftime("%B %d, %Y") %></p>
+              <p><strong>Medication Type:</strong> <%= @medication.med_type %></p>
               <p><strong>Duration:</strong> <%= @medication.duration %> days</p>
               <p><strong>Quantity:</strong> <%= @medication.quantity %></p>
               <p><strong>Frequency:</strong> <%= @medication.frequency %></p>
-              <p><strong>Start Date:</strong> <%= @medication.start_date %></p>
-              <p><strong>End Date:</strong> <%= @medication.end_date %></p>
               <p><strong>Instruction:</strong> <%= @medication.instruction %></p>
-              <p><strong>Medication Type:</strong> <%= @medication.med_type %></p>
               <p><strong>Interval:</strong> <%= @medication.interval.name %></p>
 
             <% else %>
@@ -24,9 +24,18 @@
           </div>
           <div class="card-footer transparent-bg">
 
-            <%= link_to 'Edit', edit_medication_path(@medication), class: 'btn btn-primary' %>
-            <%= link_to 'Delete', @medication, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: 'btn btn-danger btn-delete' %>
-            <%= link_to 'Back', medications_path, class: 'btn btn-secondary' %>
+            <%= link_to edit_medication_path(@medication), class: 'btn btn-primary btn-show' do %>
+            <i class="fas fa-edit"></i> Edit
+          <% end %>
+
+          <%= link_to @medication, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: 'btn btn-danger btn-delete btn-show' do %>
+            <i class="fas fa-trash-alt"></i> Delete
+          <% end %>
+
+          <%= link_to medications_path, class: 'btn btn-secondary btn-show' do %>
+            <i class="fas fa-arrow-left"></i> Back
+          <% end %>
+
           </div>
         </div>
       </div>
