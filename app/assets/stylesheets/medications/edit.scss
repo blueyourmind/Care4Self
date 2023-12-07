@@ -1,0 +1,69 @@
+body.medication-page  {
+  height: 100vh;
+  margin: 0;
+  // background-repeat: no-repeat;
+  // background-attachment: fixed;
+
+  background: linear-gradient(90deg, #74EBD5 0%, #9FACE6 100%);
+  background-size: 200% 200%;
+  animation: gradient 2s ease infinite;
+
+  margin-top: 60px;
+
+}
+
+// .container.edit-medication-form {
+//   max-width: 400px;
+//   margin: auto;
+//   padding-top: 100px;
+
+// }
+
+// .form-control {
+//   // border-radius: 0;
+// }
+
+.btn-primary {
+  border-radius: 0;
+}
+
+.row.g-3.bg-light.p-4.rounded.shadow {
+
+  max-width: 400px;
+  margin: auto;
+  padding-top: 100px;
+
+  background: linear-gradient(90deg, #74EBD5 0%, #9FACE6 100%);
+  background-size: 200% 200%;
+  animation: gradient 2s ease infinite;
+
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px 2px rgba(0,0,0,0.1);
+
+  border: none;
+}
+
+@keyframes gradient {
+  0% {background-position: 100% 50%;}
+  50% {background-position: 0% 50%;}
+  100% {background-position: 100% 50%;}
+}
+
+.medication-title {
+  margin-left: auto;
+
+  }
+
+  .btn {
+    border-radius: 5px;
+  }
+
+  .container {
+    border: none;
+    box-shadow: none;
+  }
+
+  .btn-secondary-margin-left {
+    margin-left: 10px;
+  }

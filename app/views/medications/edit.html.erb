@@ -1,70 +1,56 @@
-<!-- app/views/medications/edit.html.erb -->
-<h1>Edit Medication</h1>
-<%= simple_form_for @medication, url: medication_path(@medication), method: :patch do |f| %>
-  <div class="form-group">
-    <%= f.input :name, label: 'Medication Name', input_html: { class: 'form-control' } %>
-  </div>
+<body class="medication-page">
+  <!-- <div class="container mb-5 edit-medication-form"> -->
+    <%= simple_form_for @medication, url: medication_path(@medication), method: :patch, html: { class: 'row g-3 bg-light p-4 rounded shadow' } do |f| %>
+    <h1 class="mb-4 text-left text-primary medication-title">Edit Medication</h1>
 
-  <div class="form-group">
-    <%= f.input :med_type, label: 'Medication Type', collection: ['Tablets','Capsules','Drops','Inhalers','Topical Medecines','Injections','Liquid','Suppositories'], prompt: 'Select Medication Type', input_html: { class: 'form-control' } %>
-  </div>
+    <div class="form-group row">
+      <%= f.input :name, label: 'Medication Name', input_html: { class: 'form-control col-12 col-md-6 mb-3', placeholder: 'Enter medication name' } %>
+    </div>
 
-  <div class="form-group">
-    <%= f.input :quantity, label: 'Quantity', input_html: {class: 'form-control' } %>
-  </div>
+    <div class="form-group row">
+      <%= f.input :med_type, label: 'Med_Type', collection: ['Tablets', 'Capsules','Drops','Inhalers','Injections','Liquid','Topical medecines','Suppositories'], prompt: 'Select Medication Type', input_html: { class: 'form-control col-12 col-md-6 mb-3', placeholder: 'Select medication type' } %>
+    </div>
 
-  <div class="form-group">
-    <%= f.input :instruction, label: 'Instruction', collection: ['Before meal', 'After meal'], input_html: { class: 'form-control' } %>
-  </div>
+    <div class="form-group row">
+      <%= f.input :quantity, label: 'Quantity', input_html: { min: 1, max: 100, value: @medication.quantity, class: 'form-control col-12 col-md-6 mb-3', placeholder: 'Enter quantity' } %>
+    </div>
 
-  <div class="form-group">
-    <%= f.input :frequency, label: 'Frequency', collection: ['Once per day', 'Twice per day', 'Thrice per day'], prompt: 'Select Frequency', input_html: { class: 'form-control' } %>
-</div>
+    <div class="form-group row">
+      <%= f.input :instruction, label: 'Instruction', collection: ['Before meal', 'After meal'], prompt: 'Select Instruction', input_html: { class: 'form-control col-12 col-md-6 mb-3', placeholder: 'Select instruction' } %>
+    </div>
 
+    <div class="form-group row">
+      <%= f.input :frequency, label: 'Frequency', collection: ['Once per day', 'Twice per day', 'Thrice per day'], prompt: 'Select Frequency', input_html: { class: 'form-control col-12 col-md-6 mb-3', placeholder: 'Select frequency' } %>
+    </div>
 
-  <div class="form-group">
-    <%= f.association :interval, label: 'Interval', collection: Interval.all, prompt: 'Select Interval', input_html: { class: 'form-control',id: 'interval_select' } %>
-  </div>
+    <div class="form-group row">
+      <label for="start-time" class="col-12 col-md-6">Start Time</label>
+      <div class="input-group col-12 col-md-6 mb-3">
+        <%= f.time_select :start_time, {}, id: 'start-time', class: 'form-control' %>
+      </div>
+    </div>
 
-  <!-- <div class="form-group" id="days_field" style="display: none;">
-    <%#= f.collection_check_boxes :days, [['Monday', 'Monday'], ['Tuesday', 'Tuesday'], ['Wednesday', 'Wednesday'], ['Thursday', 'Thursday'], ['Friday', 'Friday'], ['Saturday', 'Saturday'], ['Sunday', 'Sunday']], :first, :last, { item_wrapper_class: 'inline' } %>
-  </div> -->
+    <div class="form-group row">
+      <%= f.association :interval, label: 'Interval', collection: Interval.all, prompt: 'Select Interval', input_html: { class: 'form-control col-12 col-md-6 mb-3',id: 'interval_select', placeholder: 'Select interval' } %>
+    </div>
 
+    <div class="form-field row">
+      <div class="start-date-field col-12 col-md-6 mb-3">
+        <%= f.label :start_date %>
+        <%= f.date_field :start_date, placeholder: 'Enter start date' %>
+      </div>
 
+      <div class="end-date-field col-12 col-md-6 mb-3">
+        <%= f.label :end_date %>
+        <%= f.date_field :end_date, placeholder: 'Enter end date' %>
+      </div>
+    </div>
 
-<%# <%= link_to 'Set Medication Duration', set_duration_medication_path(@medication), method: :get %>
-
-  <div class="form-field">
-          <%= f.label :start_date %>
-          <%= f.date_field :start_date %>
-          <%= f.label :end_date %>
-          <%= f.date_field :end_date %>
-  <div class="form-actions">
-
-
-  <%= f.button :submit, "Update", class: 'btn btn-primary'%>
-  <%#= button_to "Back", medications_path(@user), title: "Back", class: "btn btn-secondary", method: :get %> <!-- This will create a primary back button -->
-<% end %>
-
-<!-- <script>
-  document.addEventListener('DOMContentLoaded', function() {
-  var intervalSelect = document.getElementById('interval_select');
-  var daysField = document.getElementById('days_field');
-
-  // Show or hide the days field when the interval select field changes
-  intervalSelect.addEventListener('change', function() {
-    if (intervalSelect.options[intervalSelect.selectedIndex].text == 'Weekly' || intervalSelect.options[intervalSelect.selectedIndex].text == 'Daily') {
-      daysField.style.display = 'block';
-      // Clear the selection in the daysField
-      var checkboxes = daysField.querySelectorAll('input[type=checkbox]');
-      checkboxes.forEach(function(checkbox) {
-        checkbox.checked = false;
-      });
-    } else {
-      daysField.style.display = 'none';
-    }
-  });
-  });
-
-
-  </script> -->
+    <div class="form-actions row">
+      <div class="col-12 col-md-12 mb-3 d-flex justify-content-left">
+      <%= f.button :submit, "Update", class: 'btn btn-primary mr-2' %>
+      <%= link_to 'Back', medication_path(@medication), class: 'btn btn-secondary btn-secondary-margin-left' %>
+    </div>
+  <% end %>
+<!-- </div> -->
+</body>

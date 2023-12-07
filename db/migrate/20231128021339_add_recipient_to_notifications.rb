@@ -1,5 +1,5 @@
-class AddRecipientToNotifications < ActiveRecord::Migration[7.1]
+class AddRecipientIdToNotifications < ActiveRecord::Migration[7.1]
   def change
-    # add_reference :notifications, :recipient, foreign_key: { to_table: :users }
+    add_column :notifications, :recipient_id, :integer
   end
 end

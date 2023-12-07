@@ -13,11 +13,14 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :reminders, only: [:index, :show, :edit, :update, :destroy] do
-    member do
-      patch :mark_as_taken
-    end
-  end
+
+resources :notifications, only: [:destroy]
+
+  # resources :reminders, only: [:index, :show, :edit, :update, :destroy] do
+  #   member do
+  #     patch :mark_as_taken
+  #   end
+  # end
 
   resources :intervals, only: [:index, :show, :create, :update, :destroy]
   resources :medication_frequencies, only: [:index, :show, :create, :update, :destroy]

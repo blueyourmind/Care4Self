@@ -33,13 +33,33 @@ class MedicationsController < ApplicationController
 
   def create
     @medication = current_user.medications.build(medication_params)
+    @medication.user = current_user
+    @medication_duration = ((@medication.end_date - @medication.start_date).to_i) / 86400
 
-    if @medication.save
-      message = "It's Time to take your #{@medication.med_type} of #{@medication.name}"
+    case @medication.frequency
+    when "Once per day"
+      @medication_quantity = @medication_duration * 1
+    when "Twice per day"
+      @medication_quantity = @medication_duration * 2
+    when "Thrice per day"
+      @medication_quantity = @medication_duration * 3
+    end
+
+    if @medication_duration === 1
+      @medication_duration = "1 day"
+    else
+      @medication.duration = @medication_duration.to_s + " days"
+    end
+
+
+    @medication.interval = Interval.find(params[:medication][:interval_id])
+    if @medication.save!
+      message = "It's Time to take your #{@medication.quantity} #{@medication.med_type} of #{@medication.name} #{@medication.instruction}, Have a good day !!"
       create_medication_notification(message)
       schedule_medication_notification(@medication, message)
 
-      redirect_to medications_path, notice: 'Medication successfully created!'
+      flash[:notice] = 'Medication successfully created'
+      redirect_to medications_path
       NotificationBroadcastJob.schedule_medication_notification(@medication)
     else
       render :new
@@ -64,9 +84,8 @@ class MedicationsController < ApplicationController
   end
 
   private
-
   def create_medication_notification(message)
-    notification = current_user.notifications.build(message: message, recipient_id: current_user.id)
+    notification = Notification.new(message: message, recipient_id: current_user.id)
 
     if notification.save
       NotificationBroadcastJob.perform_later("notification_channel_#{current_user.id}", current_user.id, message)
@@ -75,17 +94,24 @@ class MedicationsController < ApplicationController
     end
   end
 
+
+
+
+
+
+
+
   def handle_notification_creation_error(notification)
     flash[:alert] = "Notification couldn't be saved: #{notification.errors.full_messages.join(', ')}"
     Rails.logger.error(flash[:alert])
   end
 
 
-  def schedule_medication_notification(user_id, message)
-    notification_time = @medication.start_time
-    message = " It's Time to take your #{@medication.med_type} of #{@medication.name}"
+  def schedule_medication_notification(medication, message)
+    notification_time = medication.start_time
     NotificationBroadcastJob.set(wait_until: notification_time).perform_later("notification_channel_#{current_user.id}", current_user.id, message)
   end
+
 
 
 
@@ -95,6 +121,16 @@ class MedicationsController < ApplicationController
   end
 
   def medication_params
-    params.require(:medication).permit(:name, :med_type, :quantity, :instruction, :frequency, :start_time, :interval_id, :start_date, :end_date)
+    params.require(:medication).permit(
+      :name,
+      :med_type,
+      :quantity,
+      :instruction,
+      :frequency,
+      :start_time,
+      :interval_id,
+      :start_date,
+      :end_date
+    )
   end
 end
