@@ -67,6 +67,7 @@ Rails.application.configure do
   # Raises error for missing translations.
   # config.i18n.raise_on_missing_translations = true
   config.credentials = Rails.application.credentials.config
+  config.assets.debug = true
 
   # Annotate rendered view with file names.
   # config.action_view.annotate_rendered_view_with_filenames = true

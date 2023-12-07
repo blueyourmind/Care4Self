@@ -7,192 +7,54 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-<script>
-  document.addEventListener("DOMContentLoaded", function() {
-    // Function to display notifications
-    function displayNotifications(notifications) {
-      const notificationsContainer = document.getElementById('notificationsContainer');
-
-      if (!notificationsContainer) {
-        console.error('Notifications container not found!');
-        return;
-      }
-
-      // Clear existing notifications
-      notificationsContainer.innerHTML = '';
-
-      // Iterate through notifications and append to the container
-      notifications.forEach(notification => {
-        if (!isNotificationDisplayed(notification.id)) {
-          const notificationCard = createNotificationCard(notification);
-          notificationsContainer.appendChild(notificationCard);
-          markNotificationAsDisplayed(notification.id);
-        }
-      });
-    }
-
-    // Function to create a notification card
-    function createNotificationCard(notification) {
-      const card = document.createElement('div');
-      card.classList.add('notification-card');
-
-      const message = document.createElement('p');
-      message.textContent = notification.message;
-      card.appendChild(message);
-
-      // Add an <audio> element for the notification sound
-    //  const audio = document.createElement('audio');
-// audio.src = '.app/assets/images/sound.mp3';
-// audio.autoplay = true; // Keep autoplay set to true
-// card.appendChild(audio);
-
-
-      const closeButton = document.createElement('button');
-      closeButton.textContent = 'Close';
-      closeButton.classList.add('close-notification'); // Add a class for event delegation
-      closeButton.dataset.notificationId = notification.id; // Set the notification ID as a data attribute
-      closeButton.addEventListener('click', () => {
-        card.remove();
-        deleteNotification(notification.id); // Call the function to delete the notification
-        unmarkNotificationAsDisplayed(notification.id);
-      });
-      card.appendChild(closeButton);
-
-      return card;
-    }
-
-   // Function to calculate the time difference and fetch notifications accordingly
-    function calculateTimeDifference(medicationStartTime) {
-      const currentTime = new Date();
-      const timeDifference = medicationStartTime - currentTime;
-
-      if (timeDifference > 0) {
-        console.log('Time difference:', timeDifference);
-
-        // Set a timeout to fetch notifications when the time difference becomes zero
-        setTimeout(() => fetchNotifications(), Math.max(timeDifference, 1000)); // Minimum timeout of 1000 milliseconds
-      } else {
-        console.log('Medication start time has already passed.');
-      }
-    }
-
-    // Function to fetch notifications
-    function fetchNotifications() {
-      console.log('Fetching notifications...');
-      fetch('/notifications')
-        .then(response => response.json())
-        .then(data => {
-          console.log('Fetched notifications:', data);
-          displayNotifications(data);
-        })
-        .catch(error => console.error('Error fetching notifications:', error));
-    }
-
-    // Function to delete a notification via AJAX
-    function deleteNotification(notificationId) {
-      fetch(`/notifications/${notificationId}`, {
-        method: 'DELETE',
-        headers: {
-          'Content-Type': 'application/json',
-          'X-CSRF-Token': Rails.csrfToken(), // Include the CSRF token
-        },
-      })
-        .then(response => {
-          if (!response.ok) {
-            throw new Error(`Error deleting notification: ${response.statusText}`);
-          }
-          console.log('Notification deleted successfully.');
-        })
-        .catch(error => console.error(error));
-    }
-
-    // Function to check if a notification has been displayed
-    function isNotificationDisplayed(notificationId) {
-      const displayedNotifications = getDisplayedNotifications();
-      return displayedNotifications.includes(notificationId);
-    }
-
-    // Function to mark a notification as displayed
-    function markNotificationAsDisplayed(notificationId) {
-      const displayedNotifications = getDisplayedNotifications();
-      displayedNotifications.push(notificationId);
-      setDisplayedNotifications(displayedNotifications);
-    }
-
-    // Function to unmark a notification as displayed
-    function unmarkNotificationAsDisplayed(notificationId) {
-      const displayedNotifications = getDisplayedNotifications();
-      const index = displayedNotifications.indexOf(notificationId);
-      if (index !== -1) {
-        displayedNotifications.splice(index, 1);
-        setDisplayedNotifications(displayedNotifications);
-      }
-    }
-
-    // Function to get displayed notifications from local storage
-    function getDisplayedNotifications() {
-      const displayedNotificationsJSON = localStorage.getItem('displayedNotifications');
-      return displayedNotificationsJSON ? JSON.parse(displayedNotificationsJSON) : [];
-    }
-
-    // Function to set displayed notifications in local storage
-    function setDisplayedNotifications(displayedNotifications) {
-      const displayedNotificationsJSON = JSON.stringify(displayedNotifications);
-      localStorage.setItem('displayedNotifications', displayedNotificationsJSON);
-    }
-
-    // Assuming medicationStartTimes is an array of start times sent from your Rails view
-    const medicationStartTimes =
-      [
-        <% if user_signed_in? && !@medications.nil? %>
-        <% @medications.each do |medication| %>
-        new Date('<%= medication.start_time %>'),
-        <% end %>
-        <% end %>
-      ];
-
-    // Calculate time differences for each medication
-    medicationStartTimes?.forEach(medicationStartTime => {
-      calculateTimeDifference(medicationStartTime);
-    });
-  });
-</script>
-
-
-
-
 
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
+
     <%= stylesheet_link_tag "https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css", "data-turbo-track": "reload" %>
+
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@200&display=swap" rel="stylesheet">
+
+
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
     <link href="https://fonts.googleapis.com/css2?family=Hammersmith+One&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Teko:wght@300&display=swap" rel="stylesheet">
+
 
     <script src="https://cdn.jsdelivr.net/npm/actioncable"></script>
 
+    <script src="https://cdn.jsdelivr.net/npm/stimulus@2.0.0/dist/stimulus.umd.js" data-turbo-action="replace"></script>
+
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Teko:wght@300&display=swap" rel="stylesheet">
+
     <%= javascript_include_tag "https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js", "data-turbo-track": "reload"%>
+
+
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
 
   <body>
-
     <%= render "shared/flashes" %>
     <%= render "shared/navbar" %>
-
     <%= yield %>
     <%= render "shared/footer"%>
+
+    <%# <div id="notificationsContainer"></div> %>
+    <%# <%= render 'shared/notifications' %>
+    <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    console.log("Stimulus loaded");
+  });
+</script>
+
  <div id="notificationsContainer"></div>
+
 
 
   </body>

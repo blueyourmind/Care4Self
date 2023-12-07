@@ -22,7 +22,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh; /* Set the container to take the full height of the viewport */
+  height: 100vh;
 }
 // #notificationsList{
 //   margin-top:-18636px;
@@ -30,3 +30,6 @@
 //   margin-bottom: 9px;
 //   margin-left:9px;
 // }
+.notification-card.closed {
+  opacity: 0.5;
+}

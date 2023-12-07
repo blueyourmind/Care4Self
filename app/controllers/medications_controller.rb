@@ -1,6 +1,7 @@
 class MedicationsController < ApplicationController
   before_action :set_medication, only: [:show, :edit, :update, :destroy]
 
+
 def index
   @user = current_user
   @notifications = @user.notifications.unread
@@ -14,6 +15,7 @@ def index
     when 'tomorrow'
       @medications = @user.medications.where('start_date >= ?', Time.zone.now.beginning_of_day + 1.day)
       @date = (Time.zone.now + 1.day).strftime("%A, %B %d, %Y")
+
     else
       @medications = @user.medications
       @date = nil
@@ -36,24 +38,6 @@ end
 
   def create
     @medication = current_user.medications.build(medication_params)
-    @medication.user = current_user
-    @medication_duration = ((@medication.end_date - @medication.start_date).to_i) / 86400
-
-    case @medication.frequency
-    when "Once per day"
-      @medication_quantity = @medication_duration * 1
-    when "Twice per day"
-      @medication_quantity = @medication_duration * 2
-    when "Thrice per day"
-      @medication_quantity = @medication_duration * 3
-    end
-
-    if @medication_duration === 1
-      @medication_duration = "1 day"
-    else
-      @medication.duration = @medication_duration.to_s + " days"
-    end
-
 
     @medication.interval = Interval.find(params[:medication][:interval_id])
     if @medication.save!

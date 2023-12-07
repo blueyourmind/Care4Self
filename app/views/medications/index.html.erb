@@ -7,11 +7,16 @@
     <%= link_to 'Tomorrow', medications_path(filter: 'tomorrow'), class: 'btn btn-secondary index' %>
   </div>
 
+
+
+    <%= render 'shared/notifications' %>
+
 <% flash.each do |key, value| %>
   <div class="alert alert-<%= key %>">
     <%= value %>
   </div>
 <% end %>
+
 
 <!-- <% if @notifications.present? %>
   <% @notifications.each do |notification| %>
@@ -28,7 +33,8 @@
 <% end %>
 </div>
 
-  <div class="meds-c">
+
+<div class="meds-c">
   <% if @medications.present? %>
       <% @medications.reverse.each do |medication| %>
         <div class="rectangle-medi SlideDown">
@@ -40,11 +46,10 @@
             </div>
           </a>
           <div class="red-checkbox-container">
-            <%= check_box_tag "medication_ids[]", medication.id, false, class: "red-checkbox", data: { remote: true } %>
-            <% if Notification.exists?(message: "It's Time to take your #{medication.med_type} of #{medication.name}") %>
-            <span class="tick">✔️</span>
-          <% end %>
-          </div>
+      <%= check_box_tag "medication_ids[]", medication.id, false, class: "red-checkbox", data: { remote: true } %>
+            <span class="tick" style="display: none;">✔️</span>
+      </div>
+       </div>
         </div>
       <% end %>
     <% else %>
@@ -52,4 +57,232 @@
     <% end %>
   </div>
 </div>
+
+<script>
+function deleteNotification(notificationId) {
+  fetch(`/notifications/${notificationId}`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-CSRF-Token': Rails.csrfToken(),
+    },
+  })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`Error deleting notification: ${response.statusText}`);
+      }
+      console.log('Notification deleted successfully.');
+    })
+    .catch(error => console.error(error));
+}
+  document.addEventListener("DOMContentLoaded", function() {
+
+    // Function to display notifications
+    function displayNotifications(notifications) {
+      const notificationsContainer = document.getElementById('notificationsContainer');
+
+      if (!notificationsContainer) {
+        console.error('Notifications container not found!');
+        return;
+      }
+
+      // Clear existing notifications
+      notificationsContainer.innerHTML = '';
+
+      // Iterate through notifications and append to the container
+      notifications.forEach(notification => {
+        if (!isNotificationDisplayed(notification.id)) {
+          const notificationCard = createNotificationCard(notification);
+          notificationsContainer.appendChild(notificationCard);
+          markNotificationAsDisplayed(notification.id);
+        }
+      });
+    }
+
+    // Function to create a notification card
+    function createNotificationCard(notification) {
+      const card = document.createElement('div');
+      card.classList.add('notification-card');
+
+      const message = document.createElement('p');
+      message.textContent = notification.message;
+      card.appendChild(message);
+
+      // Add an <audio> element for the notification sound
+      // const audio = document.createElement('audio');
+      // audio.src = '.app/assets/images/sound.mp3';
+      // audio.autoplay = true; // Keep autoplay set to true
+      // card.appendChild(audio);
+
+      const closeButton = document.createElement('button');
+      closeButton.textContent = 'Close';
+      closeButton.classList.add('close-notification'); // Add a class for event delegation
+      closeButton.dataset.notificationId = notification.id; // Set the notification ID as a data attribute
+      closeButton.addEventListener('click', () => {
+        card.remove();
+        deleteNotification(notification.id); // Call the function to delete the notification
+        unmarkNotificationAsDisplayed(notification.id);
+      });
+      card.appendChild(closeButton);
+
+      return card;
+    }
+
+    // Function to calculate the time difference and fetch notifications accordingly
+    function calculateTimeDifference(medicationStartTime) {
+      const currentTime = new Date();
+      const timeDifference = medicationStartTime - currentTime;
+
+      if (timeDifference > 0) {
+        console.log('Time difference:', timeDifference);
+
+        // Set a timeout to fetch notifications when the time difference becomes zero
+        setTimeout(() => fetchNotifications(), Math.max(timeDifference, 1000)); // Minimum timeout of 1000 milliseconds
+      } else {
+        console.log('Medication start time has already passed.');
+      }
+    }
+
+    // Function to fetch notifications
+    function fetchNotifications() {
+      console.log('Fetching notifications...');
+      fetch('/notifications')
+        .then(response => response.json())
+        .then(data => {
+          console.log('Fetched notifications:', data);
+          displayNotifications(data);
+        })
+        .catch(error => console.error('Error fetching notifications:', error));
+    }
+
+    // Assuming this function is used to close notifications
+async function closeNotification(notificationId) {
+    console.log('Closing notification:', notificationId);
+
+  try {
+    const response = await fetch(`/notifications/${notificationId}`, {
+      method: 'PATCH', // Assuming you use a PATCH request for updating
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRF-Token': Rails.csrfToken(),
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error(`Error closing notification: ${response.statusText}`);
+    }
+
+    const notificationCard = document.querySelector(`.notification-card[data-notification-id="${notificationId}"]`);
+    notificationCard.classList.add('closed');
+
+    // Add the following lines to show the tick mark
+    const tickSpan = document.querySelector(`.red-checkbox-container[data-notification-id="${notificationId}"] .tick`);
+       console.log('Tick span:', tickSpan);
+    tickSpan.style.display = 'inline'; // or 'block' depending on your styling
+
+    // Add additional logic here if needed
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+    // Function to check if a notification has been displayed
+    function isNotificationDisplayed(notificationId) {
+      const displayedNotifications = getDisplayedNotifications();
+      return displayedNotifications.includes(notificationId);
+    }
+
+    // Function to mark a notification as displayed
+    function markNotificationAsDisplayed(notificationId) {
+      const displayedNotifications = getDisplayedNotifications();
+      displayedNotifications.push(notificationId);
+      setDisplayedNotifications(displayedNotifications);
+    }
+
+    // Function to unmark a notification as displayed
+    function unmarkNotificationAsDisplayed(notificationId) {
+      const displayedNotifications = getDisplayedNotifications();
+      const index = displayedNotifications.indexOf(notificationId);
+      if (index !== -1) {
+        displayedNotifications.splice(index, 1);
+        setDisplayedNotifications(displayedNotifications);
+      }
+    }
+
+    // Function to get displayed notifications from local storage
+    function getDisplayedNotifications() {
+      const displayedNotificationsJSON = localStorage.getItem('displayedNotifications');
+      return displayedNotificationsJSON ? JSON.parse(displayedNotificationsJSON) : [];
+    }
+
+    // Function to set displayed notifications in local storage
+    function setDisplayedNotifications(displayedNotifications) {
+      const displayedNotificationsJSON = JSON.stringify(displayedNotifications);
+      localStorage.setItem('displayedNotifications', displayedNotificationsJSON);
+    }
+
+    // Assuming medicationStartTimes is an array of start times sent from your Rails view
+    const medicationStartTimes =
+      [
+        <% if user_signed_in? && !@medications.nil? %>
+        <% @medications.each do |medication| %>
+        new Date('<%= medication.start_time %>'),
+        <% end %>
+        <% end %>
+      ];
+
+    // Calculate time differences for each medication
+    medicationStartTimes?.forEach(medicationStartTime => {
+      calculateTimeDifference(medicationStartTime);
+    });
+
+    // Adjust this based on your JavaScript setup
+    document.addEventListener('click', function(event) {
+      if (event.target.classList.contains('close-notification')) {
+        event.preventDefault();
+        const notificationId = event.target.dataset.notificationId;
+        closeNotification(notificationId);
+      }
+    });
+
+    async function closeNotification(notificationId) {
+      try {
+        const response = await fetch(`/notifications/${notificationId}`, {
+          method: 'PATCH', // Assuming you use a PATCH request for updating
+          headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-Token': Rails.csrfToken(),
+          },
+        });
+
+        if (!response.ok) {
+          throw new Error(`Error closing notification: ${response.statusText}`);
+        }
+
+        const notificationCard = document.querySelector(`.notification-card[data-notification-id="${notificationId}"]`);
+        notificationCard.classList.add('closed');
+        // Add additional logic here if needed
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    // Your modified script
+    function showPopup() {
+      document.getElementById("popup").style.display = "";
+    }
+
+    function handleCheckboxClick() {
+      var checkbox = document.getElementById("mycheckbox");
+
+      if (checkbox.checked) {
+        checkbox.disabled = false;
+      } else {
+        checkbox.disabled = true;
+      }
+    }
+  });
+</script>
+
+
 </body>
