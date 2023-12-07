@@ -1,11 +1,16 @@
-<div class="mac2">
-<h1>Hello <%= @user.name %></h1>
-<p><%= @user.photo %></p>
-<p>Email: <%= @user.email %></p>
-<p>Phone Number: <%= @user.phone_number %></p>
-<p>Family Phone Number: <%= @user.family_phone_number %></p>
-<%= link_to '', profile_path(current_user) %>
-<!-- <%#= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'btn btn-primary' %> -->
-<%= link_to "Log out", destroy_user_session_path, method: :delete, data: {turbo_method: :delete}, class: "btn btn-primary" %>
-<%= link_to 'Back to HomePage', medications_path, class: 'btn btn-secondary' %>
+<body class = "body-profile">
+<div class="container show mt-5">
+  <div class="card show">
+    <div class="card-body-show">
+      <!-- <h1 class="card-title">Hello <%= @user.name %></h1> -->
+
+      <p class="card-text"><strong>Email:</strong> <%= @user.email %></p>
+      <p class="card-text"><strong>Phone Number:</strong> <%= @user.phone_number %></p>
+      <p class="card-text"><strong>Family Phone Number:</strong> <%= @user.family_phone_number %></p>
+      <!-- <a href="<%= profile_path(current_user) %>" class="btn btn-primary">Profile</a> -->
+      <a href="<%= destroy_user_session_path %>" data-method="delete" data-turbo-method="delete" class="btn btn-danger btn-profile">Log out</a>
+      <a href="<%= medications_path %>" class="btn btn-secondary btn-profile">HomePage</a>
+    </div>
+  </div>
 </div>
+</body>

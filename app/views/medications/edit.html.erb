@@ -1,37 +1,37 @@
 <body class="medication-page">
   <!-- <div class="container mb-5 edit-medication-form"> -->
     <%= simple_form_for @medication, url: medication_path(@medication), method: :patch, html: { class: 'row g-3 bg-light p-4 rounded shadow' } do |f| %>
-    <h1 class="mb-4 text-left text-primary medication-title">Edit Medication</h1>
+    <h1 class="mb-4 text-left medication-title">Edit Medication</h1>
 
     <div class="form-group row">
-      <%= f.input :name, label: 'Medication Name', input_html: { class: 'form-control col-12 col-md-6 mb-3', placeholder: 'Enter medication name' } %>
+      <%= f.input :name, label: 'Medication Name:', input_html: { class: 'form-control col-12 col-md-6 mb-3', placeholder: 'Enter medication name' } %>
     </div>
 
     <div class="form-group row">
-      <%= f.input :med_type, label: 'Med_Type', collection: ['Tablets', 'Capsules','Drops','Inhalers','Injections','Liquid','Topical medecines','Suppositories'], prompt: 'Select Medication Type', input_html: { class: 'form-control col-12 col-md-6 mb-3', placeholder: 'Select medication type' } %>
+      <%= f.input :med_type, label: 'Med Type:', collection: ['Tablets', 'Capsules','Drops','Inhalers','Injections','Liquid','Topical medecines','Suppositories'], prompt: 'Select Medication Type', input_html: { class: 'form-control col-12 col-md-6 mb-3', placeholder: 'Select medication type' } %>
     </div>
 
     <div class="form-group row">
-      <%= f.input :quantity, label: 'Quantity', input_html: { min: 1, max: 100, value: @medication.quantity, class: 'form-control col-12 col-md-6 mb-3', placeholder: 'Enter quantity' } %>
+      <%= f.input :quantity, label: 'Quantity:', input_html: { min: 1, max: 100, value: @medication.quantity, class: 'form-control col-12 col-md-6 mb-3', placeholder: 'Enter quantity' } %>
     </div>
 
     <div class="form-group row">
-      <%= f.input :instruction, label: 'Instruction', collection: ['Before meal', 'After meal'], prompt: 'Select Instruction', input_html: { class: 'form-control col-12 col-md-6 mb-3', placeholder: 'Select instruction' } %>
+      <%= f.input :instruction, label: 'Instruction:', collection: ['Before meal', 'After meal'], prompt: 'Select Instruction', input_html: { class: 'form-control col-12 col-md-6 mb-3', placeholder: 'Select instruction' } %>
     </div>
 
     <div class="form-group row">
-      <%= f.input :frequency, label: 'Frequency', collection: ['Once per day', 'Twice per day', 'Thrice per day'], prompt: 'Select Frequency', input_html: { class: 'form-control col-12 col-md-6 mb-3', placeholder: 'Select frequency' } %>
+      <%= f.input :frequency, label: 'Frequency:', collection: ['Once per day', 'Twice per day', 'Thrice per day'], prompt: 'Select Frequency', input_html: { class: 'form-control col-12 col-md-6 mb-3', placeholder: 'Select frequency' } %>
     </div>
 
     <div class="form-group row">
-      <label for="start-time" class="col-12 col-md-6">Start Time</label>
+      <label for="start-time" class="col-12 col-md-6">Start Time:</label>
       <div class="input-group col-12 col-md-6 mb-3">
         <%= f.time_select :start_time, {}, id: 'start-time', class: 'form-control' %>
       </div>
     </div>
 
     <div class="form-group row">
-      <%= f.association :interval, label: 'Interval', collection: Interval.all, prompt: 'Select Interval', input_html: { class: 'form-control col-12 col-md-6 mb-3',id: 'interval_select', placeholder: 'Select interval' } %>
+      <%= f.association :interval, label: 'Interval:', collection: Interval.all, prompt: 'Select Interval', input_html: { class: 'form-control col-12 col-md-6 mb-3',id: 'interval_select', placeholder: 'Select interval' } %>
     </div>
 
     <div class="form-field row">
@@ -48,8 +48,8 @@
 
     <div class="form-actions row">
       <div class="col-12 col-md-12 mb-3 d-flex justify-content-left">
-      <%= f.button :submit, "Update", class: 'btn btn-primary mr-2' %>
-      <%= link_to 'Back', medication_path(@medication), class: 'btn btn-secondary btn-secondary-margin-left' %>
+      <%= f.button :submit, "Update", class: 'btn btn-primary mr-2 btn-edit' %>
+      <%= link_to 'Back', medication_path(@medication), class: 'btn btn-secondary btn-secondary-margin-left btn-edit' %>
     </div>
   <% end %>
 <!-- </div> -->

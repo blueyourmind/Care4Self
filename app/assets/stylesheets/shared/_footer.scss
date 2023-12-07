@@ -27,7 +27,7 @@
 }
 
 .home.active {
-  color: var(--accent-color);
+  color: #686FAB;
 }
 .home-style {
   --app-content-background-color: #c0d8ec;
@@ -123,11 +123,13 @@
   font-size: 1rem;
   margin-right: 5px;
   transition: all 0.4s;
-  background-color: #f9f8fa;
+  // background-color: #f9f8fa;
+  // background-image: linear-gradient(135deg, #91CCE3 0%, #A6AED5 100%);
   width: 60px;
   height: 60px;
-  position: relative;
-  color: #888;
+  // position: relative;
+  // color: #888;
+  color:#686FAB;
   cursor: pointer;
 }
 .tabbar li:last-child {
@@ -331,17 +333,20 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  top: 1px;
+  top: -5px;
   left: 0;
-  width: 60px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   transition: top 0.4s ease-out, border-radius 0.4s ease-out, box-shadow 0.4s ease-out;
+  border-radius: 100%;
+  margin-right: 30px;
+  background-color: rgba(139, 154, 209, 0.4) ;
 }
 .tab-style5 .active {
-  width: 60px;
-  height: 60px;
+  width: 40px;
+  height: 40px;
   border-radius: 100%;
   top: -1rem;
-  background-color: var(--clay-background-color);
+  // background-color: var(--clay-background-color);
   box-shadow: 1px 2px 4px 0 var(--clay-box-shadow), 2px 4px 8px 0 var(--clay-box-shadow), inset 2px
 }

@@ -86,5 +86,18 @@
     function setClass(node, className) {
       node.classList.add(className);
     }
+
+    const icons = document.querySelectorAll(".material-icons-outlined");
+
+    icons.forEach((icon) => {
+      icon.addEventListener("click", function () {
+        icon.style.transition = "transform 0.3s ease-in-out";
+        icon.style.transform = "translateY(-10px)";
+
+        setTimeout(function () {
+          icon.style.transform = "translateY(0px)";
+        }, 300);
+      });
+    });
   });
 </script>

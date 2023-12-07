@@ -6,13 +6,27 @@
     <%= link_to 'Today', medications_path(filter: 'today'), class: 'btn btn-secondary index' %>
     <%= link_to 'Tomorrow', medications_path(filter: 'tomorrow'), class: 'btn btn-secondary index' %>
   </div>
+
 <% flash.each do |key, value| %>
   <div class="alert alert-<%= key %>">
     <%= value %>
   </div>
 <% end %>
 
+<!-- <% if @notifications.present? %>
+  <% @notifications.each do |notification| %>
+    <div class="alert alert-info">
+      <%= notification.message %>
+    </div>
+  <% end %>
+<% end %> -->
 
+
+<div class="date-index">
+<% if @date %>
+  <p><%= @date %></p>
+<% end %>
+</div>
 
   <div class="meds-c">
   <% if @medications.present? %>

@@ -1,34 +1,44 @@
 @keyframes gradient {
-  0% {background-position: 0% 50%;}
-  50% {background-position: 100% 50%;}
-  100% {background-position: 0% 50%;}
+  0% {background-position: 0% 0%;}
+  50% {background-position: 100% 100%;}
+  100% {background-position: 0% 0%;}
 }
 
 .card-gradient {
-  background: linear-gradient(to left, #74ebd5, #9face6, #ffffff);
-  background-size: 200% 200%;
-  // animation: gradient 10s ease infinite;
+  background: linear-gradient(90deg, #9face6, #f7f5f5,#74ebd5 );
+  background-size: 300% 200%;
+  animation: gradient 5s ease infinite;
+  animation: flip 1s ease;
 }
 
+
 .card-header {
-  background: linear-gradient(90deg, #007B83 0%, #47408B 100%);
+  background: linear-gradient(to left, #007B83 0%, #47408B 100%);
   background-size: 200% 200%;
-  animation: gradient 2s ease infinite;
+  animation: gradient 1.5s ease infinite;
 
   h1{
     margin-left: -10px;
   }
 }
 
-// .card{
-//   // border: none;
+.card{
+  margin-top: 20px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px;
+  transition: transform 0.3s ease;
 
-// }
+
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
 
 .body-gradient {
-  background: linear-gradient(to left, #74ebd5, #9face6, #ffffff);
+  background: linear-gradient(to left, #74ebd5, #9face6);
   background-size: 200% 200%;
-  animation: gradient 5s ease infinite;
+  animation: gradient 1.5s ease infinite;
 }
 
 // .card-border {
@@ -37,6 +47,7 @@
 
 .card-footer{
   border-top: 1px solid #007B83;
+
 }
 
 
@@ -46,6 +57,25 @@
 
 }
 
+.btn-show {
+  transition: all 0.3s ease;
+}
+
+.btn-show:hover {
+  transform: translateY(-5px);
+}
+
+@keyframes flip {
+  0% {transform: rotateY(0deg);}
+  50% {transform: rotateY(90deg);}
+  100% {transform: rotateY(0deg);}
+}
+
+.card-body {
+  margin-left: 0px;
+  padding-bottom: 1px;
+  padding-top: 15px;
+}
 
 // @keyframes slideDown {
 //   0% {
