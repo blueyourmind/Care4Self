@@ -1,4 +1,5 @@
-<% if @notifications.present? %>
+
+<% if @notifications.present? && @notifications.respond_to?(:each) %>
   <% @notifications.each do |notification| %>
     <% unless notification.read? %>
       <div class="alert alert-info">

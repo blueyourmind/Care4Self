@@ -1,16 +1,15 @@
-<body class = "body-profile">
-<div class="container show mt-5">
-  <div class="card show">
-    <div class="card-body-show">
-      <!-- <h1 class="card-title">Hello <%= @user.name %></h1> -->
-
-      <p class="card-text"><strong>Email:</strong> <%= @user.email %></p>
-      <p class="card-text"><strong>Phone Number:</strong> <%= @user.phone_number %></p>
-      <p class="card-text"><strong>Family Phone Number:</strong> <%= @user.family_phone_number %></p>
-      <!-- <a href="<%= profile_path(current_user) %>" class="btn btn-primary">Profile</a> -->
-      <a href="<%= destroy_user_session_path %>" data-method="delete" data-turbo-method="delete" class="btn btn-danger btn-profile">Log out</a>
-      <a href="<%= medications_path %>" class="btn btn-secondary btn-profile">HomePage</a>
+<body class="body-profile">
+  <div class="container show">
+    <div class="card show">
+      <div class="card-body-show">
+        <!-- <h1 class="card-title">Hello <%= @user.name %></h1> -->
+        <p class="card-text"><strong>Email:</strong> <%= @user.email %></p>
+        <p class="card-text"><strong>Phone Number:</strong> <%= @user.phone_number %></p>
+        <p class="card-text"><strong>Family Phone Number:</strong> <%= @user.family_phone_number %></p>
+        <!-- <a href="<%= profile_path(current_user) %>" class="btn btn-primary">Profile</a> -->
+        <a href="<%= destroy_user_session_path %>" data-method="delete" data-turbo-method="delete" class="btn  btn-profile">Log out</a>
+        <a href="<%= medications_path %>" class="btn  btn-profile">Back to Dashboard</a>
+      </div>
     </div>
   </div>
-</div>
 </body>

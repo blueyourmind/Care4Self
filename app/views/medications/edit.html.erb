@@ -1,6 +1,6 @@
 <body class="medication-page">
   <!-- <div class="container mb-5 edit-medication-form"> -->
-    <%= simple_form_for @medication, url: medication_path(@medication), method: :patch, html: { class: 'row g-3 bg-light p-4 rounded shadow' } do |f| %>
+    <%= simple_form_for @medication, url: medication_path(@medication), method: :patch, html: { class: 'row g-3  p-4 rounded shadow' } do |f| %>
     <h1 class="mb-4 text-left medication-title">Edit Medication</h1>
 
     <div class="form-group row">
@@ -48,8 +48,8 @@
 
     <div class="form-actions row">
       <div class="col-12 col-md-12 mb-3 d-flex justify-content-left">
-      <%= f.button :submit, "Update", class: 'btn btn-primary mr-2 btn-edit' %>
-      <%= link_to 'Back', medication_path(@medication), class: 'btn btn-secondary btn-secondary-margin-left btn-edit' %>
+      <%= f.button :submit, "Update", class: 'btn  mr-2 btn-edit' %>
+      <%= link_to 'Back', medication_path(@medication), class: 'btn btn-secondary-margin-left btn-edit' %>
     </div>
   <% end %>
 <!-- </div> -->

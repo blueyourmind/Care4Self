@@ -1,9 +1,6 @@
-.body-new {
+.body{
   // background: linear-gradient(to right, rgba(102, 125, 182, 0.5), rgba(0, 130, 200, 0.5), rgba(0, 130, 200, 0.5), rgba(102, 125, 182, 0.5));
-  height: 100vh;
-  margin: 0;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
+  background-color: #eff2ff;
   padding-top: 60px;
   font-family: 'helvetica neue', helvetica, arial, sans-serif;
 
@@ -12,16 +9,26 @@
     margin-top: 20px;
     margin-bottom:20px;
 
-  }
 
+
+
+
+  }
 }
 
 
 
+.h2new{
+  color: #030e81;
+  margin-bottom: 20px;
+  margin-top: -10px;
+}
+
+
 .medication-form {
-  background: linear-gradient(90deg, #74EBD5 0%, #ACB6E5 33%, #9FACE6 66%, #74EBD5 100%);
+
   background-size: 300% 300%;
-  animation: gradient 5s ease infinite;
+
 
   padding: 20px;
   border-radius: 5px;
@@ -48,6 +55,7 @@
 .medication-form .form-control {
   padding: 10px;
   border-radius: 10px;
+  border-color: #030e81;;
 }
 
 .medication-form .btn-primary {
@@ -69,18 +77,13 @@
   width: calc(100% - 30px);
 }
 
-.btn-special {
-  transition: background-color 0.3s ease;
+
+
+.simple_form{
+  background-color: #d1d3f2;
+  padding-top: 100px;
 }
 
-.btn-special:hover {
-  background-color: #ddd;
-}
-
-.btn-new {
-  transition: all 0.3s ease;
-}
-
-.btn-new:hover {
-  transform: translateY(-5px);
+.btn{
+  margin-left:10px;
 }

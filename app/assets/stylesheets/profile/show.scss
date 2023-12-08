@@ -1,75 +1,54 @@
-// .btn2{
-//   padding:5px;
-//   margin:9px;
+body.body-profile {
+  background-color: #f8f9fa; /* Set your desired background color */
+  margin: 0; /* Remove default margin */
+}
+
+// .container.show {
+//   display: flex;
+//   justify-content: center;
+//   align-items: flex-start; /* Align items to the top */
+//   height: 100vh;
+//   padding-top: 100px; /* Adjust top padding as needed */
+//   background-image: url("https://img.freepik.com/free-vector/medical-design-poster-with-original-medicinal-capsule-consisting-red-white-parts-different-medical-objects_1284-53615.jpg?w=826&t=st=1702045180~exp=1702045780~hmac=2f4e78fca18684256d1448b82a047934bbaf90832a5fdba67add871cac0d4281");
+//   background-repeat: no-repeat;
+//   background-size: cover;
 
 // }
-// .mac2{
-//   margin-top: 126px;
-//   padding-left: 69px;
-// }
 
-.container.show {
-  max-width: 600px;
-  margin: auto;
-  padding-top: 40px;
-  margin-left: 10px;
+body.body-profile::after {
+  content: "";
+  // background: url('https://img.freepik.com/premium-photo/top-view-assortment-drug-medicine-with-copy-space_23-2148430083.jpg?w=2000');
+  opacity: 0.7; /* Adjust to suit your needs */
+  top: 0; /* Start from the middle of the container */
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+
 }
 
 .card.show {
-  // box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-  transition: 0.3s;
-  border-radius: 5px;
-  background:none;
-  border: none;
-  margin-top: 0;
+  // border: 1px solid #ffffff; /* Thin white border */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow */
+  width: 350px; /* Adjust the width as needed */
+
 }
 
-// .card:hover {
-//   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-// }
-
 .card-body-show {
-  padding: 2em;
-  margin-left: -25px;
+  padding: 20px;
+  background-color: #d1d3f2;
+  border-radius: 10px;
 }
 
 .card-text {
-  font-size: 1.2em;
-  margin-bottom: 1em;
+  margin-bottom: 10px;
 }
 
-.btn {
-  margin-right: 1em;
+.btn-profile {
+  margin-right: 10px;
 }
-
-.body-profile {
-    animation: gradient 2s ease-in-out infinite;
-    background: linear-gradient(90deg,  #9face6,#74ebd5);
-    background-size: 200% 200%;
-    font-family: 'Roboto', sans-serif;
-    
-  }
-
-  @keyframes gradient {
-    0% {
-      background-position: 0% 100%;
-    }
-    50% {
-      background-position: 100% 0%;
-    }
-    100% {
-      background-position: 0% 100%;
-    }
-  }
-
-  .btn-profile {
-    transition: all 0.3s ease;
-  }
-
-  .btn-profile:hover {
-    transform: translateY(-5px);
-  }
-
-  .card-text{
-    font-size: 18px;
-  }
