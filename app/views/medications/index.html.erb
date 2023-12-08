@@ -36,12 +36,6 @@
                   <p class="medication-type"><%= medication.med_type %></p>
                 </div>
               </a>
-              <div class="red-checkbox-container">
-                <%= check_box_tag "medication_ids[]", medication.id, false, class: "red-checkbox", data: { remote: true } %>
-                <% if current_user.notifications.unread.where(medication_id: medication.id).exists? %>
-                  <span class="tick">✔️</span>
-                <% end %>
-              </div>
             </div>
           <% end %>
         <% else %>
