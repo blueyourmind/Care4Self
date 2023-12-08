@@ -1,7 +1,7 @@
 <body class="body-new">
 <!-- <div class="container mb-5"> -->
   <%= simple_form_for @medication, html: { class: 'medication-form' } do |f| %>
-  <h2 class="form-title"><strong>Add Medication</strong></h2>
+  <h2 class="form-title h2new"><strong>Add Medication</strong></h2>
     <div class="form-group row">
       <%= f.input :name, label: '<b>Medication Name:</b>'.html_safe, input_html: { class: 'form-control col-12 col-md-6 mb-3', placeholder: 'Enter medication name' } %>
     </div>
@@ -39,8 +39,8 @@
 
     <div class="form-actions row">
       <div class="col-12 col-md-12 mb-3 d-flex justify-content-left">
-        <%= f.button :submit, 'Save', class: 'btn btn-primary mr-2 btn-new' %>
-        <%= link_to 'Back', medications_path, class: 'btn btn-secondary btn-new' %>
+        <%= f.button :submit, 'Save', class: 'btn mr-2 btn-new' %>
+        <%= link_to 'Back', medications_path, class: 'btn btn-new' %>
       </div>
     </div>
   <% end %>

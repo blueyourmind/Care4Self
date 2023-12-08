@@ -4,7 +4,7 @@ body.medication-page  {
   // background-repeat: no-repeat;
   // background-attachment: fixed;
 
-  background: linear-gradient(90deg, #74EBD5 0%, #9FACE6 100%);
+  background-color: #eff2ff;
   background-size: 200% 200%;
   animation: gradient 1.5s ease infinite;
 
@@ -12,6 +12,10 @@ body.medication-page  {
   font-family: 'helvetica neue', helvetica, arial, sans-serif;
   font-weight: bold;
 
+}
+
+.simple_form{
+  background-color: #d1d3f2;
 }
 
 
@@ -35,10 +39,10 @@ body.medication-page  {
   max-width: 400px;
   margin: auto;
   padding-top: 100px;
-
-  background: linear-gradient(90deg, #74EBD5 0%, #9FACE6 100%);
+  background-color: #a4a4ee;
+  // background: linear-gradient(90deg, #74EBD5 0%, #9FACE6 100%);
   background-size: 200% 200%;
-  animation: gradient 2s ease infinite;
+
 
   padding: 20px;
   border-radius: 5px;
@@ -54,14 +58,17 @@ body.medication-page  {
 }
 
 .medication-title {
-  margin-left: auto;
+  margin-left: -64px;
   font-weight: bold;
+  color: #030e81;
 
   }
 
   .btn {
     border-radius: 5px;
     margin-right: 1px;
+    background-color: #7b7cc5;
+    color: #ffff;
   }
 
   .container {
@@ -73,10 +80,26 @@ body.medication-page  {
     margin-left: 10px;
   }
 
-  .btn-edit {
-    transition: all 0.3s ease;
-  }
+  // .btn-edit {
+  //   transition: all 0.3s ease;
+  // }
 
-  .btn-edit:hover {
-    transform: translateY(-5px);
-  }
+  // .btn-edit:hover {
+  //   transform: translateY(-5px);
+  // }
+
+
+
+
+.form-control.is-valid{
+  border-color: #37347d;
+}
+
+.form-label
+{
+  color: #030e81;
+}
+
+label{
+  color: #030e81;
+}

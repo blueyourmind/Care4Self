@@ -38,3 +38,15 @@ def create_medication_notification(user_id, message)
     handle_notification_creation_error(notification)
   end
 end
+
+
+
+
+
+
+
+
+
+
+
+

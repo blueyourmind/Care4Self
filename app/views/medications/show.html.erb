@@ -2,8 +2,8 @@
   <div class="container">
     <div class="row">
       <div class="col-md-6 offset-md-3">
-        <div class="card border-primary mb-3 card-gradient slideDown card-border">
-          <div class="card-header bg-primary text-white">
+        <div class="card mb-3 card-gradient slideDown card-border">
+          <div class="card-header text-white">
             <h1><%= @medication.name %></h1>
           </div>
           <div class="card-body">
@@ -11,6 +11,7 @@
               <!-- <p><strong>Name:</strong> <%= @medication.name %></p> -->
               <p><strong>Start Date:</strong> <%= @medication.start_date.strftime("%B %d, %Y") %></p>
               <p><strong>End Date:</strong> <%= @medication.end_date.strftime("%B %d, %Y") %></p>
+              <p><strong>Start time:</strong> <%=@medication.start_time.strftime("%H:%M")%></p>
               <p><strong>Medication Type:</strong> <%= @medication.med_type %></p>
               <p><strong>Duration:</strong> <%= @medication.duration %> days</p>
               <p><strong>Quantity:</strong> <%= @medication.quantity %></p>
@@ -22,17 +23,17 @@
               <p><strong>Frequency:</strong> Not specified</p>
             <% end %>
           </div>
-          <div class="card-footer transparent-bg">
+          <div class="card-footer transparent-bg d-flex justify-content-center">
 
-            <%= link_to edit_medication_path(@medication), class: 'btn btn-primary btn-show' do %>
+            <%= link_to edit_medication_path(@medication), class: 'btn btn-show' do %>
             <i class="fas fa-edit"></i> Edit
           <% end %>
 
-          <%= link_to @medication, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: 'btn btn-danger btn-delete btn-show' do %>
+          <%= link_to @medication, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: 'btn btn-delete btn-show' do %>
             <i class="fas fa-trash-alt"></i> Delete
           <% end %>
 
-          <%= link_to medications_path, class: 'btn btn-secondary btn-show' do %>
+          <%= link_to medications_path, class: 'btn  btn-show' do %>
             <i class="fas fa-arrow-left"></i> Back
           <% end %>
 

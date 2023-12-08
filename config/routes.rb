@@ -4,14 +4,11 @@ Rails.application.routes.draw do
   mount Sidekiq::Web => '/sidekiq'
   root to: "pages#home"
   devise_for :users
-
+  resources :medications
   get '/notifications', to: 'notifications#index'
   delete '/notifications', to: 'notifications#destroy_all'
-  resources :medications, only: [:new, :index, :show, :create, :update, :edit, :destroy] do
-    member do
-      get 'congrats'
-    end
-  end
+
+
 
 
 resources :notifications, only: [:destroy]

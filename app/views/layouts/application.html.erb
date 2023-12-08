@@ -40,20 +40,15 @@
   </head>
 
   <body>
-    <%= render "shared/flashes" %>
+
     <%= render "shared/navbar" %>
     <%= yield %>
+     <div id="notificationsContainer"></div>
     <%= render "shared/footer"%>
+<%= render "shared/flashes" %>
+  
 
-    <%# <div id="notificationsContainer"></div> %>
-    <%# <%= render 'shared/notifications' %>
-    <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    console.log("Stimulus loaded");
-  });
-</script>
 
- <div id="notificationsContainer"></div>
 
 
 

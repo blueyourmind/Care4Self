@@ -1,11 +1,12 @@
 .navbar{
-background-image: linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%);
+// background-image: linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%);
 color: #fff;
 padding: 10px;
 position: fixed;
 top: 0;
 width: 100%;
 z-index: 1;
+background-color: #544cbe;
 }
 
 .hello-msg {
@@ -16,18 +17,21 @@ z-index: 1;
 h2{
   font-family: 'Roboto', sans-serif;
   font-weight: bold;
-  font-size: 20px;
+  font-size: 16px;
   color:azure;
-  margin-left: -26px;
+  margin-left: -35px;
   padding-top: 8px;
+
 
 }
 }
 
 
 .navbar-img-small {
-  width: 54px;
+  width: 70px;
   height: auto;
+  position: fixed;
+margin-left: 292px;
 }
 .content {
   padding-top: 60px;

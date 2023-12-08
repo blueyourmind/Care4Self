@@ -3,9 +3,4 @@
 // ./bin/rails generate stimulus controllerName
 // app/javascript/controllers/index.js
 
-import { Application } from "stimulus";
-import NotificationController from "./notification_controller";
-
-const application = Application.start();
-application.register("notification", NotificationController);
 

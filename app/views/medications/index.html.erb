@@ -1,103 +1,86 @@
 <body class="body-index">
-<div class="container">
-<div class="content">
-  <div class="filter-meds" role="group" aria-label="Filter Medications">
-    <%= link_to 'All', medications_path, class: 'btn btn-secondary index' %>
-    <%= link_to 'Today', medications_path(filter: 'today'), class: 'btn btn-secondary index' %>
-    <%= link_to 'Tomorrow', medications_path(filter: 'tomorrow'), class: 'btn btn-secondary index' %>
-  </div>
-
-
-
-    <%= render 'shared/notifications' %>
-
-<% flash.each do |key, value| %>
-  <div class="alert alert-<%= key %>">
-    <%= value %>
-  </div>
-<% end %>
-
-
-<!-- <% if @notifications.present? %>
-  <% @notifications.each do |notification| %>
-    <div class="alert alert-info">
-      <%= notification.message %>
-    </div>
-  <% end %>
-<% end %> -->
-
-
-<div class="date-index">
-<% if @date %>
-  <p><%= @date %></p>
-<% end %>
-</div>
-
-
-<div class="meds-c">
-  <% if @medications.present? %>
-      <% @medications.reverse.each do |medication| %>
-        <div class="rectangle-medi SlideDown">
-          <a href="<%= medication_path(medication) %>" class="medication-link">
-            <img src="https://i.ibb.co/1Rx7HYZ/pngwing-com-2.png" alt="pngwing-com-2" class="medication-image">
-            <div class="medication-info">
-              <h5 class="medication-name"><%= medication.name %></h5>
-              <p class="medication-type"><%= medication.med_type %></p>
-            </div>
-          </a>
-          <div class="red-checkbox-container">
-      <%= check_box_tag "medication_ids[]", medication.id, false, class: "red-checkbox", data: { remote: true } %>
-            <span class="tick" style="display: none;">✔️</span>
+  <div class="container">
+    <div class="content">
+      <div class="filter-meds" role="group" aria-label="Filter Medications">
+        <%= link_to 'All', medications_path, class: 'btn btn-secondary index' %>
+        <%= link_to 'Today', medications_path(filter: 'today'), class: 'btn btn-secondary index' %>
+        <%= link_to 'Tomorrow', medications_path(filter: 'tomorrow'), class: 'btn btn-secondary index' %>
       </div>
-       </div>
-        </div>
-      <% end %>
-    <% else %>
-      <p>No medications found.</p>
+
+      <% if @notifications.present? && @notifications.respond_to?(:each) %>
+  <% @notifications.each do |notification| %>
+    <% unless notification.read? %>
+      <div class="alert alert-info">
+        <%= notification.message %>
+      </div>
     <% end %>
+  <% end %>
+<% end %>
+
+
+
+      <div class="date-index">
+        <% if @date %>
+          <p><%= @date %></p>
+        <% end %>
+      </div>
+
+      <div class="meds-c">
+        <% if @medications.present? %>
+          <% @medications.reverse.each do |medication| %>
+            <div class="rectangle-medi SlideDown">
+              <a href="<%= medication_path(medication) %>" class="medication-link">
+                <img src="https://i.ibb.co/1Rx7HYZ/pngwing-com-2.png" alt="pngwing-com-2" class="medication-image">
+                <div class="medication-info">
+                  <h5 class="medication-name"><%= medication.name %></h5>
+                  <p class="medication-type"><%= medication.med_type %></p>
+                </div>
+              </a>
+              <div class="red-checkbox-container">
+                <%= check_box_tag "medication_ids[]", medication.id, false, class: "red-checkbox", data: { remote: true } %>
+                <% if current_user.notifications.unread.where(medication_id: medication.id).exists? %>
+                  <span class="tick">✔️</span>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+        <% else %>
+          <p>No medications found.</p>
+        <% end %>
+      </div>
+    </div>
   </div>
-</div>
 
 <script>
-function deleteNotification(notificationId) {
-  fetch(`/notifications/${notificationId}`, {
-    method: 'DELETE',
-    headers: {
-      'Content-Type': 'application/json',
-      'X-CSRF-Token': Rails.csrfToken(),
-    },
-  })
-    .then(response => {
-      if (!response.ok) {
-        throw new Error(`Error deleting notification: ${response.statusText}`);
-      }
-      console.log('Notification deleted successfully.');
-    })
-    .catch(error => console.error(error));
-}
   document.addEventListener("DOMContentLoaded", function() {
 
-    // Function to display notifications
-    function displayNotifications(notifications) {
-      const notificationsContainer = document.getElementById('notificationsContainer');
+   // Function to display notifications
+function displayNotifications(notifications) {
+  const notificationsContainer = document.getElementById('notificationsContainer');
 
-      if (!notificationsContainer) {
-        console.error('Notifications container not found!');
-        return;
+  if (!notificationsContainer) {
+    console.error('Notifications container not found!');
+    return;
+  }
+
+  // Clear existing notifications
+  notificationsContainer.innerHTML = '';
+
+  // Check if notifications is an array before iterating
+  if (Array.isArray(notifications)) {
+    // Iterate through notifications and append to the container
+    notifications.forEach(notification => {
+      if (!isNotificationDisplayed(notification.id)) {
+        const notificationCard = createNotificationCard(notification);
+        notificationsContainer.appendChild(notificationCard);
+        markNotificationAsDisplayed(notification.id);
       }
+    });
+  } else {
+    console.error('Invalid or null notifications array.');
+  }
+}
 
-      // Clear existing notifications
-      notificationsContainer.innerHTML = '';
-
-      // Iterate through notifications and append to the container
-      notifications.forEach(notification => {
-        if (!isNotificationDisplayed(notification.id)) {
-          const notificationCard = createNotificationCard(notification);
-          notificationsContainer.appendChild(notificationCard);
-          markNotificationAsDisplayed(notification.id);
-        }
-      });
-    }
 
     // Function to create a notification card
     function createNotificationCard(notification) {
@@ -109,10 +92,11 @@ function deleteNotification(notificationId) {
       card.appendChild(message);
 
       // Add an <audio> element for the notification sound
-      // const audio = document.createElement('audio');
-      // audio.src = '.app/assets/images/sound.mp3';
-      // audio.autoplay = true; // Keep autoplay set to true
-      // card.appendChild(audio);
+    //  const audio = document.createElement('audio');
+// audio.src = '.app/assets/images/sound.mp3';
+// audio.autoplay = true; // Keep autoplay set to true
+// card.appendChild(audio);
+
 
       const closeButton = document.createElement('button');
       closeButton.textContent = 'Close';
@@ -128,7 +112,7 @@ function deleteNotification(notificationId) {
       return card;
     }
 
-    // Function to calculate the time difference and fetch notifications accordingly
+   // Function to calculate the time difference and fetch notifications accordingly
     function calculateTimeDifference(medicationStartTime) {
       const currentTime = new Date();
       const timeDifference = medicationStartTime - currentTime;
@@ -155,36 +139,23 @@ function deleteNotification(notificationId) {
         .catch(error => console.error('Error fetching notifications:', error));
     }
 
-    // Assuming this function is used to close notifications
-async function closeNotification(notificationId) {
-    console.log('Closing notification:', notificationId);
-
-  try {
-    const response = await fetch(`/notifications/${notificationId}`, {
-      method: 'PATCH', // Assuming you use a PATCH request for updating
-      headers: {
-        'Content-Type': 'application/json',
-        'X-CSRF-Token': Rails.csrfToken(),
-      },
-    });
-
-    if (!response.ok) {
-      throw new Error(`Error closing notification: ${response.statusText}`);
+    // Function to delete a notification via AJAX
+    function deleteNotification(notificationId) {
+      fetch(`/notifications/${notificationId}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-CSRF-Token': Rails.csrfToken(), // Include the CSRF token
+        },
+      })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error(`Error deleting notification: ${response.statusText}`);
+          }
+          console.log('Notification deleted successfully.');
+        })
+        .catch(error => console.error(error));
     }
-
-    const notificationCard = document.querySelector(`.notification-card[data-notification-id="${notificationId}"]`);
-    notificationCard.classList.add('closed');
-
-    // Add the following lines to show the tick mark
-    const tickSpan = document.querySelector(`.red-checkbox-container[data-notification-id="${notificationId}"] .tick`);
-       console.log('Tick span:', tickSpan);
-    tickSpan.style.display = 'inline'; // or 'block' depending on your styling
-
-    // Add additional logic here if needed
-  } catch (error) {
-    console.error(error);
-  }
-}
 
     // Function to check if a notification has been displayed
     function isNotificationDisplayed(notificationId) {
@@ -235,54 +206,10 @@ async function closeNotification(notificationId) {
     medicationStartTimes?.forEach(medicationStartTime => {
       calculateTimeDifference(medicationStartTime);
     });
-
-    // Adjust this based on your JavaScript setup
-    document.addEventListener('click', function(event) {
-      if (event.target.classList.contains('close-notification')) {
-        event.preventDefault();
-        const notificationId = event.target.dataset.notificationId;
-        closeNotification(notificationId);
-      }
-    });
-
-    async function closeNotification(notificationId) {
-      try {
-        const response = await fetch(`/notifications/${notificationId}`, {
-          method: 'PATCH', // Assuming you use a PATCH request for updating
-          headers: {
-            'Content-Type': 'application/json',
-            'X-CSRF-Token': Rails.csrfToken(),
-          },
-        });
-
-        if (!response.ok) {
-          throw new Error(`Error closing notification: ${response.statusText}`);
-        }
-
-        const notificationCard = document.querySelector(`.notification-card[data-notification-id="${notificationId}"]`);
-        notificationCard.classList.add('closed');
-        // Add additional logic here if needed
-      } catch (error) {
-        console.error(error);
-      }
-    }
-
-    // Your modified script
-    function showPopup() {
-      document.getElementById("popup").style.display = "";
-    }
-
-    function handleCheckboxClick() {
-      var checkbox = document.getElementById("mycheckbox");
-
-      if (checkbox.checked) {
-        checkbox.disabled = false;
-      } else {
-        checkbox.disabled = true;
-      }
-    }
   });
 </script>
+
+
 
 
 </body>

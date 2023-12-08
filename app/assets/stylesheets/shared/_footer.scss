@@ -107,11 +107,11 @@
   padding: 0;
 }
 .tabbar ul {
-  background-image: linear-gradient(135deg, #AEDFF7 0%, #BDBFE6 100%);
+  // background-image: linear-gradient(135deg, #AEDFF7 0%, #BDBFE6 100%);
   position: absolute;
   bottom: 0;
   width: 100%;
-  background-color: #f9f8fa;
+  background-color: #544cbe;
   align-self: flex-end;
   justify-content: center;
   height: 50px;
@@ -340,7 +340,7 @@
   transition: top 0.4s ease-out, border-radius 0.4s ease-out, box-shadow 0.4s ease-out;
   border-radius: 100%;
   margin-right: 30px;
-  background-color: rgba(139, 154, 209, 0.4) ;
+  background-color: #ffff ;
 }
 .tab-style5 .active {
   width: 40px;
