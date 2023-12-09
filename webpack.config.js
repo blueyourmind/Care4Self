@@ -1,5 +1,5 @@
-const path    = require("path")
-const webpack = require("webpack")
+const path = require("path");
+const webpack = require("webpack");
 
 module.exports = {
   mode: "production",
@@ -12,9 +12,14 @@ module.exports = {
     sourceMapFilename: "[file].map",
     path: path.resolve(__dirname, "app/assets/builds"),
   },
+  resolve: {
+    alias: {
+      '@rails/ujs': path.resolve(__dirname, 'node_modules/@rails/ujs'),
+    },
+  },
   plugins: [
     new webpack.optimize.LimitChunkCountPlugin({
       maxChunks: 1
     })
   ]
-}
+};

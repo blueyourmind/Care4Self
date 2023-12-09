@@ -11,8 +11,4 @@
 
   production:
     adapter: redis
-    url: >-
-        <%= ENV.fetch("REDIS_URL") {
-        "rediss://:pe6dc62d20a26571050f70100b305e6f39b07d11b6e3c23394a3b0ee15a496c
-        4f@ec2-63-34-38-39.eu-west-1.compute.amazonaws.com:26589"
-        } %>
+    url: <%= ENV.fetch("REDISCLOUD_URL") { "redis://localhost:6379/1" } %>
