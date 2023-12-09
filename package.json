@@ -2,9 +2,10 @@
   "name": "app",
   "private": true,
   "engines": {
-    "node": "14.x", 
-    "yarn": "1.22.x"
+    "node": "20.10.0",
+    "npm": "latest"
   },
+
   "dependencies": {
     "@hotwired/stimulus": "^3.2.2",
     "@hotwired/turbo-rails": "^7.3.0",
