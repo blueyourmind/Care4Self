@@ -73,7 +73,8 @@ gem 'activesupport', '~> 7.1'
 
 
 
-  gem 'sidekiq'
+  gem 'sidekiq', '~> 6.2'
+  gem 'sidekiq-failures', '~> 1.0'
   gem "noticed"
   gem "actioncable"
   gem "judoscale-rails"
